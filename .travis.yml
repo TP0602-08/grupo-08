@@ -10,4 +10,5 @@ cache:
   - $HOME/.m2
   - $HOME/.gradle/wrapper
   - $HOME/.gradle/caches 
-  
+notifications:
+ slack: tecnicas7510-02-2016:HSVWGEbRip7xh9CK053DF0JO
