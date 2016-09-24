@@ -1,9 +1,9 @@
 //create a single Jar with all dependencies
 task fatJar(type: Jar) {
     manifest {
-        attributes 'Implementation-Title': 'Template Project fiuba tecnicas',
-                'Implementation-Version': version,
-                'Main-Class': 'ar.fiuba.tdd.tp.Main'
+        attributes 'Implementation-Title': '(75.10) Técnicas de Diseño - TP1 - 2ºCuat. 2016',
+                'Implementation-Version': 1.0,
+                'Main-Class': 'ar.fiuba.tdd.tp1.Main'
     }
     baseName = project.name + '-all'
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
