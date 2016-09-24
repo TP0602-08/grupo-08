@@ -2,12 +2,12 @@ package ar.fiuba.tdd.tp1;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class MainTests {
 
     @Test
     public void test() {
-        assertEquals(0,0);
+        assertEquals(0, 0);
     }
 }
