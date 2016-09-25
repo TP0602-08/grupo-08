@@ -17,7 +17,9 @@ public class CellXml {
     @XmlAttribute(name = "id")
     private String id;
 
-    public String getId() { return this.id; }
+    public String getId() {
+        return this.id;
+    }
 
     public int getRow() {
         return this.row;
@@ -31,7 +33,9 @@ public class CellXml {
         return this.value;
     }
 
-    public void setId(String id) { this.id = id; }
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public void setRow(int row) {
         this.row = row;

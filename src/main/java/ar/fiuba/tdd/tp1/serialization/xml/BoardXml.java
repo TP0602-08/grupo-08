@@ -1,7 +1,7 @@
 package ar.fiuba.tdd.tp1.serialization.xml;
 
-import javax.xml.bind.annotation.*;
 import java.util.List;
+import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "board")
