@@ -1,13 +1,12 @@
 package ar.fiuba.tdd.tp1;
 
-import ar.fiuba.tdd.tp1.serialization.xml.BoardXml;
 import ar.fiuba.tdd.tp1.serialization.xml.RuleXml;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.io.File;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
-import java.io.File;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -26,8 +25,7 @@ public class RuleXmlSerializationTest {
         try {
             JAXBContext jaxb = JAXBContext.newInstance(RuleXml.class);
             unmarshaller = jaxb.createUnmarshaller();
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             fail(ex.getMessage());
         }
     }
@@ -42,8 +40,7 @@ public class RuleXmlSerializationTest {
         try {
             RuleXml rule = (RuleXml)unmarshaller.unmarshal(xml);
             assertTrue(true);
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             fail(ex.getMessage());
         }
     }
@@ -53,8 +50,7 @@ public class RuleXmlSerializationTest {
         try {
             RuleXml rule = (RuleXml)unmarshaller.unmarshal(xml);
             assertEquals(rule.getName(), NAME);
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             fail(ex.getMessage());
         }
     }

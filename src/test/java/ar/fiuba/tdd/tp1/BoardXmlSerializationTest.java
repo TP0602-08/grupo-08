@@ -6,9 +6,9 @@ import ar.fiuba.tdd.tp1.serialization.xml.RegionXml;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.io.File;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
-import java.io.File;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -33,8 +33,7 @@ public class BoardXmlSerializationTest {
         try {
             JAXBContext jaxb = JAXBContext.newInstance(BoardXml.class);
             unmarshaller = jaxb.createUnmarshaller();
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             fail(ex.getMessage());
         }
     }
@@ -50,8 +49,7 @@ public class BoardXmlSerializationTest {
         try {
             BoardXml board = (BoardXml)unmarshaller.unmarshal(simpleXml);
             assertTrue(true);
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             fail(ex.getMessage());
         }
     }
@@ -61,8 +59,7 @@ public class BoardXmlSerializationTest {
         try {
             BoardXml board = (BoardXml)unmarshaller.unmarshal(withRegionsXml);
             assertTrue(true);
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             fail(ex.getMessage());
         }
     }
@@ -72,8 +69,7 @@ public class BoardXmlSerializationTest {
         try {
             BoardXml board = (BoardXml)unmarshaller.unmarshal(simpleXml);
             assertEquals(board.getColumns(), COLUMNS);
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             fail(ex.getMessage());
         }
     }
@@ -83,8 +79,7 @@ public class BoardXmlSerializationTest {
         try {
             BoardXml board = (BoardXml)unmarshaller.unmarshal(simpleXml);
             assertEquals(board.getRows(), ROWS);
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             fail(ex.getMessage());
         }
     }
@@ -94,8 +89,7 @@ public class BoardXmlSerializationTest {
         try {
             BoardXml board = (BoardXml)unmarshaller.unmarshal(simpleXml);
             assertEquals(board.getCells().size(), CELLSSIZE);
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             fail(ex.getMessage());
         }
     }
@@ -112,8 +106,7 @@ public class BoardXmlSerializationTest {
                     assertEquals(cell.getValue(), String.valueOf(i + 1));
                 }
             }
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             fail(ex.getMessage());
         }
     }
@@ -123,8 +116,7 @@ public class BoardXmlSerializationTest {
         try {
             BoardXml board = (BoardXml)unmarshaller.unmarshal(withRegionsXml);
             assertEquals(board.getRegions().size(), REGIONSSIZE);
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             fail(ex.getMessage());
         }
     }
@@ -136,11 +128,10 @@ public class BoardXmlSerializationTest {
             for (int i = 0; i < board.getRegions().size(); i++) {
                 RegionXml region = board.getRegions().get(i);
                 for (int j = 0; j < region.getCells().size(); j++) {
-                    assertEquals(region.getCells().get(j), String.valueOf(i* board.getRegions().size() + j + 1));
+                    assertEquals(region.getCells().get(j), String.valueOf(i * board.getRegions().size() + j + 1));
                 }
             }
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             fail(ex.getMessage());
         }
     }

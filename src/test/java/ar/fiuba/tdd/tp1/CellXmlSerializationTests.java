@@ -3,11 +3,12 @@ package ar.fiuba.tdd.tp1;
 import ar.fiuba.tdd.tp1.serialization.xml.CellXml;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
+import java.io.File;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
-import java.io.File;
+
+import static org.junit.Assert.*;
 
 public class CellXmlSerializationTests {
     private static final String CELLXML = "src/test/resources/XmlCellTest.xml";
@@ -24,8 +25,7 @@ public class CellXmlSerializationTests {
         try {
             JAXBContext jaxb = JAXBContext.newInstance(CellXml.class);
             unmarshaller = jaxb.createUnmarshaller();
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             fail(ex.getMessage());
         }
     }
@@ -40,8 +40,7 @@ public class CellXmlSerializationTests {
         try {
             CellXml cell = (CellXml)unmarshaller.unmarshal(xml);
             assertTrue(true);
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             fail(ex.getMessage());
         }
     }
@@ -51,8 +50,7 @@ public class CellXmlSerializationTests {
         try {
             CellXml cell = (CellXml)unmarshaller.unmarshal(xml);
             assertEquals(cell.getColumn(), COLUMN);
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             fail(ex.getMessage());
         }
     }
@@ -62,8 +60,7 @@ public class CellXmlSerializationTests {
         try {
             CellXml cell = (CellXml)unmarshaller.unmarshal(xml);
             assertEquals(cell.getRow(), ROW);
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             fail(ex.getMessage());
         }
     }
@@ -73,8 +70,7 @@ public class CellXmlSerializationTests {
         try {
             CellXml cell = (CellXml)unmarshaller.unmarshal(xml);
             assertEquals(cell.getValue(), VALUE);
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             fail(ex.getMessage());
         }
     }
@@ -84,8 +80,7 @@ public class CellXmlSerializationTests {
         try {
             CellXml cell = (CellXml)unmarshaller.unmarshal(xml);
             assertEquals(cell.getId(), ID);
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             fail(ex.getMessage());
         }
     }

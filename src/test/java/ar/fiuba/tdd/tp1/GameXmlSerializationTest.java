@@ -5,9 +5,9 @@ import ar.fiuba.tdd.tp1.serialization.xml.RulebookXml;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.io.File;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
-import java.io.File;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -29,8 +29,7 @@ public class GameXmlSerializationTest {
         try {
             JAXBContext jaxb = JAXBContext.newInstance(GameXml.class);
             unmarshaller = jaxb.createUnmarshaller();
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             fail(ex.getMessage());
         }
     }
@@ -45,8 +44,7 @@ public class GameXmlSerializationTest {
         try {
             GameXml game = (GameXml)unmarshaller.unmarshal(xml);
             assertTrue(true);
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             fail(ex.getMessage());
         }
     }
@@ -56,8 +54,7 @@ public class GameXmlSerializationTest {
         try {
             GameXml game = (GameXml)unmarshaller.unmarshal(xml);
             assertEquals(game.getName(), NAME);
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             fail(ex.getMessage());
         }
     }
@@ -67,8 +64,7 @@ public class GameXmlSerializationTest {
         try {
             GameXml game = (GameXml)unmarshaller.unmarshal(xml);
             assertEquals(game.getRulebook().getRules().size(), RULEBOOKSIZE);
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             fail(ex.getMessage());
         }
     }
@@ -78,8 +74,7 @@ public class GameXmlSerializationTest {
         try {
             GameXml game = (GameXml)unmarshaller.unmarshal(xml);
             assertEquals(game.getBoard().getRegions().size(), REGIONSSIZE);
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             fail(ex.getMessage());
         }
     }
@@ -89,8 +84,7 @@ public class GameXmlSerializationTest {
         try {
             GameXml game = (GameXml)unmarshaller.unmarshal(xml);
             assertEquals(game.getBoard().getCells().size(), CELLSSIZE);
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             fail(ex.getMessage());
         }
     }

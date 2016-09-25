@@ -5,9 +5,9 @@ import ar.fiuba.tdd.tp1.serialization.xml.RegionXml;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.io.File;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
-import java.io.File;
 
 import static org.junit.Assert.*;
 
@@ -25,8 +25,7 @@ public class RegionXmlSerializationTest {
         try {
             JAXBContext jaxb = JAXBContext.newInstance(RegionXml.class);
             unmarshaller = jaxb.createUnmarshaller();
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             fail(ex.getMessage());
         }
     }
@@ -41,8 +40,7 @@ public class RegionXmlSerializationTest {
         try {
             RegionXml region = (RegionXml)unmarshaller.unmarshal(xml);
             assertTrue(true);
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             fail(ex.getMessage());
         }
     }
@@ -52,8 +50,7 @@ public class RegionXmlSerializationTest {
         try {
             RegionXml region = (RegionXml)unmarshaller.unmarshal(xml);
             assertEquals(region.getCells().size(), SIZE);
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             fail(ex.getMessage());
         }
     }
@@ -63,8 +60,7 @@ public class RegionXmlSerializationTest {
         try {
             RegionXml region = (RegionXml)unmarshaller.unmarshal(xml);
             assertEquals(region.getParam(), PARAM);
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             fail(ex.getMessage());
         }
     }
@@ -77,8 +73,7 @@ public class RegionXmlSerializationTest {
                 String cell = region.getCells().get(i);
                 assertEquals(cell, String.valueOf(i + 1));
             }
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             fail(ex.getMessage());
         }
     }
