@@ -2,7 +2,6 @@ package ar.fiuba.tdd.tp1.model;
 
 import ar.fiuba.tdd.tp1.model.interfaces.Board;
 import ar.fiuba.tdd.tp1.model.interfaces.Cell;
-import ar.fiuba.tdd.tp1.model.interfaces.Move;
 import ar.fiuba.tdd.tp1.model.interfaces.Region;
 
 import java.util.ArrayList;
