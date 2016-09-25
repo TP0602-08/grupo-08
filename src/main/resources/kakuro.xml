@@ -1,247 +1,323 @@
-<game name="Kakuro" rows="11" cols="9">
-    <!-- de izquierda a derecha -->
-    <block sum="7">
-        <cell row="0" col="1"/>
-        <cell row="0" col="2"/>
-    </block>
-    <block sum="9">
-        <cell row="0" col="4"/>
-        <cell row="0" col="5"/>
-        <cell row="0" col="6"/>
-    </block>
-    <block sum="4">
-        <cell row="0" col="9"/>
-        <cell row="0" col="10"/>
-    </block>
-    <block sum="7">
-        <cell row="1" col="0"/>
-        <cell row="1" col="1"/>
-        <cell row="1" col="2"/>
-    </block>
-    <block sum="7">
-        <cell row="1" col="4"/>
-        <cell row="1" col="5"/>
-        <cell row="1" col="6"/>
-    </block>
-    <block sum="6">
-        <cell row="1" col="8"/>
-        <cell row="1" col="9"/>
-        <cell row="1" col="10"/>
-    </block>
-    <block sum="3">
-        <cell row="2" col="0"/>
-        <cell row="2" col="1"/>
-    </block>
-    <block sum="4">
-        <cell row="2" col="3"/>
-        <cell row="2" col="4"/>
-    </block>
-    <block sum="16">
-        <cell row="2" col="6"/>
-        <cell row="2" col="7"/>
-        <cell row="2" col="8"/>
-        <cell row="2" col="9"/>
-        <cell row="2" col="10"/>
-    </block>
-    <block sum="10">
-        <cell row="3" col="0"/>
-        <cell row="3" col="1"/>
-        <cell row="3" col="2"/>
-        <cell row="3" col="3"/>
-    </block>
-    <block sum="10">
-        <cell row="3" col="5"/>
-        <cell row="3" col="6"/>
-        <cell row="3" col="7"/>
-        <cell row="3" col="8"/>
-    </block>
-    <block sum="10">
-        <cell row="4" col="1"/>
-        <cell row="4" col="2"/>
-    </block>
-    <block sum="6">
-        <cell row="4" col="4"/>
-        <cell row="4" col="5"/>
-        <cell row="4" col="6"/>
-    </block>
-    <block sum="5">
-        <cell row="4" col="8"/>
-        <cell row="4" col="9"/>
-    </block>
-    <block sum="10">
-        <cell row="5" col="2"/>
-        <cell row="5" col="3"/>
-        <cell row="5" col="4"/>
-        <cell row="5" col="5"/>
-    </block>
-    <block sum="12">
-        <cell row="5" col="7"/>
-        <cell row="5" col="8"/>
-        <cell row="5" col="9"/>
-        <cell row="5" col="10"/>
-    </block>
-    <block sum="16">
-        <cell row="6" col="0"/>
-        <cell row="6" col="1"/>
-        <cell row="6" col="2"/>
-        <cell row="6" col="3"/>
-        <cell row="6" col="4"/>
-    </block>
-    <block sum="4">
-        <cell row="6" col="6"/>
-        <cell row="6" col="7"/>
-    </block>
-    <block sum="4">
-        <cell row="6" col="9"/>
-        <cell row="6" col="10"/>
-    </block>
-    <block sum="7">
-        <cell row="7" col="0"/>
-        <cell row="7" col="1"/>
-        <cell row="7" col="2"/>
-    </block>
-    <block sum="8">
-        <cell row="7" col="4"/>
-        <cell row="7" col="5"/>
-        <cell row="7" col="6"/>
-    </block>
-    <block sum="6">
-        <cell row="7" col="8"/>
-        <cell row="7" col="9"/>
-        <cell row="7" col="10"/>
-    </block>
-    <block sum="3">
-        <cell row="8" col="0"/>
-        <cell row="8" col="1"/>
-    </block>
-    <block sum="7">
-        <cell row="8" col="4"/>
-        <cell row="8" col="5"/>
-        <cell row="8" col="6"/>
-    </block>
-    <block sum="3">
-        <cell row="8" col="8"/>
-        <cell row="8" col="9"/>
-    </block>
+<game name="Kakuro">
+    <board rows="11" cols="9">
+        <cell row="0" col="1" id="1"/>
+        <cell row="0" col="2" id="2"/>
+        <cell row="0" col="4" id="3"/>
+        <cell row="0" col="5" id="4"/>
+        <cell row="0" col="6" id="5"/>
+        <cell row="0" col="9" id="6"/>
+        <cell row="0" col="10" id="7"/>
+        <cell row="1" col="0" id="8"/>
+        <cell row="1" col="1" id="9"/>
+        <cell row="1" col="2" id="10"/>
+        <cell row="1" col="4" id="11"/>
+        <cell row="1" col="5" id="12"/>
+        <cell row="1" col="6" id="13"/>
+        <cell row="1" col="8" id="14"/>
+        <cell row="1" col="9" id="15"/>
+        <cell row="1" col="10" id="16"/>
+        <cell row="2" col="0" id="17"/>
+        <cell row="2" col="1" id="18"/>
+        <cell row="2" col="3" id="19"/>
+        <cell row="2" col="4" id="20"/>
+        <cell row="2" col="6" id="21"/>
+        <cell row="2" col="7" id="22"/>
+        <cell row="2" col="8" id="23"/>
+        <cell row="2" col="9" id="24"/>
+        <cell row="2" col="10" id="25"/>
+        <cell row="3" col="0" id="26"/>
+        <cell row="3" col="1" id="27"/>
+        <cell row="3" col="2" id="28"/>
+        <cell row="3" col="3" id="29"/>
+        <cell row="3" col="5" id="30"/>
+        <cell row="3" col="6" id="31"/>
+        <cell row="3" col="7" id="32"/>
+        <cell row="3" col="8" id="33"/>
+        <cell row="4" col="1" id="34"/>
+        <cell row="4" col="2" id="35"/>
+        <cell row="4" col="4" id="36"/>
+        <cell row="4" col="5" id="37"/>
+        <cell row="4" col="6" id="38"/>
+        <cell row="4" col="8" id="39"/>
+        <cell row="4" col="9" id="40"/>
+        <cell row="5" col="2" id="41"/>
+        <cell row="5" col="3" id="42"/>
+        <cell row="5" col="4" id="43"/>
+        <cell row="5" col="5" id="44"/>
+        <cell row="5" col="7" id="45"/>
+        <cell row="5" col="8" id="46"/>
+        <cell row="5" col="9" id="47"/>
+        <cell row="5" col="10" id="48"/>
+        <cell row="6" col="0" id="49"/>
+        <cell row="6" col="1" id="50"/>
+        <cell row="6" col="2" id="51"/>
+        <cell row="6" col="3" id="52"/>
+        <cell row="6" col="4" id="53"/>
+        <cell row="6" col="6" id="54"/>
+        <cell row="6" col="7" id="55"/>
+        <cell row="6" col="9" id="56"/>
+        <cell row="6" col="10" id="57"/>
+        <cell row="7" col="0" id="58"/>
+        <cell row="7" col="1" id="59"/>
+        <cell row="7" col="2" id="60"/>
+        <cell row="7" col="4" id="61"/>
+        <cell row="7" col="5" id="62"/>
+        <cell row="7" col="6" id="63"/>
+        <cell row="7" col="8" id="64"/>
+        <cell row="7" col="9" id="65"/>
+        <cell row="7" col="10" id="66"/>
+        <cell row="8" col="0" id="67"/>
+        <cell row="8" col="1" id="68"/>
+        <cell row="8" col="4" id="69"/>
+        <cell row="8" col="5" id="70"/>
+        <cell row="8" col="6" id="71"/>
+        <cell row="8" col="8" id="72"/>
+        <cell row="8" col="9" id="73"/>
 
-    <!-- de arriba a abajo -->
-    <block sum="7">
-        <cell row="1" col="0"/>
-        <cell row="2" col="0"/>
-        <cell row="3" col="0"/>
-    </block>
-    <block sum="6">
-        <cell row="6" col="0"/>
-        <cell row="7" col="0"/>
-        <cell row="8" col="0"/>
-    </block>
-    <block sum="16">
-        <cell row="0" col="1"/>
-        <cell row="1" col="1"/>
-        <cell row="2" col="1"/>
-        <cell row="3" col="1"/>
-        <cell row="4" col="1"/>
-    </block>
-    <block sum="7">
-        <cell row="6" col="1"/>
-        <cell row="7" col="1"/>
-        <cell row="8" col="1"/>
-    </block>
-    <block sum="4">
-        <cell row="0" col="2"/>
-        <cell row="1" col="2"/>
-    </block>
-    <block sum="16">
-        <cell row="3" col="2"/>
-        <cell row="4" col="2"/>
-        <cell row="5" col="2"/>
-        <cell row="6" col="2"/>
-        <cell row="7" col="2"/>
-    </block>
-    <block sum="5">
-        <cell row="2" col="3"/>
-        <cell row="3" col="3"/>
-    </block>
-    <block sum="3">
-        <cell row="5" col="3"/>
-        <cell row="6" col="3"/>
-    </block>
-    <block sum="6">
-        <cell row="0" col="4"/>
-        <cell row="1" col="4"/>
-        <cell row="2" col="4"/>
-    </block>
-    <block sum="15">
-        <cell row="4" col="4"/>
-        <cell row="5" col="4"/>
-        <cell row="6" col="4"/>
-        <cell row="7" col="4"/>
-        <cell row="8" col="4"/>
-    </block>
-    <block sum="4">
-        <cell row="0" col="5"/>
-        <cell row="1" col="5"/>
-    </block>
-    <block sum="8">
-        <cell row="3" col="5"/>
-        <cell row="4" col="5"/>
-        <cell row="5" col="5"/>
-    </block>
-    <block sum="3">
-        <cell row="7" col="5"/>
-        <cell row="8" col="5"/>
-    </block>
-    <block sum="15">
-        <cell row="0" col="6"/>
-        <cell row="1" col="6"/>
-        <cell row="2" col="6"/>
-        <cell row="3" col="6"/>
-        <cell row="4" col="6"/>
-    </block>
-    <block sum="7">
-        <cell row="6" col="6"/>
-        <cell row="7" col="6"/>
-        <cell row="8" col="6"/>
-    </block>
-    <block sum="3">
-        <cell row="2" col="7"/>
-        <cell row="3" col="7"/>
-    </block>
-    <block sum="4">
-        <cell row="5" col="7"/>
-        <cell row="6" col="7"/>
-    </block>
-    <block sum="16">
-        <cell row="1" col="8"/>
-        <cell row="2" col="8"/>
-        <cell row="3" col="8"/>
-        <cell row="4" col="8"/>
-        <cell row="5" col="8"/>
-    </block>
-    <block sum="4">
-        <cell row="7" col="8"/>
-        <cell row="8" col="8"/>
-    </block>
-    <block sum="6">
-        <cell row="0" col="9"/>
-        <cell row="1" col="9"/>
-        <cell row="2" col="9"/>
-    </block>
-    <block sum="15">
-        <cell row="4" col="9"/>
-        <cell row="5" col="9"/>
-        <cell row="6" col="9"/>
-        <cell row="7" col="9"/>
-        <cell row="8" col="9"/>
-    </block>
-    <block sum="7">
-        <cell row="0" col="10"/>
-        <cell row="1" col="10"/>
-        <cell row="2" col="10"/>
-    </block>
-    <block sum="7">
-        <cell row="5" col="10"/>
-        <cell row="6" col="10"/>
-        <cell row="7" col="10"/>
-    </block>
+        <!-- de izquierda a derecha -->
+        <region param="7">
+            <cell>1</cell>
+            <cell>2</cell>
+        </region>
+        <region param="9">
+            <cell>3</cell>
+            <cell>4</cell>
+            <cell>5</cell>
+        </region>
+        <region param="4">
+            <cell>6</cell>
+            <cell>7</cell>
+        </region>
+        <region param="7">
+            <cell>8</cell>
+            <cell>9</cell>
+            <cell>10</cell>
+        </region>
+        <region param="7">
+            <cell>11</cell>
+            <cell>12</cell>
+            <cell>13</cell>
+        </region>
+        <region param="6">
+            <cell>14</cell>
+            <cell>15</cell>
+            <cell>16</cell>
+        </region>
+        <region param="3">
+            <cell>17</cell>
+            <cell>18</cell>
+        </region>
+        <region param="4">
+            <cell>19</cell>
+            <cell>20</cell>
+        </region>
+        <region param="16">
+            <cell>21</cell>
+            <cell>22</cell>
+            <cell>23</cell>
+            <cell>24</cell>
+            <cell>25</cell>
+        </region>
+        <region param="10">
+            <cell>26</cell>
+            <cell>27</cell>
+            <cell>28</cell>
+            <cell>29</cell>
+        </region>
+        <region param="10">
+            <cell>30</cell>
+            <cell>31</cell>
+            <cell>32</cell>
+            <cell>33</cell>
+        </region>
+        <region param="10">
+            <cell>34</cell>
+            <cell>35</cell>
+        </region>
+        <region param="6">
+            <cell>36</cell>
+            <cell>37</cell>
+            <cell>38</cell>
+        </region>
+        <region param="5">
+            <cell>39</cell>
+            <cell>40</cell>
+        </region>
+        <region param="10">
+            <cell>41</cell>
+            <cell>42</cell>
+            <cell>43</cell>
+            <cell>44</cell>
+        </region>
+        <region param="12">
+            <cell>45</cell>
+            <cell>46</cell>
+            <cell>47</cell>
+            <cell>48</cell>
+        </region>
+        <region param="16">
+            <cell>49</cell>
+            <cell>50</cell>
+            <cell>51</cell>
+            <cell>52</cell>
+            <cell>53</cell>
+        </region>
+        <region param="4">
+            <cell>54</cell>
+            <cell>55</cell>
+        </region>
+        <region param="4">
+            <cell>56</cell>
+            <cell>57</cell>
+        </region>
+        <region param="7">
+            <cell>58</cell>
+            <cell>59</cell>
+            <cell>60</cell>
+        </region>
+        <region param="8">
+            <cell>61</cell>
+            <cell>62</cell>
+            <cell>63</cell>
+        </region>
+        <region param="6">
+            <cell>64</cell>
+            <cell>65</cell>
+            <cell>66</cell>
+        </region>
+        <region param="3">
+            <cell>67</cell>
+            <cell>68</cell>
+        </region>
+        <region param="7">
+            <cell>69</cell>
+            <cell>70</cell>
+            <cell>71</cell>
+        </region>
+        <region param="3">
+            <cell>72</cell>
+            <cell>73</cell>
+        </region>
+
+        <!-- de arriba a abajo -->
+        <region param="7">
+            <cell>8</cell>
+            <cell>17</cell>
+            <cell>26</cell>
+        </region>
+        <region param="6">
+            <cell>49</cell>
+            <cell>58</cell>
+            <cell>67</cell>
+        </region>
+        <region param="16">
+            <cell>1</cell>
+            <cell>9</cell>
+            <cell>18</cell>
+            <cell>27</cell>
+            <cell>34</cell>
+        </region>
+        <region param="7">
+            <cell>50</cell>
+            <cell>59</cell>
+            <cell>68</cell>
+        </region>
+        <region param="4">
+            <cell>59</cell>
+            <cell>68</cell>
+        </region>
+        <region param="16">
+            <cell>28</cell>
+            <cell>35</cell>
+            <cell>41</cell>
+            <cell>51</cell>
+            <cell>60</cell>
+        </region>
+        <region param="5">
+            <cell>19</cell>
+            <cell>29</cell>
+        </region>
+        <region param="3">
+            <cell>42</cell>
+            <cell>52</cell>
+        </region>
+        <region param="6">
+            <cell>3</cell>
+            <cell>11</cell>
+            <cell>20</cell>
+        </region>
+        <region param="15">
+            <cell>36</cell>
+            <cell>43</cell>
+            <cell>53</cell>
+            <cell>61</cell>
+            <cell>69</cell>
+        </region>
+        <region param="4">
+            <cell>4</cell>
+            <cell>12</cell>
+        </region>
+        <region param="8">
+            <cell>30</cell>
+            <cell>37</cell>
+            <cell>44</cell>
+        </region>
+        <region param="3">
+            <cell>62</cell>
+            <cell>70</cell>
+        </region>
+        <region param="15">
+            <cell>5</cell>
+            <cell>13</cell>
+            <cell>21</cell>
+            <cell>31</cell>
+            <cell>38</cell>
+        </region>
+        <region param="7">
+            <cell>54</cell>
+            <cell>63</cell>
+            <cell>71</cell>
+        </region>
+        <region param="3">
+            <cell>22</cell>
+            <cell>32</cell>
+        </region>
+        <region param="4">
+            <cell>45</cell>
+            <cell>55</cell>
+        </region>
+        <region param="16">
+            <cell>14</cell>
+            <cell>23</cell>
+            <cell>33</cell>
+            <cell>39</cell>
+            <cell>46</cell>
+        </region>
+        <region param="4">
+            <cell>64</cell>
+            <cell>72</cell>
+        </region>
+        <region param="6">
+            <cell>6</cell>
+            <cell>15</cell>
+            <cell>24</cell>
+        </region>
+        <region param="15">
+            <cell>40</cell>
+            <cell>47</cell>
+            <cell>56</cell>
+            <cell>65</cell>
+            <cell>73</cell>
+        </region>
+        <region param="7">
+            <cell>48</cell>
+            <cell>57</cell>
+            <cell>66</cell>
+        </region>
+        <region param="7">
+            <cell>7</cell>
+            <cell>16</cell>
+            <cell>25</cell>
+        </region>
+    </board>
 </game>

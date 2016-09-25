@@ -1,0 +1,30 @@
+<game name="Test">
+	<rulebook>
+		<rule name="TestRuleOne" />
+		<rule name="TestRuleTwo" />
+	</rulebook>
+	<board rows="4" cols="4">
+		<region param="1">
+			<cell>1</cell>
+			<cell>2</cell>
+			<cell>3</cell>
+			<cell>4</cell>
+		</region>
+		<cell id="1" row="0" col="0" value="1" />
+		<cell id="2" row="0" col="1" value="1" />
+		<cell id="3" row="0" col="2" value="1" />
+		<cell id="4" row="0" col="3" value="1" />
+		<cell id="5" row="1" col="0" value="2" />
+		<cell id="6" row="1" col="1" value="2" />
+		<cell id="7" row="1" col="2" value="2" />
+		<cell id="8" row="1" col="3" value="2" />
+		<cell id="9" row="2" col="0" value="3" />
+		<cell id="10" row="2" col="1" value="3" />
+		<cell id="11" row="2" col="2" value="3" />
+		<cell id="12" row="2" col="3" value="3" />
+		<cell id="13" row="3" col="0" value="4" />
+		<cell id="14" row="3" col="1" value="4" />
+		<cell id="15" row="3" col="2" value="4" />
+		<cell id="16" row="3" col="3" value="4" />
+	</board>
+</game>
