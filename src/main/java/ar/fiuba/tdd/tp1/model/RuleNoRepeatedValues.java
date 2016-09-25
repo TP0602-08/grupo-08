@@ -6,7 +6,7 @@ public class RuleNoRepeatedValues implements Rule {
     private static final String name = "NoRepeatedValues";
 
     @Override
-    public boolean isAValidMove() {
+    public boolean isValid(Move move) {
         //TODO(Ivan)
         return false;
     }

@@ -1,6 +1,5 @@
 package ar.fiuba.tdd.tp1.model;
 
-import ar.fiuba.tdd.tp1.model.interfaces.Move;
 import ar.fiuba.tdd.tp1.model.interfaces.Rule;
 
 import java.util.List;

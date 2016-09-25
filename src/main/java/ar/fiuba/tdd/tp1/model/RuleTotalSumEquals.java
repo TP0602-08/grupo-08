@@ -16,7 +16,7 @@ public class RuleTotalSumEquals implements Rule {
     }
 
     @Override
-    public boolean isAValidMove() {
+    public boolean isValid(Move move) {
         //TODO(Ivan)
         return false;
     }
