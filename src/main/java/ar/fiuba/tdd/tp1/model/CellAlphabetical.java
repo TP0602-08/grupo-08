@@ -1,7 +1,7 @@
 package ar.fiuba.tdd.tp1.model;
 
 import ar.fiuba.tdd.tp1.model.interfaces.Cell;
-import ar.fiuba.tdd.tp1.model.interfaces.Rule;
+import ar.fiuba.tdd.tp1.model.interfaces.VisitorOfCell;
 
 public class CellAlphabetical implements Cell {
     private String datum;
@@ -11,9 +11,8 @@ public class CellAlphabetical implements Cell {
     }
 
     @Override
-    public boolean reportToRule(Rule rule) {
-        //TODO(Ivan)
-        return false;
+    public void accept(VisitorOfCell visitor) {
+        visitor.visit(this);
     }
 
     public String getDatum() {

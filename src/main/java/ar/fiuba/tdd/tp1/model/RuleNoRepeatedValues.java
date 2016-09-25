@@ -11,6 +11,16 @@ public class RuleNoRepeatedValues implements Rule {
         return false;
     }
 
+    @Override
+    public void visit(CellNumerical cell) {
+        //TODO(Ivan)
+    }
+
+    @Override
+    public void visit(CellAlphabetical cell) {
+        //TODO(Ivan)
+    }
+
     public String getName() {
         return this.name;
     }
