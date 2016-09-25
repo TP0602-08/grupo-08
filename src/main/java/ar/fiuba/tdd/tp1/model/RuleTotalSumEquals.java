@@ -6,6 +6,11 @@ public class RuleTotalSumEquals implements Rule {
     private static final String name = "TotalSumEquals";
     private int sum;
 
+    //This constructor with no parameters is for using an instance as a prototype for creating new instances.
+    RuleTotalSumEquals() {
+        this.sum = 0;
+    }
+
     RuleTotalSumEquals(int sumValue) {
         this.sum = sumValue;
     }

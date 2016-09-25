@@ -5,6 +5,8 @@ import ar.fiuba.tdd.tp1.model.interfaces.Cell;
 import ar.fiuba.tdd.tp1.model.interfaces.Move;
 import ar.fiuba.tdd.tp1.model.interfaces.Region;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -14,13 +16,12 @@ public class BoardRectangularWithRegions implements Board {
     private List<Cell> cellsList;
     private Map<String, Region> regionMap;
 
-    public BoardRectangularWithRegions(int rowQuantityValue, int columnQuantityValue, List<Cell> cellsListValue, Map<String, Region>
-            regionMapValue) {
+    public BoardRectangularWithRegions(int rowQuantityValue, int columnQuantityValue) {
         this.rowQuantity = rowQuantityValue;
         this.columnQuantity = rowQuantityValue;
-        //TODO(Ivan) Ver si está bien "pasarle" los objetos así, o si necesita hacer copias de las listas, mapas y sus elementos.
-        this.cellsList = cellsListValue;
-        this.regionMap = regionMapValue;
+
+        this.cellsList = new ArrayList<Cell>(rowQuantityValue * rowQuantityValue);
+        this.regionMap = new HashMap<String, Region>();
     }
 
     public int getRowQuantity() {
