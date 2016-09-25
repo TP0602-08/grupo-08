@@ -1,4 +1,4 @@
-package ar.fiuba.tdd.tp1.model;
+package ar.fiuba.tdd.tp1;
 
 public class Main {
     public static void main(String[] args) {

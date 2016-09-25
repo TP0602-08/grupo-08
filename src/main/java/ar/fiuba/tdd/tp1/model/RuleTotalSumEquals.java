@@ -7,11 +7,11 @@ public class RuleTotalSumEquals implements Rule {
     private int sum;
 
     //This constructor with no parameters is for using an instance as a prototype for creating new instances.
-    RuleTotalSumEquals() {
+    public RuleTotalSumEquals() {
         this.sum = 0;
     }
 
-    RuleTotalSumEquals(int sumValue) {
+    public RuleTotalSumEquals(int sumValue) {
         this.sum = sumValue;
     }
 

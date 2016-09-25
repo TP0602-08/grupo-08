@@ -9,7 +9,7 @@ import java.util.Map;
 public class RulebookCatalog implements RulebookFactory {
     private Map<String, Rule> rulesCatalog;
 
-    RulebookCatalog(Map<String, Rule> rulesMapValue) {
+    public RulebookCatalog(Map<String, Rule> rulesMapValue) {
         //TODO(Ivan) Ver si está bien "pasarle" los objetos así, o si necesita hacer copias de las listas, mapas y sus elementos.
         this.rulesCatalog = rulesMapValue;
     }
