@@ -3,6 +3,7 @@ package ar.fiuba.tdd.tp1.model;
 import ar.fiuba.tdd.tp1.model.interfaces.Board;
 import ar.fiuba.tdd.tp1.model.interfaces.Cell;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +23,11 @@ public class BoardRectangularWithRegions implements Board {
         this.regionsMap = new HashMap<String, Region>();
     }
 
+    @Override
+    public void apply(Move move) {
+        //TODO(Ivan)
+    }
+
     public int getRowQuantity() {
         return rowQuantity;
     }
@@ -38,11 +44,6 @@ public class BoardRectangularWithRegions implements Board {
     //TODO(Ivan) Este método probablemente hay que volarlo.
     public Map<String, Region> getRegionsMap() {
         return regionsMap;
-    }
-
-    @Override
-    public void apply(Move move) {
-        //TODO(Ivan)
     }
 
     public void setCell(String cellId, Cell cellValue) {
@@ -82,6 +83,10 @@ public class BoardRectangularWithRegions implements Board {
     }
 
     public List<Cell> getCellsListFromRegion(String regionId) {
-        return regionsMap.get(regionId).getCellsList();
+        List<Cell> cellsList = new ArrayList<Cell>();
+        for (String cellIdIterator : regionsMap.get(regionId).getCellsIdList()) {
+            cellsList.add(this.cellsMap.get(cellIdIterator));
+        }
+        return cellsList;
     }
 }

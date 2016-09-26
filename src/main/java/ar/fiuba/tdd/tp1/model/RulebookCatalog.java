@@ -9,11 +9,14 @@ import java.util.Map;
 public class RulebookCatalog implements RulebookFactory {
     private Map<String, Rule> rulesCatalog;
 
+    //Constructor that receives a map with all the key-value pairs that are the name of the rule and an instance of the specific rule
+    // created with the constructor that only takes the Board as parameter.
     public RulebookCatalog(Map<String, Rule> rulesMapValue) {
         //TODO(Ivan) Ver si está bien "pasarle" los objetos así, o si necesita hacer copias de las listas, mapas y sus elementos.
         this.rulesCatalog = rulesMapValue;
     }
 
+    //TODO(Ivan) Este método tal vez hay que volarlo.
     void add(String name, Rule rule) {
         rulesCatalog.put(name, rule);
     }

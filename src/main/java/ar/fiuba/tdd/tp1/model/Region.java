@@ -1,23 +1,15 @@
 package ar.fiuba.tdd.tp1.model;
 
-import ar.fiuba.tdd.tp1.model.interfaces.Cell;
-
 import java.util.List;
 
 public class Region {
-    private String id;
-    private List<Cell> cellsList;
+    private List<String> cellsIdList;
 
-    public Region(String idValue, List<Cell> cellsListValue) {
-        this.id = idValue;
-        this.cellsList = cellsListValue;
+    public Region(List<String> cellsIdListValue) {
+        this.cellsIdList = cellsIdListValue;
     }
 
-    public String getId() {
-        return this.id;
-    }
-
-    public List<Cell> getCellsList() {
-        return cellsList;
+    public List<String> getCellsIdList() {
+        return cellsIdList;
     }
 }
