@@ -1,5 +1,8 @@
 package ar.fiuba.tdd.tp1;
 
+import ar.fiuba.tdd.tp1.model.CellNumerical;
+import ar.fiuba.tdd.tp1.model.interfaces.Cell;
+import ar.fiuba.tdd.tp1.serialization.CellXmlSerializer;
 import ar.fiuba.tdd.tp1.serialization.xml.CellXml;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -80,6 +83,28 @@ public class CellXmlSerializationTests {
         try {
             CellXml cell = (CellXml)unmarshaller.unmarshal(xml);
             assertEquals(cell.getId(), ID);
+        } catch (Exception ex) {
+            fail(ex.getMessage());
+        }
+    }
+
+    @Test
+    public void cellXmlDeserialization() {
+        try {
+            CellXml cell = (CellXml)unmarshaller.unmarshal(xml);
+            Cell deserializedCell = new CellXmlSerializer(cell).deserialize();
+            assertEquals(deserializedCell.getClass(), CellNumerical.class);
+        } catch (Exception ex) {
+            fail(ex.getMessage());
+        }
+    }
+
+    @Test
+    public void cellXmlDeserializationValue() {
+        try {
+            CellXml cell = (CellXml)unmarshaller.unmarshal(xml);
+            CellNumerical deserializedCell = (CellNumerical)new CellXmlSerializer(cell).deserialize();
+            assertEquals(cell.getValue(), String.valueOf(deserializedCell.getDatum()));
         } catch (Exception ex) {
             fail(ex.getMessage());
         }

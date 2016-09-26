@@ -1,5 +1,8 @@
 package ar.fiuba.tdd.tp1;
 
+import ar.fiuba.tdd.tp1.model.BoardRectangularWithRegions;
+import ar.fiuba.tdd.tp1.model.Region;
+import ar.fiuba.tdd.tp1.serialization.BoardXmlSerializer;
 import ar.fiuba.tdd.tp1.serialization.xml.BoardXml;
 import ar.fiuba.tdd.tp1.serialization.xml.CellXml;
 import ar.fiuba.tdd.tp1.serialization.xml.RegionXml;
@@ -131,6 +134,28 @@ public class BoardXmlSerializationTest {
                     assertEquals(region.getCells().get(j), String.valueOf(i * board.getRegions().size() + j + 1));
                 }
             }
+        } catch (Exception ex) {
+            fail(ex.getMessage());
+        }
+    }
+
+    @Test
+    public void deserializedBoardHasSameNumberOfRegions() {
+        try {
+            BoardXml board = (BoardXml)unmarshaller.unmarshal(withRegionsXml);
+            BoardRectangularWithRegions deserializedBoard = new BoardXmlSerializer(board).deserialize();
+            assertEquals(board.getRegions().size(), deserializedBoard.getRegionsMap().size());
+        } catch (Exception ex) {
+            fail(ex.getMessage());
+        }
+    }
+
+    @Test
+    public void deserializedBoardHasSameNumberOfCells() {
+        try {
+            BoardXml board = (BoardXml)unmarshaller.unmarshal(withRegionsXml);
+            BoardRectangularWithRegions deserializedBoard = new BoardXmlSerializer(board).deserialize();
+            assertEquals(board.getCells().size(), deserializedBoard.getCellsMap().size());
         } catch (Exception ex) {
             fail(ex.getMessage());
         }

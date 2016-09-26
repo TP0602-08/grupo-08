@@ -1,5 +1,7 @@
 package ar.fiuba.tdd.tp1;
 
+import ar.fiuba.tdd.tp1.model.Game;
+import ar.fiuba.tdd.tp1.serialization.GameXmlSerializer;
 import ar.fiuba.tdd.tp1.serialization.xml.GameXml;
 import ar.fiuba.tdd.tp1.serialization.xml.RulebookXml;
 import org.junit.BeforeClass;
@@ -84,6 +86,16 @@ public class GameXmlSerializationTest {
         try {
             GameXml game = (GameXml)unmarshaller.unmarshal(xml);
             assertEquals(game.getBoard().getCells().size(), CELLSSIZE);
+        } catch (Exception ex) {
+            fail(ex.getMessage());
+        }
+    }
+
+    @Test
+    public void mockedUpDeserializedGameShouldntThrowException() {
+        try {
+            Game deserializedGame = new GameXmlSerializer(GAMEXML).deserialize();
+            assertTrue(true);
         } catch (Exception ex) {
             fail(ex.getMessage());
         }

@@ -1,5 +1,7 @@
 package ar.fiuba.tdd.tp1;
 
+import ar.fiuba.tdd.tp1.model.Region;
+import ar.fiuba.tdd.tp1.serialization.RegionXmlSerializer;
 import ar.fiuba.tdd.tp1.serialization.xml.CellXml;
 import ar.fiuba.tdd.tp1.serialization.xml.RegionXml;
 import org.junit.BeforeClass;
@@ -72,6 +74,30 @@ public class RegionXmlSerializationTest {
             for (int i = 0; i < SIZE; i++) {
                 String cell = region.getCells().get(i);
                 assertEquals(cell, String.valueOf(i + 1));
+            }
+        } catch (Exception ex) {
+            fail(ex.getMessage());
+        }
+    }
+
+    @Test
+    public void deserializedRegionShouldHaveSameNumberOfCells() {
+        try {
+            RegionXml region = (RegionXml)unmarshaller.unmarshal(xml);
+            Region deserializedRegion = new RegionXmlSerializer(region).deserialize();
+            assertEquals(region.getCells().size(), deserializedRegion.getCellsIdList().size());
+        } catch (Exception ex) {
+            fail(ex.getMessage());
+        }
+    }
+
+    @Test
+    public void deserializedRegionShouldHaveSameIdsStored() {
+        try {
+            RegionXml region = (RegionXml)unmarshaller.unmarshal(xml);
+            Region deserializedRegion = new RegionXmlSerializer(region).deserialize();
+            for (int i = 0; i < SIZE; i++) {
+                assertEquals(region.getCells().get(i), deserializedRegion.getCellsIdList().get(i));
             }
         } catch (Exception ex) {
             fail(ex.getMessage());
