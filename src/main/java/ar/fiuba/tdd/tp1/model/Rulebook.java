@@ -8,7 +8,6 @@ public class Rulebook {
     private List<Rule> rulesList;
 
     public Rulebook(List<Rule> rulesListValue) {
-        //TODO(Ivan) Ver si está bien "pasarle" los objetos así, o si necesita hacer copias de las listas, mapas y sus elementos.
         this.rulesList = rulesListValue;
     }
 

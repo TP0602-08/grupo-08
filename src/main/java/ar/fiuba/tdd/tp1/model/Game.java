@@ -8,7 +8,6 @@ public class Game {
 
     //Both the Rulebook and the Board must be already initialized.
     public Game(Rulebook rulebookValue, Board boardValue) {
-        //TODO(Ivan) Ver si está bien "pasarle" los objetos así, o si necesita hacer copias de las listas, mapas y sus elementos.
         this.rulebook = rulebookValue;
         this.board = boardValue;
     }

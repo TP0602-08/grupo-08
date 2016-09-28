@@ -46,23 +46,33 @@ public class BoardRectangularWithRegions implements Board {
         return regionsMap;
     }
 
-    public void setCell(String cellId, Cell cellValue) {
-        cellsMap.put(cellId, cellValue);
+    private String computeCellId(int xxCoordinate, int yyCoordinate) {
+        int position = 1 + (yyCoordinate) * columnQuantity + xxCoordinate;
+        String cellId = Integer.toString(position);
+        return cellId;
     }
 
     public Cell getCell(String cellId) {
         return cellsMap.get(cellId);
     }
 
+
     public Cell getCell(int xxCoordinate, int yyCoordinate) {
-        int position = (yyCoordinate - 1) * columnQuantity + xxCoordinate;
-        String cellId = Integer.toString(position);
+        String cellId = computeCellId(xxCoordinate, yyCoordinate);
         return cellsMap.get(cellId);
     }
 
+    public void setCell(String cellId, Cell cellValue) {
+        cellsMap.put(cellId, cellValue);
+    }
+
+    public void setCell(int xxCoordinate, int yyCoordinate, Cell cellValue) {
+        String cellId = computeCellId(xxCoordinate, yyCoordinate);
+        cellsMap.put(cellId, cellValue);
+    }
+
     public boolean cellIsSet(int xxCoordinate, int yyCoordinate) {
-        int position = (yyCoordinate - 1) * columnQuantity + xxCoordinate;
-        String cellId = Integer.toString(position);
+        String cellId = computeCellId(xxCoordinate, yyCoordinate);
         return cellsMap.containsKey(cellId);
     }
 
