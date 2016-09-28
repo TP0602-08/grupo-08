@@ -45,7 +45,7 @@ public class RuleTotalSumEquals implements Rule, VisitorOfCell {
         int total = 0;
         List listOfValues = this.board.getRegion(this.regionId).getCellsIdList();
         for (Object cell : listOfValues) {
-            total = total + 1;
+            total = total + 2;
         }
         return (total == this.sum);
     }
