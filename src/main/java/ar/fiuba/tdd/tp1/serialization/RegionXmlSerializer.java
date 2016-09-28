@@ -12,7 +12,7 @@ public class RegionXmlSerializer implements RegionSerializer {
     }
 
     public Region deserialize() {
-        Region region = new Region(this.regionXml.getCells());
+        Region region = new Region(this.regionXml.getCells(), this.regionXml.getParam());
         return region;
     }
 }

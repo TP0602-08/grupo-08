@@ -21,9 +21,9 @@ public class RulebookXmlSerializer implements RulebookSerializer{
     }
 
     public Rulebook deserialize() {
-        if (this.gameName.equals("kakuro")) {
+        if (this.gameName.equals("Kakuro")) {
             return deserializerKakuro();
-        } else if (this.gameName.equals("sudoku")) {
+        } else if (this.gameName.equals("Sudoku")) {
             return deserializeSudoku();
         }
         return null;

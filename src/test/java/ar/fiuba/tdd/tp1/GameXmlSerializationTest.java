@@ -17,6 +17,8 @@ import static org.junit.Assert.fail;
 
 public class GameXmlSerializationTest {
     private static final String GAMEXML = "src/test/resources/XmlGameTest.xml";
+    private static final String KAKUROXML = "src/main/resources/kakuro.xml";
+    private static final String SUDOKUXML = "src/main/resources/sudoku.xml";
     private static final String NAME = "Test";
     private static final int RULEBOOKSIZE = 2;
     private static final int REGIONSSIZE = 1;
@@ -92,9 +94,29 @@ public class GameXmlSerializationTest {
     }
 
     @Test
-    public void mockedUpDeserializedGameShouldntThrowException() {
+    public void deserializedGameShouldntThrowException() {
         try {
             Game deserializedGame = new GameXmlSerializer(GAMEXML).deserialize();
+            assertTrue(true);
+        } catch (Exception ex) {
+            fail(ex.getMessage());
+        }
+    }
+
+    @Test
+    public void deserializedKakoru() {
+        try {
+            Game deserializedGame = new GameXmlSerializer(KAKUROXML).deserialize();
+            assertTrue(true);
+        } catch (Exception ex) {
+            fail(ex.getMessage());
+        }
+    }
+
+    @Test
+    public void deserializedSudoku() {
+        try {
+            Game deserializedGame = new GameXmlSerializer(SUDOKUXML).deserialize();
             assertTrue(true);
         } catch (Exception ex) {
             fail(ex.getMessage());

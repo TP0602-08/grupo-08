@@ -11,6 +11,11 @@ public class Region {
         this.cellNamesList = cellsIdListValue;
     }
 
+    public Region(List<String> cellsIdListValue, String param) {
+        this.param = param;
+        this.cellNamesList = cellsIdListValue;
+    }
+
     public List<String> getCellNamesList() {
         return cellNamesList;
     }
