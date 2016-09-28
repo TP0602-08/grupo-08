@@ -1,5 +1,5 @@
 <game name="Kakuro">
-    <board rows="11" cols="9">
+    <board rows="9" cols="11">
         <cellNumerical row="0" col="1" id="1"/>
         <cellNumerical row="0" col="2" id="2"/>
         <cellNumerical row="0" col="4" id="3"/>
