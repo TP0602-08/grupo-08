@@ -2,6 +2,7 @@ package ar.fiuba.tdd.tp1.controller;
 
 
 import ar.fiuba.tdd.tp1.view.ApplicationView;
+import ar.fiuba.tdd.tp1.view.GameWindow;
 
 import java.awt.event.MouseEvent;
 import javax.swing.event.MouseInputAdapter;
@@ -35,9 +36,15 @@ public class ApplicationController extends MouseInputAdapter {
             //once finished model checks the path
             //if it's correct creates the game and controller creates a gameview
             //if its' not controller shows error window
+            this.applicationView.dispose();
+            initGame("Sudoku");
         }
-
     }
 
-
+    private void initGame(String gameName) {
+        //game can be obtained from model
+        //add game window controller
+        GameWindow gameWindow = new GameWindow(gameName);
+        gameWindow.showGameWindow();
+    }
 }
