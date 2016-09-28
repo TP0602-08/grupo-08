@@ -12,10 +12,12 @@ import java.util.Map;
 public class RulebookXmlSerializer implements RulebookSerializer{
     private String gameName;
     private Board board;
+    private List<Rule> rules;
 
     public RulebookXmlSerializer(Board board, String name) {
         this.board = board;
         this.gameName = name;
+        this.rules = new ArrayList<>();
     }
 
     public Rulebook deserialize() {
@@ -28,17 +30,15 @@ public class RulebookXmlSerializer implements RulebookSerializer{
     }
 
     private Rulebook deserializerKakuro() {
-        List<Rule> rules = new ArrayList<>();
-        for (Map.Entry<String, Region> region : ((BoardRectangularWithRegions)this.board).getRegionsMap().entrySet()) {
-            rules.add(new RuleTotalSumEquals(this.board, region.getKey(), Integer.parseInt(region.getValue().getParam())));
+        for (Map.Entry<String, Region> kakuroRegion : ((BoardRectangularWithRegions)this.board).getRegionsMap().entrySet()) {
+            rules.add(new RuleTotalSumEquals(this.board, kakuroRegion.getKey(), Integer.parseInt(kakuroRegion.getValue().getParam())));
         }
         return new Rulebook(rules);
     }
 
     private Rulebook deserializeSudoku() {
-        List<Rule> rules = new ArrayList<>();
-        for (Map.Entry<String, Region> region : ((BoardRectangularWithRegions)this.board).getRegionsMap().entrySet()) {
-            rules.add(new RuleNoRepeatedValues(this.board, region.getKey()));
+        for (String region : ((BoardRectangularWithRegions)this.board).getRegionsMap().keySet()) {
+            rules.add(new RuleNoRepeatedValues(this.board, region));
         }
         return new Rulebook(rules);
     }
