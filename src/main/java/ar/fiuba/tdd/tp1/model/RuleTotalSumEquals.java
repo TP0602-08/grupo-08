@@ -42,8 +42,12 @@ public class RuleTotalSumEquals implements Rule, VisitorOfCell {
 
     @Override
     public boolean isValid(Move move) {
-        //TODO(Ivan)
-        return false;
+        int total = 0;
+        List listOfValues = this.board.getRegion(this.regionId).getCellsIdList();
+        for (Object cell : listOfValues) {
+            total = total + 1;
+        }
+        return (total == this.sum);
     }
 
     @Override
