@@ -85,7 +85,7 @@ public class RegionXmlSerializationTest {
         try {
             RegionXml region = (RegionXml)unmarshaller.unmarshal(xml);
             Region deserializedRegion = new RegionXmlSerializer(region).deserialize();
-            assertEquals(region.getCells().size(), deserializedRegion.getCellsIdList().size());
+            assertEquals(region.getCells().size(), deserializedRegion.getCellNamesList().size());
         } catch (Exception ex) {
             fail(ex.getMessage());
         }
@@ -97,7 +97,7 @@ public class RegionXmlSerializationTest {
             RegionXml region = (RegionXml)unmarshaller.unmarshal(xml);
             Region deserializedRegion = new RegionXmlSerializer(region).deserialize();
             for (int i = 0; i < SIZE; i++) {
-                assertEquals(region.getCells().get(i), deserializedRegion.getCellsIdList().get(i));
+                assertEquals(region.getCells().get(i), deserializedRegion.getCellNamesList().get(i));
             }
         } catch (Exception ex) {
             fail(ex.getMessage());

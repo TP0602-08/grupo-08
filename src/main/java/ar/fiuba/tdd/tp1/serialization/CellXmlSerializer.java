@@ -17,9 +17,9 @@ public class CellXmlSerializer implements CellSerializer {
 
     public Cell deserialize() {
         if (this.cellXml.getClass() == CellNumericalXml.class) {
-            return new CellNumerical(((CellNumericalXml)this.cellXml).getValue());
+            return new CellNumerical(((CellNumericalXml)this.cellXml).getValue(), ((CellNumericalXml)this.cellXml).getId());
         } else {
-            return new CellAlphabetical(((CellAlphabeticalXml)this.cellXml).getValue());
+            return new CellAlphabetical(((CellAlphabeticalXml)this.cellXml).getValue(), ((CellAlphabeticalXml)this.cellXml).getId());
         }
     }
 }

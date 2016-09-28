@@ -160,7 +160,7 @@ public class BoardXmlSerializationTest {
         try {
             BoardXml board = (BoardXml)unmarshaller.unmarshal(withRegionsXml);
             BoardRectangularWithRegions deserializedBoard = new BoardXmlSerializer(board).deserialize();
-            assertEquals(board.getRegions().size(), deserializedBoard.getRegionsMap().size());
+            assertEquals(board.getRegions().size(), deserializedBoard.getNumberOfRegions());
         } catch (Exception ex) {
             fail(ex.getMessage());
         }
@@ -171,7 +171,7 @@ public class BoardXmlSerializationTest {
         try {
             BoardXml board = (BoardXml)unmarshaller.unmarshal(withRegionsXml);
             BoardRectangularWithRegions deserializedBoard = new BoardXmlSerializer(board).deserialize();
-            assertEquals(board.getCells().size(), deserializedBoard.getCellsMap().size());
+            assertEquals(board.getCells().size(), deserializedBoard.getNumberOfCells());
         } catch (Exception ex) {
             fail(ex.getMessage());
         }

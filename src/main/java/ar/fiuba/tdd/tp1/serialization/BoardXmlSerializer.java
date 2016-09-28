@@ -23,7 +23,7 @@ public class BoardXmlSerializer implements BoardSerializer {
 
     private void deserializeCells(BoardRectangularWithRegions board) {
         for (CellXml cellXml : this.boardXml.getCells()) {
-            board.setCell(cellXml.getId(), new CellXmlSerializer(cellXml).deserialize());
+            board.setCellByCoordinates(cellXml.getRow(), cellXml.getColumn(), new CellXmlSerializer(cellXml).deserialize());
         }
     }
 

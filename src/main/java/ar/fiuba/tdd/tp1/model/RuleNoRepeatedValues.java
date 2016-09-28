@@ -37,7 +37,7 @@ public class RuleNoRepeatedValues implements Rule, VisitorOfCell {
 
     @Override
     public boolean isValid(Move move) {
-        List listOfCelds = this.board.getRegion(this.regionId).getCellsIdList();
+        List listOfCelds = this.board.getRegion(this.regionId).getCellNamesList();
         for (int x = 0; x < listOfCelds.size(); x++) {
             for (int y = 0; y < listOfCelds.size() - 1; y++) {
                 if (listOfCelds.get(x) == listOfCelds.get(y + 1)) {
