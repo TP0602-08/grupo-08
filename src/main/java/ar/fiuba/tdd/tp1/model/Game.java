@@ -18,10 +18,9 @@ public class Game {
 
     //Receives a new user move and checks if it is valid. If it is valid, then it applies it to the board
     public void process(Move move) {
-        if (rulebook.isAValidMove(move)) {
+        rulebook.validate(move);
+        if (move.isValid()) {
             board.apply(move);
-        } else {
-            rulebook.getViolations(move);
         }
     }
 

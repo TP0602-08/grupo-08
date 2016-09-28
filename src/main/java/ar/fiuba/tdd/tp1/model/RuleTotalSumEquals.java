@@ -41,9 +41,8 @@ public class RuleTotalSumEquals implements Rule, VisitorOfCell {
     }
 
     @Override
-    public boolean isValid(Move move) {
+    public void validate(Move move) {
         //TODO(Ivan)
-        return false;
     }
 
     @Override

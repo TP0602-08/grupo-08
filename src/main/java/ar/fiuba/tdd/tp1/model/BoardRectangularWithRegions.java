@@ -26,13 +26,36 @@ public class BoardRectangularWithRegions implements Board {
 
     @Override
     public void apply(Move move) {
-        int row = move.getRow();
-        int column = move.getColumn();
-        Integer cellId = computeCellId(row, column);
+        Integer cellId = move.getcellId();
         Cell oldCell = cellsMap.get(cellId);
         Cell newCell = move.getNewCell();
         newCell.setName(oldCell.getName());
         cellsMap.put(cellId, newCell);
+    }
+
+    @Override
+    public List<Integer> getCellIdsListFromRegionId(String regionId) {
+        Region region = regionsMap.get(regionId);
+        List<String> listOfCellNames = region.getCellNamesList();
+        List<Integer> listOfCellIds = new ArrayList<Integer>();
+        for (String cellName : listOfCellNames) {
+            listOfCellIds.add(cellNamesMap.get(cellName));
+        }
+        return listOfCellIds;
+    }
+
+    @Override
+    public Cell getCellFromCellId(Integer cellId) {
+        return cellsMap.get(cellId);
+    }
+
+    public List<Cell> getCellsListFromRegionId(String regionId) {
+        List<Integer> listOfCellIds = getCellIdsListFromRegionId(regionId);
+        List<Cell> listOfCells = new ArrayList<Cell>();
+        for (Integer cellId : listOfCellIds) {
+            listOfCells.add(cellsMap.get(cellId));
+        }
+        return listOfCells;
     }
 
     public int getRowQuantity() {
@@ -43,7 +66,7 @@ public class BoardRectangularWithRegions implements Board {
         return columnQuantity;
     }
 
-    private Integer computeCellId(int row, int column) {
+    public Integer computeCellId(int row, int column) {
         int position = 1 + (row * columnQuantity) + column;
         return position;
     }

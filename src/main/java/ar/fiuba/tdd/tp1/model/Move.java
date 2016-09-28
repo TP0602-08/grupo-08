@@ -4,22 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Move {
-    private int row;
-    private int column;
+    private Integer cellId;
     private Cell newCell;
     private List<ViolationOfRule> listOfViolationsOfRules;
 
-    public Move(Cell newCellValue) {
-        this.listOfViolationsOfRules = new ArrayList<ViolationOfRule>();
+    public Move(Integer cellIdValue, Cell newCellValue) {
+        this.cellId = cellIdValue;
         this.newCell = newCellValue;
+        this.listOfViolationsOfRules = new ArrayList<ViolationOfRule>();
     }
 
-    public int getRow() {
-        return row;
-    }
-
-    public int getColumn() {
-        return column;
+    public Integer getcellId() {
+        return this.cellId;
     }
 
     public Cell getNewCell() {
@@ -28,5 +24,13 @@ public class Move {
 
     public List<ViolationOfRule> getListOfViolationsOfRules() {
         return listOfViolationsOfRules;
+    }
+
+    public boolean isValid() {
+        return listOfViolationsOfRules.isEmpty();
+    }
+
+    public void addViolationOfRule(ViolationOfRule violationOfRule) {
+        listOfViolationsOfRules.add(violationOfRule);
     }
 }

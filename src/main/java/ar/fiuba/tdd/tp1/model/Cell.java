@@ -13,6 +13,8 @@ public abstract class Cell {
         this.name = nameValue;
     }
 
+    public abstract Object getDatum();
+
     public void accept(VisitorOfCell visitor) {
         visitor.visit(this);
     }

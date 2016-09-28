@@ -1,7 +1,5 @@
 package ar.fiuba.tdd.tp1.model;
 
-import ar.fiuba.tdd.tp1.model.interfaces.VisitorOfCell;
-
 public class CellNumerical extends Cell {
     private int datum;
 
@@ -10,7 +8,7 @@ public class CellNumerical extends Cell {
         this.name = nameValue;
     }
 
-    public int getDatum() {
+    public Integer getDatum() {
         return this.datum;
     }
 

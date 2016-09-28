@@ -7,7 +7,7 @@ import java.util.List;
 public interface Rule {
     public String getName();
 
-    public boolean isValid(Move move);
+    public void validate(Move move);
 
     public Rule createNewInstance(List<Object> parametersList);
 }
