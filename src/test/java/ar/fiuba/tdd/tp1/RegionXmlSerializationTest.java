@@ -17,6 +17,7 @@ public class RegionXmlSerializationTest {
     private static final String REGIONXML = "src/test/resources/XmlRegionTest.xml";
     private static final int SIZE = 16;
     private static final String PARAM = "5";
+    private static final String ID = "r1";
 
     private static Unmarshaller unmarshaller;
     private static File xml;
@@ -62,6 +63,16 @@ public class RegionXmlSerializationTest {
         try {
             RegionXml region = (RegionXml)unmarshaller.unmarshal(xml);
             assertEquals(region.getParam(), PARAM);
+        } catch (Exception ex) {
+            fail(ex.getMessage());
+        }
+    }
+
+    @Test
+    public void readId() {
+        try {
+            RegionXml region = (RegionXml)unmarshaller.unmarshal(xml);
+            assertEquals(region.getId(), ID);
         } catch (Exception ex) {
             fail(ex.getMessage());
         }

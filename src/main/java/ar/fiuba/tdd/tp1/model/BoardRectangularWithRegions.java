@@ -103,6 +103,10 @@ public class BoardRectangularWithRegions implements Board {
         return regionsMap.get(regionId);
     }
 
+    public Map<String, Region> getRegionsMap() {
+        return regionsMap;
+    }
+
     public List<Cell> getCellsListFromRegion(String regionId) {
         List<Cell> cellsList = new ArrayList<Cell>();
         Region region = regionsMap.get(regionId);

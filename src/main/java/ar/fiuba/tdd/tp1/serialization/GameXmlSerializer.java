@@ -40,13 +40,7 @@ public class GameXmlSerializer {
     // TODO: deserializar Rulebook
     private void mapGameXmlToGame(GameXml gameXml) {
         Board board = new BoardXmlSerializer(gameXml.getBoard()).deserialize();
-        this.deserializedGame = new Game(mockUpDeserializeRulebook(board), board);
-    }
-
-    // TODO: deserializar Rulebook
-    private Rulebook mockUpDeserializeRulebook(Board board) {
-        List<Rule> rules = new ArrayList<>();
-        rules.add(new RuleTotalSumEquals(board));
-        return new Rulebook(rules);
+        Rulebook rulebook = new RulebookXmlSerializer(board, gameXml.getName()).deserialize();
+        this.deserializedGame = new Game(rulebook, board);
     }
 }

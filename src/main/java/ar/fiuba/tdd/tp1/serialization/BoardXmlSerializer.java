@@ -29,7 +29,7 @@ public class BoardXmlSerializer implements BoardSerializer {
 
     private void deserializeRegions(BoardRectangularWithRegions board) {
         for (RegionXml region : this.boardXml.getRegions()) {
-            board.setRegion("", new RegionXmlSerializer(region).deserialize());
+            board.setRegion(region.getId(), new RegionXmlSerializer(region).deserialize());
         }
     }
 }
