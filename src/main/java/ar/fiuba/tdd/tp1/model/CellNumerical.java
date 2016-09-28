@@ -1,9 +1,9 @@
 package ar.fiuba.tdd.tp1.model;
 
 public class CellNumerical extends Cell {
-    private int datum;
+    private Integer datum;
 
-    public CellNumerical(int datumValue, String nameValue) {
+    public CellNumerical(Integer datumValue, String nameValue) {
         this.datum = datumValue;
         this.name = nameValue;
     }
@@ -12,7 +12,7 @@ public class CellNumerical extends Cell {
         return this.datum;
     }
 
-    public void setDatum(int datumValue) {
+    public void setDatum(Integer datumValue) {
         this.datum = datumValue;
     }
 }
