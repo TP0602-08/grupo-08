@@ -1,8 +1,8 @@
 package ar.fiuba.tdd.tp1.serialization;
 
 import ar.fiuba.tdd.tp1.model.*;
+import ar.fiuba.tdd.tp1.model.Rule;
 import ar.fiuba.tdd.tp1.model.interfaces.Board;
-import ar.fiuba.tdd.tp1.model.interfaces.Rule;
 import ar.fiuba.tdd.tp1.serialization.interfaces.RulebookSerializer;
 
 import java.util.ArrayList;
