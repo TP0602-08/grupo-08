@@ -7,13 +7,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "cell")
-public class CellXml {
+public abstract class CellXml {
     @XmlAttribute(name = "row")
     private int row;
     @XmlAttribute(name = "col")
     private int column;
-    @XmlAttribute(name = "value")
-    private String value;
     @XmlAttribute(name = "id")
     private String id;
 
@@ -29,10 +27,6 @@ public class CellXml {
         return this.column;
     }
 
-    public String getValue() {
-        return this.value;
-    }
-
     public void setId(String id) {
         this.id = id;
     }
@@ -43,9 +37,5 @@ public class CellXml {
 
     public void setColumn(int column) {
         this.column = column;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
     }
 }

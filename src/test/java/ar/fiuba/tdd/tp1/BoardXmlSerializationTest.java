@@ -4,6 +4,7 @@ import ar.fiuba.tdd.tp1.model.BoardRectangularWithRegions;
 import ar.fiuba.tdd.tp1.model.Region;
 import ar.fiuba.tdd.tp1.serialization.BoardXmlSerializer;
 import ar.fiuba.tdd.tp1.serialization.xml.BoardXml;
+import ar.fiuba.tdd.tp1.serialization.xml.CellNumericalXml;
 import ar.fiuba.tdd.tp1.serialization.xml.CellXml;
 import ar.fiuba.tdd.tp1.serialization.xml.RegionXml;
 import org.junit.BeforeClass;
@@ -98,6 +99,21 @@ public class BoardXmlSerializationTest {
     }
 
     @Test
+    public void readCellsAreNumerical() {
+        try {
+            BoardXml board = (BoardXml)unmarshaller.unmarshal(simpleXml);
+            for (int i = 0; i < board.getRows(); i++) {
+                for (int j = 0; j < board.getColumns(); j++) {
+                    CellXml cell = board.getCells().get(i * board.getColumns() + j);
+                    assertEquals(cell.getClass(), CellNumericalXml.class);
+                }
+            }
+        } catch (Exception ex) {
+            fail(ex.getMessage());
+        }
+    }
+
+    @Test
     public void readCellAttributes() {
         try {
             BoardXml board = (BoardXml)unmarshaller.unmarshal(simpleXml);
@@ -106,7 +122,7 @@ public class BoardXmlSerializationTest {
                     CellXml cell = board.getCells().get(i * board.getColumns() + j);
                     assertEquals(cell.getRow(), i);
                     assertEquals(cell.getColumn(), j);
-                    assertEquals(cell.getValue(), String.valueOf(i + 1));
+                    assertEquals(((CellNumericalXml)cell).getValue(), i + 1);
                 }
             }
         } catch (Exception ex) {

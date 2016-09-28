@@ -4,6 +4,8 @@ import ar.fiuba.tdd.tp1.model.CellAlphabetical;
 import ar.fiuba.tdd.tp1.model.CellNumerical;
 import ar.fiuba.tdd.tp1.model.interfaces.Cell;
 import ar.fiuba.tdd.tp1.serialization.interfaces.CellSerializer;
+import ar.fiuba.tdd.tp1.serialization.xml.CellAlphabeticalXml;
+import ar.fiuba.tdd.tp1.serialization.xml.CellNumericalXml;
 import ar.fiuba.tdd.tp1.serialization.xml.CellXml;
 
 public class CellXmlSerializer implements CellSerializer {
@@ -14,10 +16,10 @@ public class CellXmlSerializer implements CellSerializer {
     }
 
     public Cell deserialize() {
-        if (this.cellXml.getValue().matches("^-?\\d+$")) {
-            return new CellNumerical(Integer.parseInt(this.cellXml.getValue()));
+        if (this.cellXml.getClass() == CellNumericalXml.class) {
+            return new CellNumerical(((CellNumericalXml)this.cellXml).getValue());
         } else {
-            return new CellAlphabetical(this.cellXml.getValue());
+            return new CellAlphabetical(((CellAlphabeticalXml)this.cellXml).getValue());
         }
     }
 }

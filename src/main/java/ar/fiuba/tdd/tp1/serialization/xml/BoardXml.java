@@ -10,8 +10,11 @@ public class BoardXml {
     private int rows;
     @XmlAttribute(name = "cols")
     private int columns;
-    @XmlElement(name = "cell", type = CellXml.class)
+    @XmlElements({
+            @XmlElement(name = "cellNumerical", type = CellNumericalXml.class),
+            @XmlElement(name = "cellAlphabetical", type = CellAlphabeticalXml.class)})
     private List<CellXml> cells;
+
     @XmlElement(name = "region", type = RegionXml.class)
     private List<RegionXml> regions;
 

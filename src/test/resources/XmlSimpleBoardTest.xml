@@ -1,18 +1,18 @@
 <board rows="4" cols="4">
-	<cell row="0" col="0" value="1" />
-	<cell row="0" col="1" value="1" />
-	<cell row="0" col="2" value="1" />
-	<cell row="0" col="3" value="1" />
-	<cell row="1" col="0" value="2" />
-	<cell row="1" col="1" value="2" />
-	<cell row="1" col="2" value="2" />
-	<cell row="1" col="3" value="2" />
-	<cell row="2" col="0" value="3" />
-	<cell row="2" col="1" value="3" />
-	<cell row="2" col="2" value="3" />
-	<cell row="2" col="3" value="3" />
-	<cell row="3" col="0" value="4" />
-	<cell row="3" col="1" value="4" />
-	<cell row="3" col="2" value="4" />
-	<cell row="3" col="3" value="4" />
+	<cellNumerical row="0" col="0" value="1" />
+	<cellNumerical row="0" col="1" value="1" />
+	<cellNumerical row="0" col="2" value="1" />
+	<cellNumerical row="0" col="3" value="1" />
+	<cellNumerical row="1" col="0" value="2" />
+	<cellNumerical row="1" col="1" value="2" />
+	<cellNumerical row="1" col="2" value="2" />
+	<cellNumerical row="1" col="3" value="2" />
+	<cellNumerical row="2" col="0" value="3" />
+	<cellNumerical row="2" col="1" value="3" />
+	<cellNumerical row="2" col="2" value="3" />
+	<cellNumerical row="2" col="3" value="3" />
+	<cellNumerical row="3" col="0" value="4" />
+	<cellNumerical row="3" col="1" value="4" />
+	<cellNumerical row="3" col="2" value="4" />
+	<cellNumerical row="3" col="3" value="4" />
 </board>
