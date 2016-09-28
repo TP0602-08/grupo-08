@@ -20,3 +20,4 @@ TP.iml
 .gradle/
 .idea/
 build/
+classes/

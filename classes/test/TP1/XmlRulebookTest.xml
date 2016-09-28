@@ -1,4 +1,0 @@
-<rulebook>
-	<rule name="RuleNoRepeatedValues" />
-	<rule name="RuleTotalSumEquals" />
-</rulebook>
