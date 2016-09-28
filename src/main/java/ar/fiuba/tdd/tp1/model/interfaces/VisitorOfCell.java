@@ -1,5 +1,6 @@
 package ar.fiuba.tdd.tp1.model.interfaces;
 
+import ar.fiuba.tdd.tp1.model.Cell;
 import ar.fiuba.tdd.tp1.model.CellAlphabetical;
 import ar.fiuba.tdd.tp1.model.CellNumerical;
 

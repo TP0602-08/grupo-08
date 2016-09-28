@@ -12,8 +12,7 @@ public class Rulebook {
     }
 
     public boolean isAValidMove(Move move) {
-        //TODO(Ivan)
-        return false;
+        return getViolations(move).isEmpty();
     }
 
     public List<ViolationOfRule> getViolations(Move move) {

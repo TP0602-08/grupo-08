@@ -1,7 +1,6 @@
 package ar.fiuba.tdd.tp1.model;
 
 import ar.fiuba.tdd.tp1.model.interfaces.Board;
-import ar.fiuba.tdd.tp1.model.interfaces.Cell;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,7 +26,13 @@ public class BoardRectangularWithRegions implements Board {
 
     @Override
     public void apply(Move move) {
-        //TODO(Ivan)
+        int row = move.getRow();
+        int column = move.getColumn();
+        Integer cellId = computeCellId(row, column);
+        Cell oldCell = cellsMap.get(cellId);
+        Cell newCell = move.getNewCell();
+        newCell.setName(oldCell.getName());
+        cellsMap.put(cellId, newCell);
     }
 
     public int getRowQuantity() {

@@ -18,7 +18,6 @@ public class Game {
 
     //Receives a new user move and checks if it is valid. If it is valid, then it applies it to the board
     public void process(Move move) {
-        //TODO(Ivan) Probably better to just call getViolations and check if the list is empty, but Rulebook should have this two methods...
         if (rulebook.isAValidMove(move)) {
             board.apply(move);
         } else {
