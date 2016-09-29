@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Move {
-    private Integer cellId;
-    private Cell newCell;
-    private List<ViolationOfRule> listOfViolationsOfRules;
+    private Integer cellId; //The Id that the board uses to identify the cell.
+    private Cell newCell; //A new cell of the correct type, created with the datum from the user input.
+    private List<ViolationOfRule> listOfViolationsOfRules; //A list of the rule violations that this cell causes (it is populated by the
+    // rules when the game validates the move.
 
     public Move(Integer cellIdValue, Cell newCellValue) {
         this.cellId = cellIdValue;
