@@ -9,6 +9,10 @@ public class Rulebook {
         this.rulesList = rulesListValue;
     }
 
+    public List<Rule> getRulesList() {
+        return this.rulesList;
+    }
+
     public void validate(Move move) {
         for (Rule rule : rulesList) {
             rule.validate(move);

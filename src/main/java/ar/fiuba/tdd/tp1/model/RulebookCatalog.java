@@ -2,6 +2,7 @@ package ar.fiuba.tdd.tp1.model;
 
 import ar.fiuba.tdd.tp1.model.interfaces.RulebookFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -14,17 +15,28 @@ public class RulebookCatalog implements RulebookFactory {
         this.rulesCatalog = rulesMapValue;
     }
 
-    //TODO(Ivan) Este método tal vez hay que volarlo.
-    void add(String name, Rule rule) {
+    public void add(String name, Rule rule) {
         rulesCatalog.put(name, rule);
     }
 
+    public Map<String, Rule> getRulesCatalog() {
+        return this.rulesCatalog;
+    }
+
+    //For each key (String which is a Rule's name) in the rulebookSpecification Map, search for the value with matching key in the
+    // rulesCatalog Map, and create a new Rule, passing the List<Object> as parameters, to the rule creator method, as many times as
+    // elements there are in the outer List (if there are 20 List<Object> in List<List<Object>>, then make 20 new instances of that rule,
+    // one for each list of parameters (List<Object>)).
     @Override
     public Rulebook createRulebook(Map<String, List<List<Object>>> rulebookSpecification) {
-        //TODO(Ivan) For each key (String which is a Rule's name) in the rulebookSpecification Map, search for the value with matching
-        // key in the rulesCatalog Map, and create a new Rule, passing the List<Object> as parameters, to the rule creator method, as
-        // many times as elements there are in the outer List (if there are 20 List<Object> in List<List<Object>>, then make 20 new
-        // instances of that rule, one for each list of parameters (List<Object>)).
-        return null;
+        List<Rule> rulesList = new ArrayList<Rule>();
+        for (Map.Entry<String, List<List<Object>>> entry : rulebookSpecification.entrySet()) {
+            for (List<Object> parameterList : rulebookSpecification.get(entry.getKey())) {
+                Rule rule = rulesCatalog.get(entry.getKey()).createNewInstance(parameterList);
+                rulesList.add(rule);
+            }
+        }
+        Rulebook rulebook = new Rulebook(rulesList);
+        return rulebook;
     }
 }
