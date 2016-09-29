@@ -1,33 +1,37 @@
 package ar.fiuba.tdd.tp1.model;
 
 import ar.fiuba.tdd.tp1.model.interfaces.Board;
-import ar.fiuba.tdd.tp1.model.interfaces.Rule;
 import ar.fiuba.tdd.tp1.model.interfaces.VisitorOfCell;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class RuleNoRepeatedValues implements Rule, VisitorOfCell {
+public class RuleNoRepeatedValues extends Rule implements VisitorOfCell {
     private static final String name = "NoRepeatedValues";
-    private Board board;
     private String regionId;
+    private Object visitingCellValue;
 
-    //This constructor is for using an instance as a prototype for creating new instances.
+    //This constructor with is for creating an instance that'll act as a prototype for creating new instances with method
+    // "createNewInstance".
     public RuleNoRepeatedValues(Board boardValue) {
-        this.board = boardValue;
+        super(boardValue);
         this.regionId = null;
+        visitingCellValue = null;
     }
 
     //Regular constructor.
     public RuleNoRepeatedValues(Board boardValue, String regionIdValue) {
-        this.board = boardValue;
+        super(boardValue);
         this.regionId = regionIdValue;
+        visitingCellValue = null;
     }
 
     //Constructor with list of Objects as parameters.
     @Deprecated
     public RuleNoRepeatedValues(Board boardValue, List<Object> parametersList) {
-        this.board = boardValue;
+        super(boardValue);
         this.regionId = (String) parametersList.get(0);
+        visitingCellValue = null;
     }
 
     @Override
@@ -36,16 +40,27 @@ public class RuleNoRepeatedValues implements Rule, VisitorOfCell {
     }
 
     @Override
-    public boolean isValid(Move move) {
-        List listOfCelds = this.board.getRegion(this.regionId).getCellsIdList();
-        for (int x = 0; x < listOfCelds.size(); x++) {
-            for (int y = 0; y < listOfCelds.size() - 1; y++) {
-                if (listOfCelds.get(x) == listOfCelds.get(y + 1)) {
-                    return false;
-                }
+    public void validate(Move move) {
+        /*if (move.getNewCell().getDatum() == null) {
+            return;
+        }*/
+        Integer newCellId = move.getcellId();
+        Cell newCell = move.getNewCell();
+        List<Integer> cellIdsList = board.getCellIdsListFromRegionId(regionId);
+        visitingCellValue = null;
+        List<Integer> listOfConflictingCellIds = new ArrayList<Integer>();
+        for (Integer cellId : cellIdsList) {
+            Cell cell = board.getCellFromCellId(cellId);
+            cell.accept(this);
+            if ((visitingCellValue != null) && !(cellId.equals(newCellId)) && visitingCellValue.equals(newCell.getDatum())) {
+                listOfConflictingCellIds.add(cellId);
             }
+            visitingCellValue = null;
         }
-        return true;
+        if (listOfConflictingCellIds.isEmpty() == false) {
+            ViolationOfRule violationOfRule = new ViolationOfRule("Valor repetido.", listOfConflictingCellIds);
+            move.addViolationOfRule(violationOfRule);
+        }
     }
 
     @Override
@@ -57,17 +72,18 @@ public class RuleNoRepeatedValues implements Rule, VisitorOfCell {
 
     @Override
     public void visit(CellAlphabetical cell) {
-        //TODO(Ivan)
-
+        //Todo(Ivan) If cell has value copy the value, otherwise put null;
+        visitingCellValue = cell.getDatum();
     }
 
     @Override
     public void visit(CellNumerical cell) {
-        //TODO(Ivan)
+        //Todo(Ivan) If cell has value copy the value, otherwise put null;
+        visitingCellValue = cell.getDatum();
     }
 
     //TODO(Ivan) Este método tal vez hay que volarlo.
     public String getRegionId() {
-        return regionId;
+        return this.regionId;
     }
 }

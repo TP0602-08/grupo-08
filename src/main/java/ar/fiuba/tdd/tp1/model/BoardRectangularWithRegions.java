@@ -1,7 +1,6 @@
 package ar.fiuba.tdd.tp1.model;
 
 import ar.fiuba.tdd.tp1.model.interfaces.Board;
-import ar.fiuba.tdd.tp1.model.interfaces.Cell;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,21 +10,52 @@ import java.util.Map;
 public class BoardRectangularWithRegions implements Board {
     private int rowQuantity;
     private int columnQuantity;
-    private Map<String, Cell> cellsMap; //The String that identifies each cell is the number of cell in the board, starting from one,
+    private Map<Integer, Cell> cellsMap; //The Integer that identifies each cell is the number of cell in the board, starting from one,
+    // counting left to right and downwards.
+    private Map<String, Integer> cellNamesMap; //The String that identifies each cell in the board can be anything.
     // counting left to right and up to down.
     private Map<String, Region> regionsMap; //The String that identifies each region can be anything.
 
     public BoardRectangularWithRegions(int rowQuantityValue, int columnQuantityValue) {
         this.rowQuantity = rowQuantityValue;
         this.columnQuantity = rowQuantityValue;
-
-        this.cellsMap = new HashMap<String, Cell>(rowQuantityValue * rowQuantityValue);
+        this.cellsMap = new HashMap<Integer, Cell>(rowQuantityValue * rowQuantityValue);
+        this.cellNamesMap = new HashMap<String, Integer>(rowQuantityValue * rowQuantityValue);
         this.regionsMap = new HashMap<String, Region>();
     }
 
     @Override
     public void apply(Move move) {
-        //TODO(Ivan)
+        Integer cellId = move.getcellId();
+        Cell oldCell = cellsMap.get(cellId);
+        Cell newCell = move.getNewCell();
+        newCell.setName(oldCell.getName());
+        cellsMap.put(cellId, newCell);
+    }
+
+    @Override
+    public List<Integer> getCellIdsListFromRegionId(String regionId) {
+        Region region = regionsMap.get(regionId);
+        List<String> listOfCellNames = region.getCellNamesList();
+        List<Integer> listOfCellIds = new ArrayList<Integer>();
+        for (String cellName : listOfCellNames) {
+            listOfCellIds.add(cellNamesMap.get(cellName));
+        }
+        return listOfCellIds;
+    }
+
+    @Override
+    public Cell getCellFromCellId(Integer cellId) {
+        return cellsMap.get(cellId);
+    }
+
+    public List<Cell> getCellsListFromRegionId(String regionId) {
+        List<Integer> listOfCellIds = getCellIdsListFromRegionId(regionId);
+        List<Cell> listOfCells = new ArrayList<Cell>();
+        for (Integer cellId : listOfCellIds) {
+            listOfCells.add(cellsMap.get(cellId));
+        }
+        return listOfCells;
     }
 
     public int getRowQuantity() {
@@ -36,47 +66,56 @@ public class BoardRectangularWithRegions implements Board {
         return columnQuantity;
     }
 
-    //TODO(Ivan) Este método probablemente hay que volarlo.
-    public Map<String, Cell> getCellsMap() {
-        return cellsMap;
+    public Integer computeCellId(int row, int column) {
+        int position = 1 + (row * columnQuantity) + column;
+        return position;
     }
 
-    //TODO(Ivan) Este método probablemente hay que volarlo.
-    public Map<String, Region> getRegionsMap() {
-        return regionsMap;
-    }
-
-    private String computeCellId(int xxCoordinate, int yyCoordinate) {
-        int position = 1 + (yyCoordinate) * columnQuantity + xxCoordinate;
-        String cellId = Integer.toString(position);
-        return cellId;
-    }
-
-    public Cell getCell(String cellId) {
+    public Cell getCellByCoordinates(int row, int column) {
+        Integer cellId = computeCellId(row, column);
         return cellsMap.get(cellId);
     }
 
-
-    public Cell getCell(int xxCoordinate, int yyCoordinate) {
-        String cellId = computeCellId(xxCoordinate, yyCoordinate);
-        return cellsMap.get(cellId);
+    public Cell getCellById(Integer cellId) {
+        Cell cell = cellsMap.get(cellId);
+        return cell;
     }
 
-    public void setCell(String cellId, Cell cellValue) {
+    public Cell getCellByName(String cellName) {
+        Integer cellId = cellNamesMap.get(cellName);
+        Cell cell = cellsMap.get(cellId);
+        return cell;
+    }
+
+    public void setCellByCoordinates(int row, int column, Cell cellValue) {
+        Integer cellId = computeCellId(row, column);
         cellsMap.put(cellId, cellValue);
+        cellNamesMap.put(cellValue.getName(), cellId);
     }
 
-    public void setCell(int xxCoordinate, int yyCoordinate, Cell cellValue) {
-        String cellId = computeCellId(xxCoordinate, yyCoordinate);
+    public void setCellById(Integer cellId, Cell cellValue) {
         cellsMap.put(cellId, cellValue);
+        cellNamesMap.put(cellValue.getName(), cellId);
     }
 
-    public boolean cellIsSet(int xxCoordinate, int yyCoordinate) {
-        String cellId = computeCellId(xxCoordinate, yyCoordinate);
+    public void setCellByName(Cell cellValue) {
+        String cellsName = cellValue.getName();
+        Integer cellId = cellNamesMap.get(cellsName);
+        cellsMap.put(cellId, cellValue);
+        cellNamesMap.put(cellsName, cellId);
+    }
+
+    public boolean cellIsSetByCoordinates(int row, int column) {
+        Integer cellId = computeCellId(row, column);
         return cellsMap.containsKey(cellId);
     }
 
-    public boolean cellIsSet(String cellId) {
+    public boolean cellIsSetById(Integer cellId) {
+        return cellsMap.containsKey(cellId);
+    }
+
+    public boolean cellIsSetByName(String cellName) {
+        Integer cellId = cellNamesMap.get(cellName);
         return cellsMap.containsKey(cellId);
     }
 
@@ -92,11 +131,24 @@ public class BoardRectangularWithRegions implements Board {
         return regionsMap.get(regionId);
     }
 
+    public Map<String, Region> getRegionsMap() {
+        return regionsMap;
+    }
+
     public List<Cell> getCellsListFromRegion(String regionId) {
         List<Cell> cellsList = new ArrayList<Cell>();
-        for (String cellIdIterator : regionsMap.get(regionId).getCellsIdList()) {
-            cellsList.add(this.cellsMap.get(cellIdIterator));
+        Region region = regionsMap.get(regionId);
+        for (String cellNameIterator : region.getCellNamesList()) {
+            cellsList.add(cellsMap.get(this.cellNamesMap.get(cellNameIterator)));
         }
         return cellsList;
+    }
+
+    public int getNumberOfRegions() {
+        return regionsMap.size();
+    }
+
+    public int getNumberOfCells() {
+        return cellsMap.size();
     }
 }

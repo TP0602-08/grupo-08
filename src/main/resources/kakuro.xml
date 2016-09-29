@@ -75,246 +75,246 @@
         <cellNumerical row="8" col="9" id="73"/>
 
         <!-- de izquierda a derecha -->
-        <region param="7">
+        <region param="7" id="r1">
             <cell>1</cell>
             <cell>2</cell>
         </region>
-        <region param="9">
+        <region param="9" id="r2">
             <cell>3</cell>
             <cell>4</cell>
             <cell>5</cell>
         </region>
-        <region param="4">
+        <region param="4" id="r3">
             <cell>6</cell>
             <cell>7</cell>
         </region>
-        <region param="7">
+        <region param="7" id="r4">
             <cell>8</cell>
             <cell>9</cell>
             <cell>10</cell>
         </region>
-        <region param="7">
+        <region param="7" id="r5">
             <cell>11</cell>
             <cell>12</cell>
             <cell>13</cell>
         </region>
-        <region param="6">
+        <region param="6" id="r6">
             <cell>14</cell>
             <cell>15</cell>
             <cell>16</cell>
         </region>
-        <region param="3">
+        <region param="3" id="r7">
             <cell>17</cell>
             <cell>18</cell>
         </region>
-        <region param="4">
+        <region param="4" id="r8">
             <cell>19</cell>
             <cell>20</cell>
         </region>
-        <region param="16">
+        <region param="16" id="r9">
             <cell>21</cell>
             <cell>22</cell>
             <cell>23</cell>
             <cell>24</cell>
             <cell>25</cell>
         </region>
-        <region param="10">
+        <region param="10" id="r10">
             <cell>26</cell>
             <cell>27</cell>
             <cell>28</cell>
             <cell>29</cell>
         </region>
-        <region param="10">
+        <region param="10" id="r11">
             <cell>30</cell>
             <cell>31</cell>
             <cell>32</cell>
             <cell>33</cell>
         </region>
-        <region param="10">
+        <region param="10" id="r12">
             <cell>34</cell>
             <cell>35</cell>
         </region>
-        <region param="6">
+        <region param="6" id="r13">
             <cell>36</cell>
             <cell>37</cell>
             <cell>38</cell>
         </region>
-        <region param="5">
+        <region param="5" id="r14">
             <cell>39</cell>
             <cell>40</cell>
         </region>
-        <region param="10">
+        <region param="10" id="r15">
             <cell>41</cell>
             <cell>42</cell>
             <cell>43</cell>
             <cell>44</cell>
         </region>
-        <region param="12">
+        <region param="12" id="r16">
             <cell>45</cell>
             <cell>46</cell>
             <cell>47</cell>
             <cell>48</cell>
         </region>
-        <region param="16">
+        <region param="16" id="r17">
             <cell>49</cell>
             <cell>50</cell>
             <cell>51</cell>
             <cell>52</cell>
             <cell>53</cell>
         </region>
-        <region param="4">
+        <region param="4" id="r18">
             <cell>54</cell>
             <cell>55</cell>
         </region>
-        <region param="4">
+        <region param="4" id="r19">
             <cell>56</cell>
             <cell>57</cell>
         </region>
-        <region param="7">
+        <region param="7" id="r20">
             <cell>58</cell>
             <cell>59</cell>
             <cell>60</cell>
         </region>
-        <region param="8">
+        <region param="8" id="r21">
             <cell>61</cell>
             <cell>62</cell>
             <cell>63</cell>
         </region>
-        <region param="6">
+        <region param="6" id="r22">
             <cell>64</cell>
             <cell>65</cell>
             <cell>66</cell>
         </region>
-        <region param="3">
+        <region param="3" id="r23">
             <cell>67</cell>
             <cell>68</cell>
         </region>
-        <region param="7">
+        <region param="7" id="r24">
             <cell>69</cell>
             <cell>70</cell>
             <cell>71</cell>
         </region>
-        <region param="3">
+        <region param="3" id="r25">
             <cell>72</cell>
             <cell>73</cell>
         </region>
 
         <!-- de arriba a abajo -->
-        <region param="7">
+        <region param="7" id="r26">
             <cell>8</cell>
             <cell>17</cell>
             <cell>26</cell>
         </region>
-        <region param="6">
+        <region param="6" id="r27">
             <cell>49</cell>
             <cell>58</cell>
             <cell>67</cell>
         </region>
-        <region param="16">
+        <region param="16" id="r28">
             <cell>1</cell>
             <cell>9</cell>
             <cell>18</cell>
             <cell>27</cell>
             <cell>34</cell>
         </region>
-        <region param="7">
+        <region param="7" id="r29">
             <cell>50</cell>
             <cell>59</cell>
             <cell>68</cell>
         </region>
-        <region param="4">
+        <region param="4" id="r30">
             <cell>59</cell>
             <cell>68</cell>
         </region>
-        <region param="16">
+        <region param="16" id="r31">
             <cell>28</cell>
             <cell>35</cell>
             <cell>41</cell>
             <cell>51</cell>
             <cell>60</cell>
         </region>
-        <region param="5">
+        <region param="5" id="r32">
             <cell>19</cell>
             <cell>29</cell>
         </region>
-        <region param="3">
+        <region param="3" id="r33">
             <cell>42</cell>
             <cell>52</cell>
         </region>
-        <region param="6">
+        <region param="6" id="r34">
             <cell>3</cell>
             <cell>11</cell>
             <cell>20</cell>
         </region>
-        <region param="15">
+        <region param="15" id="r35">
             <cell>36</cell>
             <cell>43</cell>
             <cell>53</cell>
             <cell>61</cell>
             <cell>69</cell>
         </region>
-        <region param="4">
+        <region param="4" id="r36">
             <cell>4</cell>
             <cell>12</cell>
         </region>
-        <region param="8">
+        <region param="8" id="r37">
             <cell>30</cell>
             <cell>37</cell>
             <cell>44</cell>
         </region>
-        <region param="3">
+        <region param="3" id="r38">
             <cell>62</cell>
             <cell>70</cell>
         </region>
-        <region param="15">
+        <region param="15" id="r39">
             <cell>5</cell>
             <cell>13</cell>
             <cell>21</cell>
             <cell>31</cell>
             <cell>38</cell>
         </region>
-        <region param="7">
+        <region param="7" id="r40">
             <cell>54</cell>
             <cell>63</cell>
             <cell>71</cell>
         </region>
-        <region param="3">
+        <region param="3" id="r41">
             <cell>22</cell>
             <cell>32</cell>
         </region>
-        <region param="4">
+        <region param="4" id="r42">
             <cell>45</cell>
             <cell>55</cell>
         </region>
-        <region param="16">
+        <region param="16" id="r43">
             <cell>14</cell>
             <cell>23</cell>
             <cell>33</cell>
             <cell>39</cell>
             <cell>46</cell>
         </region>
-        <region param="4">
+        <region param="4" id="r44">
             <cell>64</cell>
             <cell>72</cell>
         </region>
-        <region param="6">
+        <region param="6" id="r45">
             <cell>6</cell>
             <cell>15</cell>
             <cell>24</cell>
         </region>
-        <region param="15">
+        <region param="15" id="r46">
             <cell>40</cell>
             <cell>47</cell>
             <cell>56</cell>
             <cell>65</cell>
             <cell>73</cell>
         </region>
-        <region param="7">
+        <region param="7" id="r47">
             <cell>48</cell>
             <cell>57</cell>
             <cell>66</cell>
         </region>
-        <region param="7">
+        <region param="7" id="r48">
             <cell>7</cell>
             <cell>16</cell>
             <cell>25</cell>

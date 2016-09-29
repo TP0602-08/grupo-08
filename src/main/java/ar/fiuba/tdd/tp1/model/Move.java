@@ -1,26 +1,36 @@
 package ar.fiuba.tdd.tp1.model;
 
-import ar.fiuba.tdd.tp1.model.interfaces.Cell;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Move {
-    private Cell cellToBeChanged;
+    private Integer cellId;
+    private Cell newCell;
     private List<ViolationOfRule> listOfViolationsOfRules;
 
-    public Move(Cell cellToBeChangedValue) {
+    public Move(Integer cellIdValue, Cell newCellValue) {
+        this.cellId = cellIdValue;
+        this.newCell = newCellValue;
         this.listOfViolationsOfRules = new ArrayList<ViolationOfRule>();
-        this.cellToBeChanged = cellToBeChangedValue;
     }
 
-    //TODO(Ivan) Este método probablemente hay que volarlo.
-    public Cell getCellToBeChanged() {
-        return cellToBeChanged;
+    public Integer getcellId() {
+        return this.cellId;
     }
 
-    //TODO(Ivan) Este método probablemente hay que volarlo.
+    public Cell getNewCell() {
+        return newCell;
+    }
+
     public List<ViolationOfRule> getListOfViolationsOfRules() {
         return listOfViolationsOfRules;
+    }
+
+    public boolean isValid() {
+        return listOfViolationsOfRules.isEmpty();
+    }
+
+    public void addViolationOfRule(ViolationOfRule violationOfRule) {
+        listOfViolationsOfRules.add(violationOfRule);
     }
 }

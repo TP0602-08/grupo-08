@@ -23,6 +23,10 @@ cpdCheck {
     ignoreIdentifiers = true
     ignoreLiterals = true
     source = sourceSets.main.allJava
+    reports {
+        text.enabled = true
+        xml.enabled = false
+    }
 }
 
 jacoco {

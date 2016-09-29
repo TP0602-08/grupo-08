@@ -1,8 +1,8 @@
 package ar.fiuba.tdd.tp1.serialization;
 
+import ar.fiuba.tdd.tp1.model.Cell;
 import ar.fiuba.tdd.tp1.model.CellAlphabetical;
 import ar.fiuba.tdd.tp1.model.CellNumerical;
-import ar.fiuba.tdd.tp1.model.interfaces.Cell;
 import ar.fiuba.tdd.tp1.serialization.interfaces.CellSerializer;
 import ar.fiuba.tdd.tp1.serialization.xml.CellAlphabeticalXml;
 import ar.fiuba.tdd.tp1.serialization.xml.CellNumericalXml;
@@ -17,9 +17,9 @@ public class CellXmlSerializer implements CellSerializer {
 
     public Cell deserialize() {
         if (this.cellXml.getClass() == CellNumericalXml.class) {
-            return new CellNumerical(((CellNumericalXml)this.cellXml).getValue());
+            return new CellNumerical(((CellNumericalXml)this.cellXml).getValue(), ((CellNumericalXml)this.cellXml).getId());
         } else {
-            return new CellAlphabetical(((CellAlphabeticalXml)this.cellXml).getValue());
+            return new CellAlphabetical(((CellAlphabeticalXml)this.cellXml).getValue(), ((CellAlphabeticalXml)this.cellXml).getId());
         }
     }
 }

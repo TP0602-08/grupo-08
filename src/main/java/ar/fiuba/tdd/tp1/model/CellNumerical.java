@@ -1,25 +1,18 @@
 package ar.fiuba.tdd.tp1.model;
 
-import ar.fiuba.tdd.tp1.model.interfaces.Cell;
-import ar.fiuba.tdd.tp1.model.interfaces.VisitorOfCell;
+public class CellNumerical extends Cell {
+    private Integer datum;
 
-public class CellNumerical implements Cell {
-    private int datum;
-
-    public CellNumerical(int datumValue) {
+    public CellNumerical(Integer datumValue, String nameValue) {
         this.datum = datumValue;
+        this.name = nameValue;
     }
 
-    @Override
-    public void accept(VisitorOfCell visitor) {
-        visitor.visit(this);
-    }
-
-    public int getDatum() {
+    public Integer getDatum() {
         return this.datum;
     }
 
-    public void setDatum(int datumValue) {
+    public void setDatum(Integer datumValue) {
         this.datum = datumValue;
     }
 }

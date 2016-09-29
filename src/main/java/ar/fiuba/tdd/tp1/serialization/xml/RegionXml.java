@@ -8,6 +8,8 @@ import javax.xml.bind.annotation.*;
 public class RegionXml {
     @XmlAttribute(name = "param")
     private String param;
+    @XmlAttribute(name = "id")
+    private String id;
     @XmlElement(name = "cell")
     private List<String> cells;
 
@@ -25,5 +27,13 @@ public class RegionXml {
 
     public void setParam(String param) {
         this.param = param;
+    }
+
+    public String getId() {
+        return this.id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

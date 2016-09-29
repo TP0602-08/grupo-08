@@ -17,6 +17,7 @@ public class RegionXmlSerializationTest {
     private static final String REGIONXML = "src/test/resources/XmlRegionTest.xml";
     private static final int SIZE = 16;
     private static final String PARAM = "5";
+    private static final String ID = "r1";
 
     private static Unmarshaller unmarshaller;
     private static File xml;
@@ -68,6 +69,16 @@ public class RegionXmlSerializationTest {
     }
 
     @Test
+    public void readId() {
+        try {
+            RegionXml region = (RegionXml)unmarshaller.unmarshal(xml);
+            assertEquals(region.getId(), ID);
+        } catch (Exception ex) {
+            fail(ex.getMessage());
+        }
+    }
+
+    @Test
     public void cellAttributesNotEmpty() {
         try {
             RegionXml region = (RegionXml)unmarshaller.unmarshal(xml);
@@ -85,7 +96,7 @@ public class RegionXmlSerializationTest {
         try {
             RegionXml region = (RegionXml)unmarshaller.unmarshal(xml);
             Region deserializedRegion = new RegionXmlSerializer(region).deserialize();
-            assertEquals(region.getCells().size(), deserializedRegion.getCellsIdList().size());
+            assertEquals(region.getCells().size(), deserializedRegion.getCellNamesList().size());
         } catch (Exception ex) {
             fail(ex.getMessage());
         }
@@ -97,7 +108,7 @@ public class RegionXmlSerializationTest {
             RegionXml region = (RegionXml)unmarshaller.unmarshal(xml);
             Region deserializedRegion = new RegionXmlSerializer(region).deserialize();
             for (int i = 0; i < SIZE; i++) {
-                assertEquals(region.getCells().get(i), deserializedRegion.getCellsIdList().get(i));
+                assertEquals(region.getCells().get(i), deserializedRegion.getCellNamesList().get(i));
             }
         } catch (Exception ex) {
             fail(ex.getMessage());
