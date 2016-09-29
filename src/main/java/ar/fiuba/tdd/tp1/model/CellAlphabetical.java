@@ -6,6 +6,8 @@ public class CellAlphabetical extends Cell {
     public CellAlphabetical(String datumValue, String nameValue) {
         this.name = nameValue;
         this.datum = datumValue;
+        this.editable = true;
+        this.empty = (datumValue == null);
     }
 
     public void setDatum(String datumValue) {

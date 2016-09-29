@@ -42,9 +42,9 @@ public class RuleTotalSumEquals extends Rule implements VisitorOfCell {
 
     @Override
     public void validate(Move move) {
-        /*if (move.getNewCell().getDatum() == null) {
+        if (isDeleteMove(move)) {
             return;
-        }*/
+        }
         Integer newCellId = move.getcellId();
         List<Integer> cellIdsList = board.getCellIdsListFromRegionId(regionId);
         visitingCellValue = null;
@@ -57,8 +57,14 @@ public class RuleTotalSumEquals extends Rule implements VisitorOfCell {
             }
             visitingCellValue = null;
         }
+        finalizeValidate(accumulator, move);
+    }
+
+    private void finalizeValidate(Integer accumulator, Move move) {
         if (accumulator > this.sum) {
+            List<Integer> cellIdsList = board.getCellIdsListFromRegionId(regionId);
             List<Integer> listOfConflictingCellIds = new ArrayList<Integer>(cellIdsList);
+            Integer newCellId = move.getcellId();
             listOfConflictingCellIds.remove(newCellId);
             ViolationOfRule violationOfRule = new ViolationOfRule("La suma excede el valor " + sum + ".", listOfConflictingCellIds);
             move.addViolationOfRule(violationOfRule);
@@ -73,23 +79,28 @@ public class RuleTotalSumEquals extends Rule implements VisitorOfCell {
         return newInstance;
     }
 
+    private boolean isDeleteMove(Move move) {
+        return move.getNewCell().empty;
+    }
+
     @Override
     public void visit(CellAlphabetical cell) {
-        return;
+        visitingCellValue = null;
     }
 
     @Override
     public void visit(CellNumerical cell) {
-        //Todo(Ivan) If cell has value copy the value, otherwise put null;
-        visitingCellValue = cell.getDatum();
+        if (cell.empty) {
+            visitingCellValue = null;
+        } else {
+            visitingCellValue = cell.getDatum();
+        }
     }
 
-    //TODO(Ivan) Este método tal vez hay que volarlo.
     public String getRegionId() {
         return this.regionId;
     }
 
-    //TODO(Ivan) Este método tal vez hay que volarlo.
     public int getSum() {
         return this.sum;
     }

@@ -6,6 +6,8 @@ public class CellNumerical extends Cell {
     public CellNumerical(Integer datumValue, String nameValue) {
         this.datum = datumValue;
         this.name = nameValue;
+        this.editable = true;
+        this.empty = (datumValue == 0);
     }
 
     public Integer getDatum() {

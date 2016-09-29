@@ -18,9 +18,15 @@ public class Game {
 
     //Receives a new user move and checks if it is valid. If it is valid, then it applies it to the board
     public void process(Move move) {
-        rulebook.validate(move);
-        if (move.isValid()) {
-            board.apply(move);
+        if (board.getCellFromCellId(move.getcellId()).editable) {
+            rulebook.validate(move);
+            if (move.isValid()) {
+                board.apply(move);
+            }
+        } else {
+            List<Integer> listOfConflictingCellIds = new ArrayList<Integer>();
+            listOfConflictingCellIds.add(move.getcellId());
+            move.addViolationOfRule(new ViolationOfRule("Not and editable cell", listOfConflictingCellIds));
         }
     }
 
@@ -33,6 +39,7 @@ public class Game {
     }
 
 
+    //Returns a list of the allowed user inputs for this game.
     public List<Integer> getValidInputs() {
         return new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
     }
