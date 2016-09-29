@@ -6,7 +6,7 @@ import javax.swing.*;
 
 public class GameWindow extends JFrame {
 
-    //private GameGUI gameGUI;
+    private GameGUI gameGUI;
     private GameButtonWindow gameButtonWindow;
 
     public GameWindow(String gameName) {
@@ -20,11 +20,10 @@ public class GameWindow extends JFrame {
         this.setJMenuBar(menuBar);
 
        //create sudoku or kakuro gui here
-
+        this.gameGUI = new SudokuGUI();
+        gameGUI.drawGUI(9,9,9);
         this.gameButtonWindow = new GameButtonWindow();
-        //add game button window controller
-
-       // this.add(this.gameGUI);
+        this.add(this.gameGUI);
         this.add(this.gameButtonWindow);
     }
 
