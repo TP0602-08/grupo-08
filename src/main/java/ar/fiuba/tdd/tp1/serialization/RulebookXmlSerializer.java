@@ -32,6 +32,7 @@ public class RulebookXmlSerializer implements RulebookSerializer{
     private Rulebook deserializerKakuro() {
         for (Map.Entry<String, Region> kakuroRegion : ((BoardRectangularWithRegions)this.board).getRegionsMap().entrySet()) {
             rules.add(new RuleTotalSumEquals(this.board, kakuroRegion.getKey(), Integer.parseInt(kakuroRegion.getValue().getParam())));
+            rules.add(new RuleNoRepeatedValues(this.board, kakuroRegion.getKey()));
         }
         return new Rulebook(rules);
     }
