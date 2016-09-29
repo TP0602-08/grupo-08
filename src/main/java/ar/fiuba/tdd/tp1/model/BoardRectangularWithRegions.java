@@ -12,9 +12,10 @@ public class BoardRectangularWithRegions implements Board {
     private int columnQuantity;
     private Map<Integer, Cell> cellsMap; //The Integer that identifies each cell is the number of cell in the board, starting from one,
     // counting left to right and downwards.
-    private Map<String, Integer> cellNamesMap; //The String that identifies each cell in the board can be anything.
-    // counting left to right and up to down.
-    private Map<String, Region> regionsMap; //The String that identifies each region can be anything.
+    private Map<String, Integer> cellNamesMap; //The String that identifies each cell in the board can be anything. It's purpose is to
+    // facilitate the manual input on the game XML file.
+    private Map<String, Region> regionsMap; //The String that identifies each region can be anything. It's purpose is to facilitate the
+    // manual input on the game XML file.
 
     public BoardRectangularWithRegions(int rowQuantityValue, int columnQuantityValue) {
         this.rowQuantity = rowQuantityValue;
@@ -24,6 +25,7 @@ public class BoardRectangularWithRegions implements Board {
         this.regionsMap = new HashMap<String, Region>();
     }
 
+    //Effectively changes the contents of the cell, the move at this points is certain to be valid.
     @Override
     public void apply(Move move) {
         Integer cellId = move.getcellId();
@@ -66,6 +68,7 @@ public class BoardRectangularWithRegions implements Board {
         return columnQuantity;
     }
 
+    //Translates row and column coordinates into the cellId used by te cellsMap.
     public Integer computeCellId(int row, int column) {
         int position = 1 + (row * columnQuantity) + column;
         return position;
@@ -150,5 +153,32 @@ public class BoardRectangularWithRegions implements Board {
 
     public int getNumberOfCells() {
         return cellsMap.size();
+    }
+
+    //Completes the board with all non editable cells (which don't appear in the XML file) and sets the state of the cells which start
+    // with an empty value.
+    public void finalizeBoardLoadUp() {
+        changeZeroCellsToEmpty();
+        addNonPlayableCells();
+    }
+
+    //Cells that start with an empty value are set to "empty".
+    private void changeZeroCellsToEmpty() {
+        for (int iterator = 1; iterator <= (rowQuantity * columnQuantity); ++iterator) {
+            if (cellsMap.containsKey(iterator)) {
+                cellsMap.get(iterator).empty = true;
+            }
+        }
+    }
+
+    //Cells that aren't editable are added to the cellsMap.
+    private void addNonPlayableCells() {
+        for (int iterator = 1; iterator <= (rowQuantity * columnQuantity); ++iterator) {
+            if (!cellsMap.containsKey(iterator)) {
+                CellNumerical cell = new CellNumerical(0, "NONPLAYABLE" + iterator);
+                cell.editable = false;
+                cellsMap.put(iterator, cell);
+            }
+        }
     }
 }

@@ -33,7 +33,6 @@ public class GameXmlSerializer {
         unmarshaller = jaxb.createUnmarshaller();
     }
 
-    // TODO: deserializar Rulebook
     private void mapGameXmlToGame(GameXml gameXml) {
         Board board = new BoardXmlSerializer(gameXml.getBoard()).deserialize();
         Rulebook rulebook = new RulebookXmlSerializer(board, gameXml.getName()).deserialize();

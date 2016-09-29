@@ -18,6 +18,7 @@ public class BoardXmlSerializer implements BoardSerializer {
         BoardRectangularWithRegions board = new BoardRectangularWithRegions(boardXml.getRows(), boardXml.getColumns());
         deserializeRegions(board);
         deserializeCells(board);
+        board.finalizeBoardLoadUp();
         return board;
     }
 

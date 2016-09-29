@@ -41,9 +41,9 @@ public class RuleNoRepeatedValues extends Rule implements VisitorOfCell {
 
     @Override
     public void validate(Move move) {
-        /*if (move.getNewCell().getDatum() == null) {
+        if (isDeleteMove(move)) {
             return;
-        }*/
+        }
         Integer newCellId = move.getcellId();
         Cell newCell = move.getNewCell();
         List<Integer> cellIdsList = board.getCellIdsListFromRegionId(regionId);
@@ -57,11 +57,20 @@ public class RuleNoRepeatedValues extends Rule implements VisitorOfCell {
             }
             visitingCellValue = null;
         }
+        finalizeValidate(listOfConflictingCellIds, move);
+    }
+
+    private void finalizeValidate(List<Integer> listOfConflictingCellIds, Move move) {
         if (listOfConflictingCellIds.isEmpty() == false) {
             ViolationOfRule violationOfRule = new ViolationOfRule("Valor repetido.", listOfConflictingCellIds);
             move.addViolationOfRule(violationOfRule);
         }
     }
+
+    private boolean isDeleteMove(Move move) {
+        return move.getNewCell().empty;
+    }
+
 
     @Override
     public RuleNoRepeatedValues createNewInstance(List<Object> parametersList) {
@@ -72,17 +81,22 @@ public class RuleNoRepeatedValues extends Rule implements VisitorOfCell {
 
     @Override
     public void visit(CellAlphabetical cell) {
-        //Todo(Ivan) If cell has value copy the value, otherwise put null;
-        visitingCellValue = cell.getDatum();
+        if (cell.empty) {
+            visitingCellValue = null;
+        } else {
+            visitingCellValue = cell.getDatum();
+        }
     }
 
     @Override
     public void visit(CellNumerical cell) {
-        //Todo(Ivan) If cell has value copy the value, otherwise put null;
-        visitingCellValue = cell.getDatum();
+        if (cell.empty) {
+            visitingCellValue = null;
+        } else {
+            visitingCellValue = cell.getDatum();
+        }
     }
 
-    //TODO(Ivan) Este método tal vez hay que volarlo.
     public String getRegionId() {
         return this.regionId;
     }
