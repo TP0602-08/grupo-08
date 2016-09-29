@@ -43,7 +43,8 @@ public class ApplicationController extends MouseInputAdapter {
 
     private void initGame(String gameName) {
         //gamename can be obtained from model
-        //add game window controller
+        //uncomment next line to force kakuro game
+        //gameName = "Kakuro";
         GameWindow gameWindow = new GameWindow(gameName);
         gameWindow.showGameWindow();
     }

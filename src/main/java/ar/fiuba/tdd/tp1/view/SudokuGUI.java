@@ -1,7 +1,6 @@
 package ar.fiuba.tdd.tp1.view;
 
 import java.awt.*;
-import javax.swing.*;
 
 public class SudokuGUI extends GameGUI {
 

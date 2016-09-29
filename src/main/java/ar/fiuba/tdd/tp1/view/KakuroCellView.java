@@ -5,14 +5,15 @@ import ar.fiuba.tdd.tp1.controller.CellController;
 import java.awt.*;
 import javax.swing.*;
 
-public class SudokuCellView extends JButton {
+public class KakuroCellView extends JButton{
 
-    public SudokuCellView(String value, boolean editable) {
+    public KakuroCellView(String value, boolean editable) {
         super(value);
-        this.setBackground(Color.WHITE);
         if (editable) {
+            this.setBackground(Color.WHITE);
             this.addMouseListener(new CellController());
         } else {
+            this.setBackground(Color.BLACK);
             this.setEnabled(false);
         }
     }
