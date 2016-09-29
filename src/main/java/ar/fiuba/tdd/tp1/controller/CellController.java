@@ -1,6 +1,7 @@
 package ar.fiuba.tdd.tp1.controller;
 
 import ar.fiuba.tdd.tp1.view.GameInputView;
+
 import java.awt.event.MouseEvent;
 import javax.swing.event.MouseInputAdapter;
 
