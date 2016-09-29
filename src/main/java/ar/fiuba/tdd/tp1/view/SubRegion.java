@@ -21,8 +21,7 @@ public class SubRegion extends JPanel {
         boolean editable;
         for (Integer cellId : cellIdsList) {
             Cell cell = gameModel.getCell(cellId);
-            editable = (Integer) cell.getDatum() == 0;
-            this.add(new SudokuCellView(cell.datumToString(), editable));
+            this.add(new SudokuCellView(cell));
         }
         this.setBorder(BorderFactory.createLineBorder(Color.GRAY));
     }

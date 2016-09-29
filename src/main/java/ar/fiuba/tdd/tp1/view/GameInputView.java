@@ -2,6 +2,7 @@ package ar.fiuba.tdd.tp1.view;
 
 import ar.fiuba.tdd.tp1.controller.DeleteButtonController;
 import ar.fiuba.tdd.tp1.controller.GameButtonController;
+import ar.fiuba.tdd.tp1.model.Cell;
 
 import java.awt.*;
 import javax.swing.*;
@@ -16,7 +17,6 @@ public class GameInputView extends JDialog {
     }
 
     public void generateInputButtons() {
-        //this should iterate over a list of valid input values
         for (int i = 1; i < 10 ; i++) {
             this.add(new InputGameButton(Integer.toString(i), new GameButtonController()));
         }
