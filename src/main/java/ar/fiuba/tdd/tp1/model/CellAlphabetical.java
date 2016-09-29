@@ -12,6 +12,10 @@ public class CellAlphabetical extends Cell {
         this.datum = datumValue;
     }
 
+    public String datumToString() {
+        return this.datum;
+    }
+
     public String getDatum() {
         return this.datum;
     }

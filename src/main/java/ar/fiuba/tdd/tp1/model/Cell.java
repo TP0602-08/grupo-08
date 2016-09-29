@@ -15,6 +15,8 @@ public abstract class Cell {
 
     public abstract Object getDatum();
 
+    public abstract String datumToString();
+
     public void accept(VisitorOfCell visitor) {
         visitor.visit(this);
     }

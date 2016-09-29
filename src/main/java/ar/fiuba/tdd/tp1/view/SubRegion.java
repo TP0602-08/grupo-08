@@ -1,18 +1,29 @@
 package ar.fiuba.tdd.tp1.view;
 
 
+import ar.fiuba.tdd.tp1.model.Cell;
+import ar.fiuba.tdd.tp1.model.Game;
+
 import java.awt.*;
+import java.util.*;
 import javax.swing.*;
 
 public class SubRegion extends JPanel {
 
-    public SubRegion() {
-        //this class is temporal
+    private String regionId;
+    private java.util.List<Integer> cellIdsList;
+
+    public SubRegion(int regionNumber, Game gameModel) {
         super();
+        this.regionId = "r" + Integer.toString(regionNumber);
+        this.cellIdsList = gameModel.getCellsIdInRegion(regionId);
         this.setLayout(new GridLayout(0,3));
-        for (int i = 1; i < 10; i++) {
-            this.add(new SudokuCellView(Integer.toString(i), true));
+        boolean editable;
+        for (Integer cellId : cellIdsList) {
+            Cell cell = gameModel.getCell(cellId);
+            editable = (Integer) cell.getDatum() == 0;
+            this.add(new SudokuCellView(cell.datumToString(), editable));
         }
-        this.setBorder(BorderFactory.createLineBorder(Color.gray));
+        this.setBorder(BorderFactory.createLineBorder(Color.GRAY));
     }
 }

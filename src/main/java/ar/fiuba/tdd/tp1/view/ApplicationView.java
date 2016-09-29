@@ -27,7 +27,7 @@ public class ApplicationView extends JFrame {
 
 
         this.configFilePathTextField = new JTextField(40);
-        TitledBorder titledBorder = new TitledBorder("Write path to configuration file");
+        TitledBorder titledBorder = new TitledBorder("Write game name ");
         configFilePathTextField.setBorder(titledBorder);
         this.add(configFilePathTextField);
         this.createGameButton = new JButton("create game");

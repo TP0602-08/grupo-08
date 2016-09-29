@@ -8,11 +8,12 @@ import javax.swing.*;
 public class SudokuCellView extends JButton {
 
     public SudokuCellView(String value, boolean editable) {
-        super(value);
+        super();
         this.setBackground(Color.WHITE);
         if (editable) {
             this.addMouseListener(new CellController());
         } else {
+            this.setText(value);
             this.setEnabled(false);
         }
     }

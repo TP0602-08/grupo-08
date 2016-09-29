@@ -1,12 +1,17 @@
 package ar.fiuba.tdd.tp1.view;
 
+import ar.fiuba.tdd.tp1.model.Game;
+
 import java.awt.*;
 
 public class KakuroGUI extends GameGUI {
 
-    public KakuroGUI() {
+    private Game gameModel;
+
+    public KakuroGUI(Game gameModel) {
         super();
         this.drawBorder();
+        this.gameModel = gameModel;
     }
 
     public void drawGUI(int rows, int columns, int subRegions) {
@@ -15,7 +20,7 @@ public class KakuroGUI extends GameGUI {
     }
 
     private void fillBoard() {
-        this.add(new KakuroCellView("", false));
+        this.add(new KakuroCellView(gameModel.getCell(1).datumToString(), false));
         this.add(new KakuroCellView("1\\", false));
         this.add(new KakuroCellView("2\\", false));
         this.add(new KakuroCellView("2\\3", false));

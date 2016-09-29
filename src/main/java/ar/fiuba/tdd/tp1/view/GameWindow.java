@@ -1,5 +1,7 @@
 package ar.fiuba.tdd.tp1.view;
 
+import ar.fiuba.tdd.tp1.model.Game;
+
 import java.awt.*;
 import javax.swing.*;
 
@@ -9,10 +11,13 @@ public class GameWindow extends JFrame {
     private GameGUI gameGUI;
     private GameButtonWindow gameButtonWindow;
     private String gameName;
+    private Game gameModel;
 
-    public GameWindow(String gameName) {
+
+    public GameWindow(String gameName, Game gameModel) {
         super(gameName);
         this.gameName = gameName;
+        this.gameModel = gameModel;
         this.setLayout(new FlowLayout());
         JMenuBar menuBar = new JMenuBar();
         JMenu menuBarFile = new JMenu("File");
@@ -28,16 +33,16 @@ public class GameWindow extends JFrame {
     }
 
     private void createGUI(String gameName) {
-        if (gameName.equals("Sudoku")) {
-            this.gameGUI = new SudokuGUI();
+        if (gameName.equalsIgnoreCase("Sudoku")) {
+            this.gameGUI = new SudokuGUI(this.gameModel);
             gameGUI.drawGUI(9,9,9);
             this.gameButtonWindow = new GameButtonWindow();
             this.add(this.gameGUI);
             this.add(this.gameButtonWindow);
         }
 
-        if (gameName.equals("Kakuro")) {
-            this.gameGUI = new KakuroGUI();
+        if (gameName.equalsIgnoreCase("Kakuro")) {
+            this.gameGUI = new KakuroGUI(this.gameModel);
             gameGUI.drawGUI(4,3,1);
             this.gameButtonWindow = new GameButtonWindow();
             this.add(this.gameGUI);

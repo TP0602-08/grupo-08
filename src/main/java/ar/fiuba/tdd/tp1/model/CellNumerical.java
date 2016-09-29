@@ -12,6 +12,10 @@ public class CellNumerical extends Cell {
         return this.datum;
     }
 
+    public String datumToString() {
+        return this.datum.toString();
+    }
+
     public void setDatum(Integer datumValue) {
         this.datum = datumValue;
     }

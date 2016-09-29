@@ -24,6 +24,15 @@ public class Game {
         }
     }
 
+    public List<Integer> getCellsIdInRegion(String regionId) {
+        return this.board.getCellIdsListFromRegionId(regionId);
+    }
+
+    public Cell getCell(int id) {
+        return this.board.getCellFromCellId(id);
+    }
+
+
     public List<Integer> getValidInputs() {
         return new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
     }
