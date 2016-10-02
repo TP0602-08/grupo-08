@@ -13,7 +13,6 @@ public class GameWindow extends JFrame {
     private String gameName;
     private Game gameModel;
 
-
     public GameWindow(String gameName, Game gameModel) {
         super(gameName);
         this.gameName = gameName;
