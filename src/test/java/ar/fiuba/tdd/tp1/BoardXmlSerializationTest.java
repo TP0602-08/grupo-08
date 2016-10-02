@@ -1,9 +1,8 @@
 package ar.fiuba.tdd.tp1;
 
 import ar.fiuba.tdd.tp1.model.BoardRectangularWithRegions;
-import ar.fiuba.tdd.tp1.model.Region;
-import ar.fiuba.tdd.tp1.serialization.BoardXmlSerializer;
 import ar.fiuba.tdd.tp1.serialization.xml.BoardXml;
+import ar.fiuba.tdd.tp1.serialization.xml.BoardXmlSerializer;
 import ar.fiuba.tdd.tp1.serialization.xml.CellNumericalXml;
 import ar.fiuba.tdd.tp1.serialization.xml.CellXml;
 import ar.fiuba.tdd.tp1.serialization.xml.RegionXml;

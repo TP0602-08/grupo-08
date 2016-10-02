@@ -1,9 +1,8 @@
 package ar.fiuba.tdd.tp1;
 
 import ar.fiuba.tdd.tp1.model.Region;
-import ar.fiuba.tdd.tp1.serialization.RegionXmlSerializer;
-import ar.fiuba.tdd.tp1.serialization.xml.CellXml;
 import ar.fiuba.tdd.tp1.serialization.xml.RegionXml;
+import ar.fiuba.tdd.tp1.serialization.xml.RegionXmlSerializer;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
