@@ -25,7 +25,6 @@ public class ApplicationView extends JFrame {
         this.imageLabel = new JLabel(new ImageIcon("src\\main\\resources\\LogoFiuba.jpg"));
         this.add(imageLabel);
 
-
         this.configFilePathTextField = new JTextField(40);
         TitledBorder titledBorder = new TitledBorder("Write game name ");
         configFilePathTextField.setBorder(titledBorder);
@@ -42,7 +41,7 @@ public class ApplicationView extends JFrame {
         this.dispose();
     }
 
-    public void addController(ApplicationController applicationController) {
+    public void setController(ApplicationController applicationController) {
         this.applicationController = applicationController;
         this.createGameButton.addMouseListener(this.applicationController);
     }
@@ -50,7 +49,4 @@ public class ApplicationView extends JFrame {
     public String getTextField() {
         return this.configFilePathTextField.getText();
     }
-
-
-
 }
