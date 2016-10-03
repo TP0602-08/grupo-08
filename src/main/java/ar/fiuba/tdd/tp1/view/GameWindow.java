@@ -34,7 +34,8 @@ public class GameWindow extends JFrame {
     private void createGUI(String gameName) {
         if (gameName.equalsIgnoreCase("Sudoku")) {
             this.gameGUI = new SudokuGUI(this.gameModel);
-            gameGUI.drawGUI(9,9,9);
+            //regions hardcoding temporal
+            gameGUI.drawGUI(this.gameModel.getNumberOfRows(),this.gameModel.getNumberOfColumns(),this.gameModel.getNumberOfColumns());
             this.gameButtonWindow = new GameButtonWindow();
             this.add(this.gameGUI);
             this.add(this.gameButtonWindow);
@@ -42,7 +43,7 @@ public class GameWindow extends JFrame {
 
         if (gameName.equalsIgnoreCase("Kakuro")) {
             this.gameGUI = new KakuroGUI(this.gameModel);
-            gameGUI.drawGUI(4,3,1);
+            gameGUI.drawGUI(this.gameModel.getNumberOfRows(),this.gameModel.getNumberOfColumns(),1);
             this.gameButtonWindow = new GameButtonWindow();
             this.add(this.gameGUI);
             this.add(this.gameButtonWindow);

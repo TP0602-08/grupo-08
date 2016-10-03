@@ -34,10 +34,18 @@ public class Game {
         return this.board.getCellIdsListFromRegionId(regionId);
     }
 
+
     public Cell getCell(int id) {
         return this.board.getCellFromCellId(id);
     }
 
+    public int getNumberOfRows() {
+        return this.board.getRowQuantity();
+    }
+
+    public int getNumberOfColumns() {
+        return this.board.getColumnQuantity();
+    }
 
     //Returns a list of the allowed user inputs for this game.
     public List<Integer> getValidInputs() {

@@ -14,4 +14,8 @@ public interface Board {
     List<Integer> getCellIdsListFromRegionId(String regionId);
 
     Cell getCellFromCellId(Integer cellId);
+
+    int getRowQuantity();
+
+    int getColumnQuantity();
 }

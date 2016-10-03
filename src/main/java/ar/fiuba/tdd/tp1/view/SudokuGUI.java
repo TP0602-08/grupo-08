@@ -1,5 +1,6 @@
 package ar.fiuba.tdd.tp1.view;
 
+import ar.fiuba.tdd.tp1.Main;
 import ar.fiuba.tdd.tp1.model.Game;
 
 import java.awt.*;
@@ -15,8 +16,8 @@ public class SudokuGUI extends GameGUI {
     }
 
     public void drawGUI(int rows, int columns, int subRegions) {
-
-        this.setLayout(new GridLayout(0,3));
+        int subGridColumns = (int) Math.sqrt(subRegions);
+        this.setLayout(new GridLayout(0,subGridColumns));
         for (int regionNumber = 1; regionNumber < subRegions + 1 ; regionNumber++) {
             this.add(new SubRegion(regionNumber, this.gameModel));
         }
