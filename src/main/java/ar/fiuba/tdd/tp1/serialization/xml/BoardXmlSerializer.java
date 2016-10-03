@@ -1,11 +1,7 @@
-package ar.fiuba.tdd.tp1.serialization;
+package ar.fiuba.tdd.tp1.serialization.xml;
 
 import ar.fiuba.tdd.tp1.model.BoardRectangularWithRegions;
-import ar.fiuba.tdd.tp1.model.interfaces.Board;
 import ar.fiuba.tdd.tp1.serialization.interfaces.BoardSerializer;
-import ar.fiuba.tdd.tp1.serialization.xml.BoardXml;
-import ar.fiuba.tdd.tp1.serialization.xml.CellXml;
-import ar.fiuba.tdd.tp1.serialization.xml.RegionXml;
 
 public class BoardXmlSerializer implements BoardSerializer {
     private BoardXml boardXml;

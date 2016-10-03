@@ -2,7 +2,7 @@ package ar.fiuba.tdd.tp1.controller;
 
 
 import ar.fiuba.tdd.tp1.model.Game;
-import ar.fiuba.tdd.tp1.serialization.GameXmlSerializer;
+import ar.fiuba.tdd.tp1.serialization.xml.GameXmlSerializer;
 import ar.fiuba.tdd.tp1.view.ApplicationView;
 import ar.fiuba.tdd.tp1.view.ConfigFileErrorWindow;
 import ar.fiuba.tdd.tp1.view.GameWindow;

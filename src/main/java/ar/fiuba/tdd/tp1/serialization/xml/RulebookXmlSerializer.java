@@ -1,4 +1,4 @@
-package ar.fiuba.tdd.tp1.serialization;
+package ar.fiuba.tdd.tp1.serialization.xml;
 
 import ar.fiuba.tdd.tp1.model.*;
 import ar.fiuba.tdd.tp1.model.Rule;

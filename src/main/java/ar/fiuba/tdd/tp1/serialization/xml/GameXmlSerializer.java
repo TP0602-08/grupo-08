@@ -1,9 +1,8 @@
-package ar.fiuba.tdd.tp1.serialization;
+package ar.fiuba.tdd.tp1.serialization.xml;
 
 import ar.fiuba.tdd.tp1.model.Game;
 import ar.fiuba.tdd.tp1.model.Rulebook;
 import ar.fiuba.tdd.tp1.model.interfaces.Board;
-import ar.fiuba.tdd.tp1.serialization.xml.GameXml;
 
 import java.io.File;
 import javax.xml.bind.JAXBContext;

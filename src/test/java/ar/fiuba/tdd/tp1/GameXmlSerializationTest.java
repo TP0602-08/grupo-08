@@ -1,9 +1,8 @@
 package ar.fiuba.tdd.tp1;
 
 import ar.fiuba.tdd.tp1.model.Game;
-import ar.fiuba.tdd.tp1.serialization.GameXmlSerializer;
 import ar.fiuba.tdd.tp1.serialization.xml.GameXml;
-import ar.fiuba.tdd.tp1.serialization.xml.RulebookXml;
+import ar.fiuba.tdd.tp1.serialization.xml.GameXmlSerializer;
 import org.junit.BeforeClass;
 import org.junit.Test;
 

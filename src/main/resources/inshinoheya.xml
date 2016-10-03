@@ -1,0 +1,151 @@
+<game name="inshinoheya">
+    <board rows="5" cols="5">
+        <cellNumerical row="0" col="0" id="1" />
+        <cellNumerical row="0" col="1" id="2" />
+        <cellNumerical row="0" col="2" id="3" />
+        <cellNumerical row="0" col="3" id="4" />
+        <cellNumerical row="0" col="4" id="5" />
+        <cellNumerical row="1" col="0" id="6" />
+        <cellNumerical row="1" col="1" id="7" />
+        <cellNumerical row="1" col="2" id="8" />
+        <cellNumerical row="1" col="3" id="9" />
+        <cellNumerical row="1" col="4" id="10" />
+        <cellNumerical row="2" col="0" id="11" />
+        <cellNumerical row="2" col="1" id="12" />
+        <cellNumerical row="2" col="2" id="13" />
+        <cellNumerical row="2" col="3" id="14" />
+        <cellNumerical row="2" col="4" id="15" />
+        <cellNumerical row="3" col="0" id="16" />
+        <cellNumerical row="3" col="1" id="17" />
+        <cellNumerical row="3" col="2" id="18" />
+        <cellNumerical row="3" col="3" id="19" />
+        <cellNumerical row="3" col="4" id="20" />
+        <cellNumerical row="4" col="0" id="21" />
+        <cellNumerical row="4" col="1" id="22" />
+        <cellNumerical row="4" col="2" id="23" />
+        <cellNumerical row="4" col="3" id="24" />
+        <cellNumerical row="4" col="4" id="25" />
+
+        <region id="r1">
+            <cell>1</cell>
+            <cell>2</cell>
+            <cell>3</cell>
+            <cell>4</cell>
+            <cell>5</cell>
+        </region>
+        <region id="r2">
+            <cell>6</cell>
+            <cell>7</cell>
+            <cell>8</cell>
+            <cell>9</cell>
+            <cell>10</cell>
+        </region>
+        <region id="r3">
+            <cell>11</cell>
+            <cell>12</cell>
+            <cell>13</cell>
+            <cell>14</cell>
+            <cell>15</cell>
+        </region>
+        <region id="r4">
+            <cell>16</cell>
+            <cell>17</cell>
+            <cell>18</cell>
+            <cell>19</cell>
+            <cell>20</cell>
+        </region>
+        <region id="r5">
+            <cell>21</cell>
+            <cell>22</cell>
+            <cell>23</cell>
+            <cell>24</cell>
+            <cell>25</cell>
+        </region>
+
+        <region id="r6">
+            <cell>1</cell>
+            <cell>6</cell>
+            <cell>11</cell>
+            <cell>16</cell>
+            <cell>21</cell>
+        </region>
+        <region id="r7">
+            <cell>2</cell>
+            <cell>7</cell>
+            <cell>12</cell>
+            <cell>17</cell>
+            <cell>22</cell>
+        </region>
+        <region id="r8">
+            <cell>3</cell>
+            <cell>8</cell>
+            <cell>13</cell>
+            <cell>18</cell>
+            <cell>23</cell>
+        </region>
+        <region id="r9">
+            <cell>4</cell>
+            <cell>9</cell>
+            <cell>14</cell>
+            <cell>19</cell>
+            <cell>24</cell>
+        </region>
+        <region id="r10">
+            <cell>5</cell>
+            <cell>10</cell>
+            <cell>15</cell>
+            <cell>20</cell>
+            <cell>25</cell>
+        </region>
+
+        <region id="r11" param="6">
+            <cell>1</cell>
+            <cell>6</cell>
+        </region>
+        <region id="r12" param="4">
+            <cell>2</cell>
+            <cell>3</cell>
+        </region>
+        <region id="r13" param="5">
+            <cell>4</cell>
+        </region>
+        <region id="r14" param="40">
+            <cell>5</cell>
+            <cell>10</cell>
+            <cell>15</cell>
+        </region>
+        <region id="r15" param="3">
+            <cell>7</cell>
+            <cell>8</cell>
+        </region>
+        <region id="r16" param="4">
+            <cell>9</cell>
+            <cell>14</cell>
+        </region>
+        <region id="r17" param="15">
+            <cell>11</cell>
+            <cell>12</cell>
+        </region>
+        <region id="r18" param="40">
+            <cell>13</cell>
+            <cell>18</cell>
+            <cell>23</cell>
+        </region>
+        <region id="r19" param="4">
+            <cell>16</cell>
+            <cell>21</cell>
+        </region>
+        <region id="r20" param="10">
+            <cell>17</cell>
+            <cell>22</cell>
+        </region>
+        <region id="r21" param="6">
+            <cell>19</cell>
+            <cell>20</cell>
+        </region>
+        <region id="r22" param="3">
+            <cell>24</cell>
+            <cell>25</cell>
+        </region>
+    </board>
+</game>

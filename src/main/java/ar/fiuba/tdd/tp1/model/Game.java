@@ -9,6 +9,7 @@ import java.util.List;
 public class Game {
     private Rulebook rulebook;
     private Board board;
+    private List<Move> moves;
 
     //Both the Rulebook and the Board must be already initialized.
     public Game(Rulebook rulebookValue, Board boardValue) {
@@ -50,5 +51,20 @@ public class Game {
     //Returns a list of the allowed user inputs for this game.
     public List<Integer> getValidInputs() {
         return new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
+    }
+
+    //TODO: Ver si esto está bien.
+    public Board getBoard() {
+        return this.board;
+    }
+
+    //TODO: Veri si esto está bien
+    public void setMoves(List<Move> moves) {
+        this.moves = moves;
+    }
+
+    //TODO: Esto lo agrego porque actualmente moves no se usa para nada, y sino findBugs tira error
+    public List<Move> getMoves() {
+        return this.moves;
     }
 }
