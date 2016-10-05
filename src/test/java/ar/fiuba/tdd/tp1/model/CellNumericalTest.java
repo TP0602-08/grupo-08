@@ -2,6 +2,7 @@ package ar.fiuba.tdd.tp1.model;
 
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class CellNumericalTest {
@@ -32,5 +33,13 @@ public class CellNumericalTest {
         CellNumerical cellNumerical = new CellNumerical(cellDatumValue, cellNameValue);
         cellNumerical.setName(cellNewNameValue);
         assertTrue(cellNewNameValue.equals(cellNumerical.getName()));
+    }
+    @Test
+    public  void isCellEmptyTest() {
+        Integer cellDatumValue = 0;
+        String cellNameValue = "XYZ789";
+        CellNumerical cellNumerical = new CellNumerical(cellDatumValue, cellNameValue);
+        assertEquals(true,cellNumerical.empty);
+
     }
 }

@@ -96,6 +96,9 @@ public class RuleNoRepeatedValues extends Rule implements VisitorOfCell {
             visitingCellValue = cell.getDatum();
         }
     }
+    public Object getVisitingCellValue() {
+        return this.visitingCellValue;
+    }
 
     public String getRegionId() {
         return this.regionId;
