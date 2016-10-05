@@ -40,9 +40,9 @@ public class RuleNoRepeatedValues extends Rule implements VisitorOfCell {
     }
 
     @Override
-    public void validate(Move move) {
+    public boolean validate(Move move) {
         if (isDeleteMove(move)) {
-            return;
+           return false;
         }
         Integer newCellId = move.getcellId();
         Cell newCell = move.getNewCell();
@@ -58,6 +58,7 @@ public class RuleNoRepeatedValues extends Rule implements VisitorOfCell {
             visitingCellValue = null;
         }
         finalizeValidate(listOfConflictingCellIds, move);
+        return true;
     }
 
     private void finalizeValidate(List<Integer> listOfConflictingCellIds, Move move) {
@@ -100,7 +101,6 @@ public class RuleNoRepeatedValues extends Rule implements VisitorOfCell {
         return this.visitingCellValue;
     }
 
-    public String getRegionId() {
-        return this.regionId;
+    public String getRegionId() {return this.regionId;
     }
 }

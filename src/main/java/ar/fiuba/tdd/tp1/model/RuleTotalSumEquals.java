@@ -41,9 +41,9 @@ public class RuleTotalSumEquals extends Rule implements VisitorOfCell {
     }
 
     @Override
-    public void validate(Move move) {
+    public boolean validate(Move move) {
         if (isDeleteMove(move)) {
-            return;
+            return false;
         }
         Integer newCellId = move.getcellId();
         List<Integer> cellIdsList = board.getCellIdsListFromRegionId(regionId);
@@ -58,6 +58,7 @@ public class RuleTotalSumEquals extends Rule implements VisitorOfCell {
             visitingCellValue = null;
         }
         finalizeValidate(accumulator, move);
+        return true;
     }
 
     private void finalizeValidate(Integer accumulator, Move move) {

@@ -15,7 +15,7 @@ public abstract class Rule {
 
     public abstract String getName();
 
-    public abstract void validate(Move move);
+    public abstract boolean validate(Move move);
 
     public abstract Rule createNewInstance(List<Object> parametersList);
 }
