@@ -21,12 +21,14 @@ public class ViolationOfRuleTest {
         this.celdasId.add(new Integer(-1));
         this.rules = new ViolationOfRule("La suma excede el valor",celdasId );
     }
+
     @Test
     public void getExplanationTest() throws Exception {
         assertEquals("La suma excede el valor", rules.getExplanation());
 
     }
-    public void getConflictingCellsList()throws Exception{
+
+    public void getConflictingCellsList()throws Exception {
         assertEquals(2,celdasId.get(0).intValue());
         assertEquals(81,celdasId.get(1).intValue());
         assertEquals(-1,celdasId.get(2).intValue());
