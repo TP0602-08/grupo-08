@@ -51,19 +51,21 @@ public class RuleNoRepeatedValuesTest {
 
     @Test
     public void visitTest() throws Exception {
-
+        this.oneRule.visit(this.alfabeticCell);
+        assertEquals("a",((String)oneRule.getVisitingCellValue()));
     }
 
     @Test
     public void visit1TestValue() throws Exception {
         this.oneRule.visit(this.numericCell);
-        assertEquals (4,((Integer)oneRule.getVisitingCellValue()).intValue());
+        assertEquals(4,((Integer)oneRule.getVisitingCellValue()).intValue());
     }
+
     @Test
     public void visit1TestNull() throws Exception {
         this.numericCell = new CellNumerical(new Integer(0),"3");
         oneRule.visit(numericCell);
-        assertEquals (null,oneRule.getVisitingCellValue());
+        assertEquals(null,oneRule.getVisitingCellValue());
     }
 
     @Test

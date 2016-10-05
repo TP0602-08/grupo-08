@@ -34,6 +34,7 @@ public class CellNumericalTest {
         cellNumerical.setName(cellNewNameValue);
         assertTrue(cellNewNameValue.equals(cellNumerical.getName()));
     }
+
     @Test
     public  void isCellEmptyTest() {
         Integer cellDatumValue = 0;
