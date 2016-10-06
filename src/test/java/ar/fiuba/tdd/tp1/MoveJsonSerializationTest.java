@@ -52,14 +52,14 @@ public class MoveJsonSerializationTest {
         playJson = readFile(PLAY, StandardCharsets.UTF_8);
         playsJson = readFile(PLAYS, StandardCharsets.UTF_8);
         board = Mockito.mock(BoardRectangularWithRegions.class);
-        Mockito.when(board.getCellByCoordinates(1,1)).thenReturn(new CellNumerical(0, "0"));
-        Mockito.when(board.getCellByCoordinates(1,2)).thenReturn(new CellNumerical(0, "1"));
-        Mockito.when(board.getCellByCoordinates(1,3)).thenReturn(new CellNumerical(0, "2"));
-        Mockito.when(board.getCellByCoordinates(1,3)).thenReturn(new CellNumerical(0, "2"));
-        Mockito.when(board.computeCellId(1,1)).thenReturn(0);
-        Mockito.when(board.computeCellId(1,2)).thenReturn(1);
-        Mockito.when(board.computeCellId(1,3)).thenReturn(2);
-        Mockito.when(board.computeCellId(1,4)).thenReturn(3);
+        Mockito.when(board.getCellByCoordinates(0,0)).thenReturn(new CellNumerical(0, "0"));
+        Mockito.when(board.getCellByCoordinates(0,1)).thenReturn(new CellNumerical(0, "1"));
+        Mockito.when(board.getCellByCoordinates(0,2)).thenReturn(new CellNumerical(0, "2"));
+        Mockito.when(board.getCellByCoordinates(0,2)).thenReturn(new CellNumerical(0, "2"));
+        Mockito.when(board.computeCellId(0,0)).thenReturn(0);
+        Mockito.when(board.computeCellId(0,1)).thenReturn(1);
+        Mockito.when(board.computeCellId(0,2)).thenReturn(2);
+        Mockito.when(board.computeCellId(0,3)).thenReturn(3);
     }
 
     @Test

@@ -11,12 +11,11 @@ public final class MoveCellSerializer {
     }
 
     public static Cell deserializeCell(BoardRectangularWithRegions board, MoveJson move) {
-        Cell cell = board.getCellByCoordinates(move.getPosition()[0], move.getPosition()[1]);
+        Cell cell = board.getCellByCoordinates(move.getPosition()[0] - 1, move.getPosition()[1] - 1);
         if (move.getValue().matches("^-?\\d+$")) {
-            ((CellNumerical)cell).setDatum(Integer.parseInt(move.getValue()));
+            return new CellNumerical(Integer.parseInt(move.getValue()), cell.getName());
         } else {
-            ((CellAlphabetical)cell).setDatum(move.getValue());
+            return new CellAlphabetical(move.getValue(), cell.getName());
         }
-        return cell;
     }
 }

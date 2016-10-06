@@ -32,7 +32,7 @@ public class MovesJsonSerializer implements MovesSerializer {
 
     private Move mapMoveJsonToMove(MoveJson moveJson) {
         Cell cell = MoveCellSerializer.deserializeCell(this.board, moveJson);
-        Move move = new Move(this.board.computeCellId(moveJson.getPosition()[0], moveJson.getPosition()[1]), cell);
+        Move move = new Move(this.board.computeCellId(moveJson.getPosition()[0] - 1, moveJson.getPosition()[1] - 1), cell);
         return move;
     }
 

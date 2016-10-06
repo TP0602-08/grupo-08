@@ -34,7 +34,7 @@ public class RuleTotalProductEquals extends Rule implements VisitorOfCell {
         }
         Integer newId = move.getcellId();
         Cell newCell = move.getNewCell();
-        int accumulator = 0;
+        int accumulator = 1;
         for (Integer cellId : cellIds) {
             Cell cell = board.getCellFromCellId(cellId);
             cell.accept(this);

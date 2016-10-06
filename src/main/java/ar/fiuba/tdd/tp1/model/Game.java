@@ -32,7 +32,7 @@ public class Game {
     }
 
     //Receives a list of moves and validates them one by one, if the move is valid applies it to the board
-    public void process(List<Move> moves) {
+    public void process() {
         this.moveHistory = new ArrayList<>();
         for (Move move : moves) {
             rulebook.validate(move);
