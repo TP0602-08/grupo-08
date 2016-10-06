@@ -5,6 +5,7 @@ import ar.fiuba.tdd.tp1.model.Move;
 import ar.fiuba.tdd.tp1.model.Region;
 
 import java.util.List;
+import java.util.Map;
 
 public interface Board {
     void apply(Move move);
@@ -18,4 +19,6 @@ public interface Board {
     int getRowQuantity();
 
     int getColumnQuantity();
+
+    Map<Integer,Integer> getBoardValues();
 }

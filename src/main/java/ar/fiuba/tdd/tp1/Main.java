@@ -11,5 +11,6 @@ public class Main {
         applicationController.setView(applicationView);
         applicationView.setController(applicationController);
         applicationController.run();
+
     }
 }

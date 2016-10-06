@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.IntBinaryOperator;
 
 public class BoardRectangularWithRegions implements Board {
     private int rowQuantity;
@@ -153,6 +154,17 @@ public class BoardRectangularWithRegions implements Board {
 
     public int getNumberOfCells() {
         return cellsMap.size();
+    }
+
+    public Map<Integer,Integer> getBoardValues() {
+        Map<Integer,Integer> mapValues = new HashMap<Integer,Integer>();
+
+        for (Integer key: cellsMap.keySet()) {
+            if ( ! cellsMap.get(key).getDatum().equals(0)) {
+                mapValues.put(key, (Integer) cellsMap.get(key).getDatum());
+            }
+        }
+        return mapValues;
     }
 
     //Completes the board with all non editable cells (which don't appear in the XML file) and sets the state of the cells which start

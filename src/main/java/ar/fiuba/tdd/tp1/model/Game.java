@@ -1,6 +1,7 @@
 package ar.fiuba.tdd.tp1.model;
 
 import ar.fiuba.tdd.tp1.model.interfaces.Board;
+import ar.fiuba.tdd.tp1.view.InputGameButton;
 
 import java.util.*;
 
@@ -67,6 +68,17 @@ public class Game {
 
     public List<MoveHistory> getMoveHistory() {
         return this.moveHistory;
+    }
+
+    public BoardReport getBoardReport() {
+        boolean status = this.moveHistory.get(this.moveHistory.size() - 1).wasValid();
+
+        Map<Integer,Integer> boardValuesMap = this.board.getBoardValues();
+        List<BoardValue> boardValuesList = new LinkedList<>();
+        for ( Map.Entry<Integer,Integer> entry: boardValuesMap.entrySet()) {
+            boardValuesList.add(new BoardValue(entry.getKey(), board.getColumnQuantity(),entry.getValue()));
+        }
+        return new BoardReport(status,boardValuesList);
     }
 
     //TODO: Ver si esto está bien.
