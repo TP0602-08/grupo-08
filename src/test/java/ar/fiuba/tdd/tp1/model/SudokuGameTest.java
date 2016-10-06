@@ -10,7 +10,7 @@ import java.util.Map;
 
 import static org.junit.Assert.*;
 
-public class GameTest {
+public class SudokuGameTest {
     private static final String GAMEXML = "src/main/resources/sudoku.xml";
     private static Game game;
 
