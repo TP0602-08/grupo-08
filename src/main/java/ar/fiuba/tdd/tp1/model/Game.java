@@ -8,7 +8,7 @@ public class Game {
     private Rulebook rulebook;
     private Board board;
     private List<Move> moves;
-    private Map<Integer, Boolean> moveHistory;
+    private List<MoveHistory> moveHistory = new ArrayList<>();
 
     //Both the Rulebook and the Board must be already initialized.
     public Game(Rulebook rulebookValue, Board boardValue) {
@@ -28,19 +28,18 @@ public class Game {
             listOfConflictingCellIds.add(move.getcellId());
             move.addViolationOfRule(new ViolationOfRule("Not and editable cell", listOfConflictingCellIds));
         }
+        this.moveHistory.add(new MoveHistory(move, move.isValid()));
     }
 
     //Receives a list of moves and validates them one by one, if the move is valid applies it to the board
     public void process(List<Move> moves) {
-        this.moveHistory = new HashMap<>();
-        int moveNumber = 1;
+        this.moveHistory = new ArrayList<>();
         for (Move move : moves) {
             rulebook.validate(move);
             if (move.isValid()) {
                 board.apply(move);
             }
-            this.moveHistory.put(moveNumber, move.isValid());
-            moveNumber++;
+            this.moveHistory.add(new MoveHistory(move, move.isValid()));
         }
     }
 
@@ -66,7 +65,7 @@ public class Game {
         return new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
     }
 
-    public Map<Integer,Boolean> getMoveHistory() {
+    public List<MoveHistory> getMoveHistory() {
         return this.moveHistory;
     }
 
@@ -84,4 +83,5 @@ public class Game {
     public List<Move> getMoves() {
         return this.moves;
     }
+
 }

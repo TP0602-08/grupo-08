@@ -19,10 +19,10 @@ public abstract class Cell extends Observable {
 
     public abstract Object getDatum();
 
+    public abstract Boolean isEmpty();
+
     public abstract String datumToString();
 
     //Allows to do double dispatch with different kinds of cells.
-    public void accept(VisitorOfCell visitor) {
-        visitor.visit(this);
-    }
+    public abstract void accept(VisitorOfCell visitor);
 }
