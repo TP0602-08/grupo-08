@@ -102,19 +102,19 @@ public class RuleNoRepeatedValuesTest {
         assertEquals(0,moving.getListOfViolationsOfRules().size());
     }
 
-    @Test
-    public void validateDeleteMoveNumericalCellTest() throws Exception {
-        this.numericCell = new CellNumerical(new Integer(0), "3");
-        this.moving = new Move(new Integer(5), numericCell);
-        assertEquals(false, oneRule.validate(moving));
-    }
+//    @Test
+//    public void validateDeleteMoveNumericalCellTest() throws Exception {
+//        this.numericCell = new CellNumerical(new Integer(0), "3");
+//        this.moving = new Move(new Integer(5), numericCell);
+//        assertEquals(false, oneRule.validate(moving));
+//    }
 
-    @Test
-    public void validateDeleteMoveAlphabeticalCellTest() throws Exception {
-        this.alfabeticCell = new CellAlphabetical(null, "3");
-        this.moving = new Move(new Integer(5), this.alfabeticCell);
-        assertEquals(false, oneRule.validate(moving));
-    }
+//    @Test
+//    public void validateDeleteMoveAlphabeticalCellTest() throws Exception {
+//        this.alfabeticCell = new CellAlphabetical(null, "3");
+//        this.moving = new Move(new Integer(5), this.alfabeticCell);
+//        assertEquals(false, oneRule.validate(moving));
+//    }
 
     @Test
     public void createNewInstanceTest() throws Exception {

@@ -41,14 +41,15 @@ public class RuleNoRepeatedValues extends Rule implements VisitorOfCell {
 
     @Override
     public boolean validate(Move move) {
-        if (isDeleteMove(move)) {
-           return false;
-        }
         Integer newCellId = move.getcellId();
         Cell newCell = move.getNewCell();
         List<Integer> cellIdsList = board.getCellIdsListFromRegionId(regionId);
-        visitingCellValue = null;
         List<Integer> listOfConflictingCellIds = new ArrayList<Integer>();
+        if (isDeleteMove(move) || cellIdsList.indexOf(move.getcellId()) < 0) {
+            finalizeValidate(listOfConflictingCellIds, move);
+            return false;
+        }
+        visitingCellValue = null;
         for (Integer cellId : cellIdsList) {
             Cell cell = board.getCellFromCellId(cellId);
             cell.accept(this);
@@ -69,7 +70,7 @@ public class RuleNoRepeatedValues extends Rule implements VisitorOfCell {
     }
 
     private boolean isDeleteMove(Move move) {
-        return move.getNewCell().empty;
+        return move.getNewCell().isEmpty();
     }
 
 
@@ -82,7 +83,7 @@ public class RuleNoRepeatedValues extends Rule implements VisitorOfCell {
 
     @Override
     public void visit(CellAlphabetical cell) {
-        if (cell.empty) {
+        if (cell.isEmpty()) {
             visitingCellValue = null;
         } else {
             visitingCellValue = cell.getDatum();
@@ -91,16 +92,18 @@ public class RuleNoRepeatedValues extends Rule implements VisitorOfCell {
 
     @Override
     public void visit(CellNumerical cell) {
-        if (cell.empty) {
+        if (cell.isEmpty()) {
             visitingCellValue = null;
         } else {
             visitingCellValue = cell.getDatum();
         }
     }
+
     public Object getVisitingCellValue() {
         return this.visitingCellValue;
     }
 
-    public String getRegionId() {return this.regionId;
+    public String getRegionId() {
+        return this.regionId;
     }
 }

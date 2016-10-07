@@ -21,12 +21,27 @@ public class RulebookXmlSerializer implements RulebookSerializer{
     }
 
     public Rulebook deserialize() {
-        if (this.gameName.equals("Kakuro")) {
-            return deserializerKakuro();
+        if (this.gameName.equals("Kakuro") || this.gameName.equals("Inshinoheya")) {
+            return deserializerKakuroOrInshi(this.gameName);
         } else if (this.gameName.equals("Sudoku")) {
             return deserializeSudoku();
         }
         return null;
+    }
+
+    private Rulebook deserializerKakuroOrInshi(String gameName) {
+        Map<String, Region> regions = ((BoardRectangularWithRegions)this.board).getRegionsMap();
+        for (Map.Entry<String, Region> region : regions.entrySet()) {
+            if (gameName.equals("Inshinoheya")) {
+                if (region.getValue().getParam() != null) {
+                    rules.add(new RuleTotalProductEquals(this.board, region.getKey(), Integer.parseInt(region.getValue().getParam())));
+                }
+            } else {
+                rules.add(new RuleTotalSumEquals(this.board, region.getKey(), Integer.parseInt(region.getValue().getParam())));
+            }
+            rules.add(new RuleNoRepeatedValues(this.board, region.getKey()));
+        }
+        return new Rulebook(rules);
     }
 
     private Rulebook deserializerKakuro() {

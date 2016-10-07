@@ -11,6 +11,7 @@ public class RuleTotalSumEquals extends Rule implements VisitorOfCell {
     private String regionId;
     private int sum;
     private Integer visitingCellValue;
+    private int nonEmptyCells;
 
     //This constructor with is for creating an instance that'll act as a prototype for creating new instances with method
     // "createNewInstance".
@@ -42,11 +43,13 @@ public class RuleTotalSumEquals extends Rule implements VisitorOfCell {
 
     @Override
     public boolean validate(Move move) {
-        if (isDeleteMove(move)) {
+        this.nonEmptyCells = 0;
+        List<Integer> cellIdsList = board.getCellIdsListFromRegionId(regionId);
+        if (isDeleteMove(move) || cellIdsList.indexOf(move.getcellId()) < 0) {
             return false;
         }
         Integer newCellId = move.getcellId();
-        List<Integer> cellIdsList = board.getCellIdsListFromRegionId(regionId);
+        Cell newCell = move.getNewCell();
         visitingCellValue = null;
         Integer accumulator = 0;
         for (Integer cellId : cellIdsList) {
@@ -54,20 +57,23 @@ public class RuleTotalSumEquals extends Rule implements VisitorOfCell {
             cell.accept(this);
             if ((visitingCellValue != null) && !(cellId.equals(newCellId))) {
                 accumulator += visitingCellValue;
+                this.nonEmptyCells++;
             }
             visitingCellValue = null;
         }
+        accumulator += (int)newCell.getDatum();
+        this.nonEmptyCells++;
         finalizeValidate(accumulator, move);
         return true;
     }
 
     private void finalizeValidate(Integer accumulator, Move move) {
-        if (accumulator > this.sum) {
-            List<Integer> cellIdsList = board.getCellIdsListFromRegionId(regionId);
+        List<Integer> cellIdsList = board.getCellIdsListFromRegionId(regionId);
+        if (this.nonEmptyCells == cellIdsList.size() && accumulator != this.sum) {
             List<Integer> listOfConflictingCellIds = new ArrayList<Integer>(cellIdsList);
             Integer newCellId = move.getcellId();
             listOfConflictingCellIds.remove(newCellId);
-            ViolationOfRule violationOfRule = new ViolationOfRule("La suma excede el valor " + sum + ".", listOfConflictingCellIds);
+            ViolationOfRule violationOfRule = new ViolationOfRule("La suma no es igual a " + sum + ".", listOfConflictingCellIds);
             move.addViolationOfRule(violationOfRule);
         }
     }

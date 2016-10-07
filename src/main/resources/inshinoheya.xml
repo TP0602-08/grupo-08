@@ -1,4 +1,4 @@
-<game name="inshinoheya">
+<game name="Inshinoheya">
     <board rows="5" cols="5">
         <cellNumerical row="0" col="0" id="1" />
         <cellNumerical row="0" col="1" id="2" />
