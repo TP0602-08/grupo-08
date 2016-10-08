@@ -47,7 +47,7 @@ public class RuleNoRepeatedValuesTest {
 
         this.alfabeticCell = new CellAlphabetical("a","3");
 
-        this.moving = new Move(new Integer(5), numericCell);
+        this.moving = new Move(new Integer(4), numericCell);
         this.listParams = new ArrayList<Object>();
         this.listParams.add("18");
         this.listOfConflictingCellIds = new ArrayList<Integer>();
@@ -99,13 +99,14 @@ public class RuleNoRepeatedValuesTest {
         assertEquals(0,moving.getListOfViolationsOfRules().size());
     }
 
-//    @Test
-//    public void validateTestViolationRule() throws Exception {
-//        assertTrue(this.moving.getListOfViolationsOfRules().isEmpty());
-//        this.numericCell = new CellNumerical(new Integer(2),"1");
-//        this.oneRule.validate(this.moving);
-//        assertEquals(false,moving.getListOfViolationsOfRules().isEmpty());
-//    }
+    @Test
+    public void validateTestViolationRule() throws Exception {
+        assertTrue(this.moving.getListOfViolationsOfRules().isEmpty());
+        this.numericCell = new CellNumerical(new Integer(2),"1");
+        this.moving = new Move(new Integer(4), numericCell);
+        this.oneRule.validate(this.moving);
+        assertEquals(false,moving.getListOfViolationsOfRules().isEmpty());
+    }
 
     @Test
     public void validateDeleteMoveNumericalCellTest() throws Exception {
