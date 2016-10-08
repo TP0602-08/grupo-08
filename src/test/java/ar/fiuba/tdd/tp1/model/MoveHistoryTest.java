@@ -15,10 +15,10 @@ public class MoveHistoryTest {
         this.moveHistory = new MoveHistory(this.movement,true);
     }
 
-   @Test
-   public void getMove() throws Exception {
-       assertEquals(movement,this.moveHistory.getMove());
-   }
+    @Test
+    public void getMove() throws Exception {
+        assertEquals(movement,this.moveHistory.getMove());
+    }
 
     @Test
     public void wasValid() throws Exception {

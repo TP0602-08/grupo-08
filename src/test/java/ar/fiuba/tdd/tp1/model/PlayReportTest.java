@@ -8,6 +8,7 @@ import static org.junit.Assert.*;
 
 public class PlayReportTest {
     private PlayReport playReport;
+
     @Before
     public void setUp() throws Exception {
         this.playReport = new PlayReport(1,true);
@@ -15,7 +16,7 @@ public class PlayReportTest {
 
     @Test
     public void getPlayNumber() throws Exception {
-         assertEquals(1,playReport.getPlayNumber());
+        assertEquals(1,playReport.getPlayNumber());
     }
 
     @Test
