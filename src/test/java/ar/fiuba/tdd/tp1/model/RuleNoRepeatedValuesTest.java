@@ -42,10 +42,10 @@ public class RuleNoRepeatedValuesTest {
     public void setUp() throws Exception {
         this.integer1 = new Integer(4);
         this.oneBoard = new BoardRectangularWithRegions(9, 9);
-        this.oneRule = new RuleNoRepeatedValues(oneBoard, "1");
-        this.numericCell = new CellNumerical(integer1, "4");
+        this.oneRule = new RuleNoRepeatedValues(oneBoard,"1");
+        this.numericCell = new CellNumerical(integer1,"4");
 
-        this.alfabeticCell = new CellAlphabetical("a", "3");
+        this.alfabeticCell = new CellAlphabetical("a","3");
 
         this.moving = new Move(new Integer(5), numericCell);
         this.listParams = new ArrayList<Object>();
@@ -55,9 +55,9 @@ public class RuleNoRepeatedValuesTest {
         this.listOfConflictingCellIds.add(new Integer(18));
 
         this.numericCell1 = new CellNumerical(new Integer(2),"1");
-        this.numericCell2 = new CellNumerical(new Integer(2),"2");
+        this.numericCell2 = new CellNumerical(new Integer(3),"2");
         this.numericCell3 = new CellNumerical(new Integer(1),"3");
-        this.numericCell4 = new CellNumerical(new Integer(4),"4");
+        this.numericCell4 = new CellNumerical(new Integer(5),"4");
 
         this.listCelds = new ArrayList<String>();
         this.listCelds.add("1");
@@ -72,7 +72,7 @@ public class RuleNoRepeatedValuesTest {
         this.listIdCelds.add(new Integer(4));
 
 
-        this.validRegion = new Region(listCelds,"9");
+        this.validRegion = new Region(listCelds,"15");
         this.invalidRegion = new Region(listCelds,"8");
 
         this.oneBoard.setCellById(new Integer(1),numericCell1);
@@ -85,9 +85,6 @@ public class RuleNoRepeatedValuesTest {
 
         this.otherRule = new RuleNoRepeatedValues(this.oneBoard,"1");
         this.oneMoreRule = new RuleNoRepeatedValues(this.oneBoard,"2");
-
-
-        // this.violatedRules = new ArrayList<ViolationOfRule>("suma incorrecta",this.listOfConflictingCellIds);
     }
 
     @Test
@@ -96,25 +93,33 @@ public class RuleNoRepeatedValuesTest {
     }
 
     @Test
-    public void validateTest() throws Exception {
+    public void validateTestNoViolationRule() throws Exception {
         assertTrue(this.moving.getListOfViolationsOfRules().isEmpty());
         this.oneRule.validate(this.moving);
         assertEquals(0,moving.getListOfViolationsOfRules().size());
     }
 
 //    @Test
-//    public void validateDeleteMoveNumericalCellTest() throws Exception {
-//        this.numericCell = new CellNumerical(new Integer(0), "3");
-//        this.moving = new Move(new Integer(5), numericCell);
-//        assertEquals(false, oneRule.validate(moving));
+//    public void validateTestViolationRule() throws Exception {
+//        assertTrue(this.moving.getListOfViolationsOfRules().isEmpty());
+//        this.numericCell = new CellNumerical(new Integer(2),"1");
+//        this.oneRule.validate(this.moving);
+//        assertEquals(false,moving.getListOfViolationsOfRules().isEmpty());
 //    }
 
-//    @Test
-//    public void validateDeleteMoveAlphabeticalCellTest() throws Exception {
-//        this.alfabeticCell = new CellAlphabetical(null, "3");
-//        this.moving = new Move(new Integer(5), this.alfabeticCell);
-//        assertEquals(false, oneRule.validate(moving));
-//    }
+    @Test
+    public void validateDeleteMoveNumericalCellTest() throws Exception {
+        this.numericCell = new CellNumerical(new Integer(0), "3");
+        this.moving = new Move(new Integer(5), numericCell);
+        assertEquals(false, oneRule.validate(moving));
+    }
+
+   @Test
+   public void validateDeleteMoveAlphabeticalCellTest() throws Exception {
+       this.alfabeticCell = new CellAlphabetical(null, "3");
+        this.moving = new Move(new Integer(5), this.alfabeticCell);
+        assertEquals(false, oneRule.validate(moving));
+    }
 
     @Test
     public void createNewInstanceTest() throws Exception {
