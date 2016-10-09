@@ -115,8 +115,8 @@ public class RuleNoRepeatedValuesTest {
         assertEquals(false, oneRule.validate(moving));
     }
 
-   @Test
-   public void validateDeleteMoveAlphabeticalCellTest() throws Exception {
+    @Test
+    public void validateDeleteMoveAlphabeticalCellTest() throws Exception {
        this.alfabeticCell = new CellAlphabetical(null, "3");
         this.moving = new Move(new Integer(5), this.alfabeticCell);
         assertEquals(false, oneRule.validate(moving));
