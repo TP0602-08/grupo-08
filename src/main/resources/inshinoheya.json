@@ -1,0 +1,351 @@
+{
+    "rulebook": [
+        {
+            "type": "RuleNoRepeatedValues",
+            "region": "r1"
+        },
+        {
+            "type": "RuleNoRepeatedValues",
+            "region": "r2"
+        },
+        {
+            "type": "RuleNoRepeatedValues",
+            "region": "r3"
+        },
+        {
+            "type": "RuleNoRepeatedValues",
+            "region": "r4"
+        },
+        {
+            "type": "RuleNoRepeatedValues",
+            "region": "r5"
+        },
+        {
+            "type": "RuleNoRepeatedValues",
+            "region": "r6"
+        },
+        {
+            "type": "RuleNoRepeatedValues",
+            "region": "r7"
+        },
+        {
+            "type": "RuleNoRepeatedValues",
+            "region": "r8"
+        },
+        {
+            "type": "RuleNoRepeatedValues",
+            "region": "r9"
+        },
+        {
+            "type": "RuleNoRepeatedValues",
+            "region": "r10"
+        },
+        {
+            "type": "RuleTotalProductEquals",
+            "region": "r11",
+            "value": "6"
+        },
+        {
+            "type": "RuleTotalProductEquals",
+            "region": "r12",
+            "value": "4"
+        },
+        {
+            "type": "RuleTotalProductEquals",
+            "region": "r13",
+            "value": "5"
+        },
+        {
+            "type": "RuleTotalProductEquals",
+            "region": "r14",
+            "value": "40"
+        },
+        {
+            "type": "RuleTotalProductEquals",
+            "region": "r15",
+            "value": "3"
+        },
+        {
+            "type": "RuleTotalProductEquals",
+            "region": "r16",
+            "value": "4"
+        },
+        {
+            "type": "RuleTotalProductEquals",
+            "region": "r17",
+            "value": "15"
+        },
+        {
+            "type": "RuleTotalProductEquals",
+            "region": "r18",
+            "value": "40"
+        },
+        {
+            "type": "RuleTotalProductEquals",
+            "region": "r19",
+            "value": "4"
+        },
+        {
+            "type": "RuleTotalProductEquals",
+            "region": "r20",
+            "value": "10"
+        },
+        {
+            "type": "RuleTotalProductEquals",
+            "region": "r21",
+            "value": "6"
+        },
+        {
+            "type": "RuleTotalProductEquals",
+            "region": "r22",
+            "value": "3"
+        }
+    ],
+    "board": {
+        "rows": 5,
+        "columns": 5,
+        "cells": [
+            {
+                "position": [0,0],
+                "value": "0",
+                "editable": true,
+                "id": 1
+            },
+            {
+                "position": [0,1],
+                "value": "0",
+                "editable": true,
+                "id": 2
+            },
+            {
+                "position": [0,2],
+                "value": "0",
+                "editable": true,
+                "id": 3
+            },
+            {
+                "position": [0,3],
+                "value": "0",
+                "editable": true,
+                "id": 4
+            },
+            {
+                "position": [0,4],
+                "value": "0",
+                "editable": true,
+                "id": 5
+            },
+            {
+                "position": [1,0],
+                "value": "0",
+                "editable": true,
+                "id": 13
+            },
+            {
+                "position": [1,1],
+                "value": "0",
+                "editable": true,
+                "id": 14
+            },
+            {
+                "position": [1,2],
+                "value": "0",
+                "editable": true,
+                "id": 15
+            },
+            {
+                "position": [1,3],
+                "value": "0",
+                "editable": true,
+                "id": 16
+            },
+            {
+                "position": [1,4],
+                "value": "0",
+                "editable": true,
+                "id": 17
+            },
+            {
+                "position": [2,0],
+                "value": "0",
+                "editable": true,
+                "id": 25
+            },
+            {
+                "position": [2,1],
+                "value": "0",
+                "editable": true,
+                "id": 26
+            },
+            {
+                "position": [2,2],
+                "value": "0",
+                "editable": true,
+                "id": 27
+            },
+            {
+                "position": [2,3],
+                "value": "0",
+                "editable": true,
+                "id": 28
+            },
+            {
+                "position": [2,4],
+                "value": "0",
+                "editable": true,
+                "id": 29
+            },
+            {
+                "position": [3,0],
+                "value": "0",
+                "editable": true,
+                "id": 37
+            },
+            {
+                "position": [3,1],
+                "value": "0",
+                "editable": true,
+                "id": 38
+            },
+            {
+                "position": [3,2],
+                "value": "0",
+                "editable": true,
+                "id": 39
+            },
+            {
+                "position": [3,3],
+                "value": "0",
+                "editable": true,
+                "id": 40
+            },
+            {
+                "position": [3,4],
+                "value": "0",
+                "editable": true,
+                "id": 41
+            },
+            {
+                "position": [4,0],
+                "value": "0",
+                "editable": true,
+                "id": 49
+            },
+            {
+                "position": [4,1],
+                "value": "0",
+                "editable": true,
+                "id": 50
+            },
+            {
+                "position": [4,2],
+                "value": "0",
+                "editable": true,
+                "id": 51
+            },
+            {
+                "position": [4,3],
+                "value": "0",
+                "editable": true,
+                "id": 52
+            },
+            {
+                "position": [4,4],
+                "value": "0",
+                "editable": true,
+                "id": 53
+            }
+        ],
+        "regions": [
+            {
+                "id": "r1",
+                "cells": [1,2,3,4,5]
+            },
+            {
+                "id": "r2",
+                "cells": [6,7,8,9,10]
+            },
+            {
+                "id": "r3",
+                "cells": [11,12,13,14,15]
+            },
+            {
+                "id": "r4",
+                "cells": [16,17,18,19,20]
+            },
+            {
+                "id": "r5",
+                "cells": [21,22,23,24,25]
+            },
+            {
+                "id": "r6",
+                "cells": [1,6,11,16,21]
+            },
+            {
+                "id": "r7",
+                "cells": [2,7,12,17,22]
+            },
+            {
+                "id": "r8",
+                "cells": [3,8,13,18,23]
+            },
+            {
+                "id": "r9",
+                "cells": [4,9,14,19,24]
+            },
+            {
+                "id": "r10",
+                "cells": [5,10,15,20,25]
+            },
+            {
+                "id": "r11",
+                "cells": [1,6]
+            },
+            {
+                "id": "r12",
+                "cells": [2,3]
+            },
+            {
+                "id": "r13",
+                "cells": [4]
+            },
+            {
+                "id": "r14",
+                "cells": [5,10,15]
+            },
+            {
+                "id": "r15",
+                "cells": [7,8]
+            },
+            {
+                "id": "r16",
+                "cells": [9,14]
+            },
+            {
+                "id": "r17",
+                "cells": [11,12]
+            },
+            {
+                "id": "r18",
+                "cells": [13,18,23]
+            },
+            {
+                "id": "r19",
+                "cells": [16,21]
+            },
+            {
+                "id": "r20",
+                "cells": [17,22]
+            },
+            {
+                "id": "r21",
+                "cells": [19,20]
+            },
+            {
+                "id": "r22",
+                "cells": [24,25]
+            }
+        ]
+    },
+    "validInputs": [1,2,3,4,5,6,7,8,9]
+}
