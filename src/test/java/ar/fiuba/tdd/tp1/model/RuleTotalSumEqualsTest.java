@@ -78,7 +78,7 @@ public class RuleTotalSumEqualsTest {
     public void getName() throws Exception {
         assertEquals("TotalSumEquals",this.oneRule.getName());
     }
-    //TODO
+
     @Test
     public void validate() throws Exception {
         assertTrue(this.moving.getListOfViolationsOfRules().isEmpty());
@@ -88,11 +88,20 @@ public class RuleTotalSumEqualsTest {
     }
 
     @Test
+    public void validateTestViolationRule() throws Exception {
+        assertTrue(this.moving.getListOfViolationsOfRules().isEmpty());
+        this.numericCell = new CellNumerical(new Integer(2),"1");
+        this.moving = new Move(new Integer(4), numericCell);
+        this.oneRule.validate(this.moving);
+        assertEquals(false,moving.getListOfViolationsOfRules().isEmpty());
+    }
+
+    @Test
     public void createNewInstance() throws Exception {
         RuleTotalSumEquals secondRule = this.oneRule.createNewInstance(this.listParams);
         assertTrue(secondRule instanceof RuleTotalSumEquals);
     }
-     //TODO Sin modificar la clase
+
     @Test
     public void visit1() throws Exception {
         //this.oneRule.visit(this.alfabeticCell);
