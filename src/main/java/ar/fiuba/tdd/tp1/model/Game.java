@@ -81,19 +81,19 @@ public class Game {
         return new BoardReport(status,boardValuesList);
     }
 
-    //TODO: Ver si esto está bien.
     public Board getBoard() {
         return this.board;
     }
 
-    //TODO: Veri si esto está bien
     public void setMoves(List<Move> moves) {
         this.moves = moves;
     }
 
-    //TODO: Esto lo agrego porque actualmente moves no se usa para nada, y sino findBugs tira error
     public List<Move> getMoves() {
         return this.moves;
     }
 
+    public Rulebook getRulebook() {
+        return this.rulebook;
+    }
 }

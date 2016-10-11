@@ -6,11 +6,7 @@ import ar.fiuba.tdd.tp1.model.interfaces.Board;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
@@ -25,15 +21,7 @@ public class RuleNoRepeatedValuesTest {
     private Move moving;
     private CellNumerical numericCell;
     private CellAlphabetical alfabeticCell;
-    private Object visitingCellValue = null;
     private Integer integer1;
-    private ArrayList<ViolationOfRule> violatedRules;
-    private CellNumerical numericCell1;
-    private CellNumerical numericCell2;
-    private CellNumerical numericCell3;
-    private CellNumerical numericCell4;
-    private Region validRegion;
-    private Region invalidRegion;
     private List<String> listCelds;
     private List<Integer> listIdCelds;
     private Map<String, Region> regionsMap;
@@ -48,39 +36,21 @@ public class RuleNoRepeatedValuesTest {
         this.alfabeticCell = new CellAlphabetical("a","3");
 
         this.moving = new Move(new Integer(4), numericCell);
-        this.listParams = new ArrayList<Object>();
-        this.listParams.add("18");
-        this.listOfConflictingCellIds = new ArrayList<Integer>();
-        this.listOfConflictingCellIds.add(new Integer(11));
-        this.listOfConflictingCellIds.add(new Integer(18));
+        this.listParams = new ArrayList<Object>(Arrays.asList("18"));
+        this.listOfConflictingCellIds = new ArrayList<Integer>(Arrays.asList(11, 18));
 
-        this.numericCell1 = new CellNumerical(new Integer(2),"1");
-        this.numericCell2 = new CellNumerical(new Integer(3),"2");
-        this.numericCell3 = new CellNumerical(new Integer(1),"3");
-        this.numericCell4 = new CellNumerical(new Integer(5),"4");
-
-        this.listCelds = new ArrayList<String>();
-        this.listCelds.add("1");
-        this.listCelds.add("2");
-        this.listCelds.add("3");
+        this.listCelds = new ArrayList<String>(Arrays.asList("1", "2", "3", "4"));
         this.listCelds.add("4");
 
-        this.listIdCelds = new ArrayList<Integer>();
-        this.listIdCelds.add(new Integer(1));
-        this.listIdCelds.add(new Integer(2));
-        this.listIdCelds.add(new Integer(3));
-        this.listIdCelds.add(new Integer(4));
+        this.listIdCelds = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4));
 
-        this.validRegion = new Region(listCelds,"15");
-        this.invalidRegion = new Region(listCelds,"8");
+        this.oneBoard.setCellById(new Integer(1), new CellNumerical(new Integer(2),"1"));
+        this.oneBoard.setCellById(new Integer(2), new CellNumerical(new Integer(3),"2"));
+        this.oneBoard.setCellById(new Integer(3), new CellNumerical(new Integer(1),"3"));
+        this.oneBoard.setCellById(new Integer(4),new CellNumerical(new Integer(5),"4"));
 
-        this.oneBoard.setCellById(new Integer(1),numericCell1);
-        this.oneBoard.setCellById(new Integer(2),numericCell2);
-        this.oneBoard.setCellById(new Integer(3),numericCell3);
-        this.oneBoard.setCellById(new Integer(4),numericCell4);
-
-        this.oneBoard.setRegion("1",this.validRegion);
-        this.oneBoard.setRegion("2",this.invalidRegion);
+        this.oneBoard.setRegion("1",new Region(listCelds,"15"));
+        this.oneBoard.setRegion("2",new Region(listCelds,"8"));
 
         this.otherRule = new RuleNoRepeatedValues(this.oneBoard,"1");
         this.oneMoreRule = new RuleNoRepeatedValues(this.oneBoard,"2");

@@ -1,4 +1,4 @@
-package ar.fiuba.tdd.tp1;
+package ar.fiuba.tdd.tp1.serialization;
 
 import ar.fiuba.tdd.tp1.model.Game;
 import ar.fiuba.tdd.tp1.serialization.xml.GameXml;

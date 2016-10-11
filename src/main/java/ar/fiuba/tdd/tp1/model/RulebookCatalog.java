@@ -1,8 +1,10 @@
 package ar.fiuba.tdd.tp1.model;
 
+import ar.fiuba.tdd.tp1.model.interfaces.Board;
 import ar.fiuba.tdd.tp1.model.interfaces.RulebookFactory;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +15,13 @@ public class RulebookCatalog implements RulebookFactory {
     // created with the constructor that only takes the Board as parameter.
     public RulebookCatalog(Map<String, Rule> rulesMapValue) {
         this.rulesCatalog = rulesMapValue;
+    }
+
+    public RulebookCatalog(Board board) {
+        this.rulesCatalog = new HashMap<String, Rule>();
+        add("RuleNoRepeatedValues", new RuleNoRepeatedValues(board));
+        add("RuleTotalSumEquals", new RuleTotalSumEquals(board));
+        add("RuleTotalProductEquals", new RuleTotalProductEquals(board));
     }
 
     public void add(String name, Rule rule) {

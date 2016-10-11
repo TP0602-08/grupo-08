@@ -6,6 +6,9 @@ import ar.fiuba.tdd.tp1.model.interfaces.VisitorOfCell;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+* Rule that checks that the sum of the inputs of a specific region matches the required sum total
+* */
 public class RuleTotalSumEquals extends Rule implements VisitorOfCell {
     private static final String name = "TotalSumEquals";
     private String regionId;
@@ -81,7 +84,7 @@ public class RuleTotalSumEquals extends Rule implements VisitorOfCell {
     @Override
     public RuleTotalSumEquals createNewInstance(List<Object> parametersList) {
         String newRegionId = (String) parametersList.get(0);
-        int newSum = (int) parametersList.get(1);
+        int newSum = Integer.parseInt(parametersList.get(1).toString());
         RuleTotalSumEquals newInstance = new RuleTotalSumEquals(this.board, newRegionId, newSum);
         return newInstance;
     }
