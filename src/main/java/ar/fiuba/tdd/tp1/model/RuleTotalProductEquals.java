@@ -6,6 +6,9 @@ import ar.fiuba.tdd.tp1.model.interfaces.VisitorOfCell;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+* Rule that checks that the product of the inputs of a specific region matches the required product total
+* */
 public class RuleTotalProductEquals extends Rule implements VisitorOfCell {
     private Integer visitingCellValue;
     private int product;
@@ -18,6 +21,13 @@ public class RuleTotalProductEquals extends Rule implements VisitorOfCell {
         this.regionId = regionIdValue;
         this.name = "TotalProductEquals";
         this.product = product;
+    }
+
+    public RuleTotalProductEquals(Board board) {
+        super(board);
+        this.regionId = null;
+        this.name = "TotalProductEquals";
+        this.product = 0;
     }
 
     @Override
@@ -61,7 +71,7 @@ public class RuleTotalProductEquals extends Rule implements VisitorOfCell {
 
     @Override
     public Rule createNewInstance(List<Object> parametersList) {
-        return new RuleTotalProductEquals(this.board, (String)parametersList.get(0), (int)parametersList.get(1));
+        return new RuleTotalProductEquals(this.board, (String)parametersList.get(0), Integer.parseInt(parametersList.get(1).toString()));
     }
 
     @Override

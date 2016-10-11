@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.IntBinaryOperator;
+import java.util.stream.Collectors;
 
 public class BoardRectangularWithRegions implements Board {
     private int rowQuantity;
@@ -20,7 +21,7 @@ public class BoardRectangularWithRegions implements Board {
 
     public BoardRectangularWithRegions(int rowQuantityValue, int columnQuantityValue) {
         this.rowQuantity = rowQuantityValue;
-        this.columnQuantity = rowQuantityValue;
+        this.columnQuantity = columnQuantityValue;
         this.cellsMap = new HashMap<Integer, Cell>(rowQuantityValue * rowQuantityValue);
         this.cellNamesMap = new HashMap<String, Integer>(rowQuantityValue * rowQuantityValue);
         this.regionsMap = new HashMap<String, Region>();

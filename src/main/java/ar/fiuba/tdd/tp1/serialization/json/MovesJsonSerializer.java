@@ -18,7 +18,7 @@ public class MovesJsonSerializer implements MovesSerializer {
 
     public MovesJsonSerializer(String path, BoardRectangularWithRegions board) throws IOException {
         Gson gson = new Gson();
-        this.movesJson = gson.fromJson(getJson(path), MovesJson.class);
+        this.movesJson = gson.fromJson(Json.getJsonString(path), MovesJson.class);
         this.board = board;
     }
 
@@ -34,10 +34,5 @@ public class MovesJsonSerializer implements MovesSerializer {
         Cell cell = MoveCellSerializer.deserializeCell(this.board, moveJson);
         Move move = new Move(this.board.computeCellId(moveJson.getPosition()[0] - 1, moveJson.getPosition()[1] - 1), cell);
         return move;
-    }
-
-    private String getJson(String path) throws IOException {
-        byte[] encoded = Files.readAllBytes(Paths.get(path));
-        return new String(encoded, StandardCharsets.UTF_8);
     }
 }
