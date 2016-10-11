@@ -71,7 +71,6 @@ public class RuleNoRepeatedValuesTest {
         this.listIdCelds.add(new Integer(3));
         this.listIdCelds.add(new Integer(4));
 
-
         this.validRegion = new Region(listCelds,"15");
         this.invalidRegion = new Region(listCelds,"8");
 
