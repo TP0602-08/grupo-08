@@ -21,7 +21,7 @@ public class RuleTotalProductEqualsTest {
     private List<Object> listParams;
     private Move moving;
     private List<Integer> listOfConflictingCellIds;
-    private List<String>listCelds;
+    private List<String> listCelds;
     private CellNumerical numericCell;
 
     @Before
@@ -48,7 +48,7 @@ public class RuleTotalProductEqualsTest {
 
     @Test
     public void getName() throws Exception {
-     assertEquals("TotalProductEquals",oneRule.getName());
+        assertEquals("TotalProductEquals",oneRule.getName());
     }
 
     @Test
@@ -66,10 +66,11 @@ public class RuleTotalProductEqualsTest {
         this.oneRule.validate(this.moving);
         assertEquals(false,moving.getListOfViolationsOfRules().isEmpty());
     }
+
     @Test
     public void createNewInstance() throws Exception {
         Rule secondRule = this.oneRule.createNewInstance(this.listParams);
-       assertTrue(secondRule instanceof RuleTotalProductEquals);
+        assertTrue(secondRule instanceof RuleTotalProductEquals);
     }
 
     @Test

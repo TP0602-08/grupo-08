@@ -194,6 +194,8 @@ public class SudokuTest {
                 new Move(81, new CellNumerical(5, "81"))
         ));
 
+        game.setMoves(moves);
+        game.process();
         for (MoveHistory move : game.getMoveHistory()) {
             assertTrue(move.wasValid());
         }

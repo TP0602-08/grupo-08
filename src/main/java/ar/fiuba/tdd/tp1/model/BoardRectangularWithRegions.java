@@ -40,11 +40,7 @@ public class BoardRectangularWithRegions implements Board {
     @Override
     public List<Integer> getCellIdsListFromRegionId(String regionId) {
         Region region = regionsMap.get(regionId);
-        List<String> listOfCellNames = region.getCellNamesList();
-        List<Integer> listOfCellIds = new ArrayList<Integer>();
-        for (String cellName : listOfCellNames) {
-            listOfCellIds.add(cellNamesMap.get(cellName));
-        }
+        List<Integer> listOfCellIds = region.getCellNamesList().stream().map(Integer::parseInt).collect(Collectors.toList());
         return listOfCellIds;
     }
 
