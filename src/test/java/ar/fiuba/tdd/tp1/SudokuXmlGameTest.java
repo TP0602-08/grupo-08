@@ -1,5 +1,6 @@
-package ar.fiuba.tdd.tp1.model;
+package ar.fiuba.tdd.tp1;
 
+import ar.fiuba.tdd.tp1.model.*;
 import ar.fiuba.tdd.tp1.serialization.xml.GameXmlSerializer;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,7 +9,7 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class SudokuGameTest {
+public class SudokuXmlGameTest {
     private static final String GAMEXML = "src/main/resources/sudoku.xml";
     private static Game game;
 
