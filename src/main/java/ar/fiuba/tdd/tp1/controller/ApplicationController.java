@@ -2,6 +2,7 @@ package ar.fiuba.tdd.tp1.controller;
 
 
 import ar.fiuba.tdd.tp1.model.Game;
+import ar.fiuba.tdd.tp1.serialization.json.GameJsonSerializer;
 import ar.fiuba.tdd.tp1.serialization.xml.GameXmlSerializer;
 import ar.fiuba.tdd.tp1.view.ApplicationView;
 import ar.fiuba.tdd.tp1.view.ConfigFileErrorWindow;
@@ -9,6 +10,7 @@ import ar.fiuba.tdd.tp1.view.GameWindow;
 import ar.fiuba.tdd.tp1.view.InvalidGameWindow;
 
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 import javax.swing.event.MouseInputAdapter;
 import javax.xml.bind.JAXBException;
 
@@ -16,11 +18,11 @@ import static javax.swing.SwingUtilities.isLeftMouseButton;
 
 public class ApplicationController extends MouseInputAdapter {
 
-    private static String sudokuXMLPath = "src\\main\\resources\\sudoku.xml";
-    private static String kakuroXMLPath = "src\\main\\resources\\kakuro.xml";
+    private static String sudokuJsonPath = "src\\main\\resources\\sudoku.json";
+    private static String kakuroJsonPath = "src\\main\\resources\\kakuro.json";
 
     private Game game;
-    private GameXmlSerializer gameXmlSerializer;
+    private GameJsonSerializer gameJsonSerializer;
     private ApplicationView applicationView;
 
     public void setView(ApplicationView applicationView) {
@@ -38,8 +40,12 @@ public class ApplicationController extends MouseInputAdapter {
         if (isLeftMouseButton(mouseEvent)) {
             gameName = this.applicationView.getTextField();
             if (validGameName(gameName.toLowerCase())) {
-                gameXmlSerializer = getXMlSerializer(gameName);
-                initGame(gameName, gameXmlSerializer);
+                try {
+                    gameJsonSerializer = getGameJsonSerializer(gameName);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                initGame(gameName, gameJsonSerializer);
             } else {
                 new InvalidGameWindow();
             }
@@ -50,26 +56,20 @@ public class ApplicationController extends MouseInputAdapter {
         return gameName.equals("sudoku") || gameName.equals("kakuro");
     }
 
-    private GameXmlSerializer getXMlSerializer(String gameName) {
+    private GameJsonSerializer getGameJsonSerializer(String gameName) throws IOException {
         if (gameName.equalsIgnoreCase("sudoku")) {
-            return new GameXmlSerializer(sudokuXMLPath);
+            return new GameJsonSerializer(sudokuJsonPath);
         } else {
-            return new GameXmlSerializer(kakuroXMLPath);
+            return new GameJsonSerializer(kakuroJsonPath);
         }
     }
 
-    private void initGame(String gameName, GameXmlSerializer gameXmlSerializer) {
-        try {
-            game = gameXmlSerializer.deserialize();
-            this.applicationView.dispose();
-            runGame(gameName, game);
-        } catch (JAXBException e) {
-            new ConfigFileErrorWindow(gameName.toLowerCase());
-        }
+    private void initGame(String gameName, GameJsonSerializer gameJsonSerializer) {
+        this.applicationView.dispose();
+        game = gameJsonSerializer.deserialize();
+        GameController gameController = new GameController(gameName,game);
+        gameController.run();
     }
 
-    private void runGame(String gameName, Game game) {
-        GameWindow gameWindow = new GameWindow(gameName, game);
-        gameWindow.showGameWindow();
-    }
+
 }

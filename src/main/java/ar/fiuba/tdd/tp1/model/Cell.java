@@ -4,7 +4,7 @@ import ar.fiuba.tdd.tp1.model.interfaces.VisitorOfCell;
 
 import java.util.Observable;
 
-public abstract class Cell extends Observable {
+public abstract class Cell {
     public boolean editable;
     public boolean empty;
     protected String name;

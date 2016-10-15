@@ -1,10 +1,13 @@
 package ar.fiuba.tdd.tp1.view;
 
 import ar.fiuba.tdd.tp1.controller.DeleteButtonController;
-import ar.fiuba.tdd.tp1.controller.GameButtonController;
-import ar.fiuba.tdd.tp1.model.Cell;
+import ar.fiuba.tdd.tp1.controller.InputButtonController;
+import ar.fiuba.tdd.tp1.controller.UserInputHandler;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
 import javax.swing.*;
 
 public class GameInputView extends JDialog {
@@ -16,10 +19,14 @@ public class GameInputView extends JDialog {
         this.setLayout(new FlowLayout());
     }
 
-    public void generateInputButtons() {
-        for (int i = 1; i < 10 ; i++) {
-            this.add(new InputGameButton(Integer.toString(i), new GameButtonController()));
+    public void generateInputButtons(int cellId, List<Integer> validInputs, UserInputHandler userInputHandler) {
+
+        for (Integer validInput : validInputs) {
+            this.add(new InputGameButton(validInput.toString(),new InputButtonController(cellId,userInputHandler,this)));
         }
-        this.add(new InputDeleteButton("Delete", new DeleteButtonController()));
+
+        this.add(new InputDeleteButton("Delete", new DeleteButtonController(cellId,userInputHandler,this)));
     }
+
+
 }

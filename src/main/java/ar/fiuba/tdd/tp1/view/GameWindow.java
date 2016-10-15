@@ -1,52 +1,54 @@
 package ar.fiuba.tdd.tp1.view;
 
-import ar.fiuba.tdd.tp1.model.Game;
+import ar.fiuba.tdd.tp1.controller.UserInputHandler;
+import ar.fiuba.tdd.tp1.model.CellInfo;
 
 import java.awt.*;
+import java.util.List;
 import javax.swing.*;
 
 
 public class GameWindow extends JFrame {
 
     private GameGUI gameGUI;
-    private GameButtonWindow gameButtonWindow;
+    private MoveInformationField moveInformationField;
     private String gameName;
-    private Game gameModel;
 
-    public GameWindow(String gameName, Game gameModel) {
+    public GameWindow(String gameName)  {
         super(gameName);
         this.gameName = gameName;
-        this.gameModel = gameModel;
         this.setLayout(new FlowLayout());
-        JMenuBar menuBar = new JMenuBar();
-        JMenu menuBarFile = new JMenu("File");
-        menuBar.add(menuBarFile);
         this.setSize(800,600);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        this.setJMenuBar(menuBar);
-        this.createGUI(this.gameName);
     }
 
     public void showGameWindow() {
         this.setVisible(true);
     }
 
-    private void createGUI(String gameName) {
-        if (gameName.equalsIgnoreCase("Sudoku")) {
-            this.gameGUI = new SudokuGUI(this.gameModel);
-            //regions hardcoding temporal
-            gameGUI.drawGUI(this.gameModel.getNumberOfRows(),this.gameModel.getNumberOfColumns(),this.gameModel.getNumberOfColumns());
-            this.gameButtonWindow = new GameButtonWindow();
-            this.add(this.gameGUI);
-            this.add(this.gameButtonWindow);
+    public void createGUI(int numberOfRows, int numberOfColumns, List<Integer> validInputs, List<CellInfo> cellInfoList, UserInputHandler
+            userInputHandler) {
+        if (this.gameName.equalsIgnoreCase("Sudoku")) {
+            this.gameGUI = new SudokuGUI(numberOfRows,numberOfColumns,validInputs,cellInfoList,userInputHandler);
         }
 
-        if (gameName.equalsIgnoreCase("Kakuro")) {
-            this.gameGUI = new KakuroGUI(this.gameModel);
-            gameGUI.drawGUI(this.gameModel.getNumberOfRows(),this.gameModel.getNumberOfColumns(),1);
-            this.gameButtonWindow = new GameButtonWindow();
-            this.add(this.gameGUI);
-            this.add(this.gameButtonWindow);
+        if (this.gameName.equalsIgnoreCase("Kakuro")) {
+            this.gameGUI = new KakuroGUI(numberOfRows,numberOfColumns,validInputs,cellInfoList,userInputHandler);
         }
+
+        gameGUI.drawGUI();
+        this.moveInformationField = new MoveInformationField();
+        this.add(this.gameGUI);
+        this.add(this.moveInformationField);
     }
+
+    public void updateViewValue(int cellId, int value) {
+        this.gameGUI.updateCell(cellId,value);
+    }
+
+    public void updateMoveInfoField(String info) {
+        this.moveInformationField.setText(info);
+    }
+
+
 }

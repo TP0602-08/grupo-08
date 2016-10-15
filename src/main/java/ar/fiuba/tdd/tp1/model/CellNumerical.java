@@ -29,10 +29,7 @@ public class CellNumerical extends Cell {
     }
 
     public void setDatum(Integer datumValue) {
-
         this.datum = datumValue;
         this.empty = (datumValue == 0);
-        setChanged();
-        notifyObservers(datumValue);
     }
 }

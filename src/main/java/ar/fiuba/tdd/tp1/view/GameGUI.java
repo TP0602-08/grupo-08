@@ -1,15 +1,27 @@
 package ar.fiuba.tdd.tp1.view;
 
 
+import ar.fiuba.tdd.tp1.controller.UserInputHandler;
+import ar.fiuba.tdd.tp1.model.Game;
+
 import java.awt.*;
+import java.util.List;
 import javax.swing.*;
 
-public abstract class GameGUI extends JPanel {
+abstract class GameGUI extends JPanel {
 
-    public abstract void drawGUI(int rows, int columns, int subRegions);
+    protected Game gameModel;
+    protected int numberOfRows;
+    protected int numberOfColumns;
+    protected List<Integer> validInputs;
+    protected UserInputHandler userInputHandle;
+
+
+    public abstract void drawGUI();
 
     protected void drawBorder() {
         this.setBorder(BorderFactory.createLineBorder(Color.black, 5));
     }
 
+    public abstract void updateCell(int cellId, int value);
 }

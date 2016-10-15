@@ -8,12 +8,12 @@ import java.awt.*;
 import java.util.*;
 import javax.swing.*;
 
-public class SubRegion extends JPanel {
+public class SudokuSubRegion extends JPanel {
 
     private String regionId;
     private java.util.List<Integer> cellIdsList;
 
-    public SubRegion(int regionNumber, Game gameModel) {
+    public SudokuSubRegion(int regionNumber, Game gameModel) {
         super();
         this.regionId = "r" + Integer.toString(regionNumber);
         this.cellIdsList = gameModel.getCellsIdInRegion(regionId);
@@ -21,7 +21,7 @@ public class SubRegion extends JPanel {
         boolean editable;
         for (Integer cellId : cellIdsList) {
             Cell cell = gameModel.getCell(cellId);
-            this.add(new SudokuCellView(cell));
+            //this.add(new SudokuCellView(cell));
         }
         this.setBorder(BorderFactory.createLineBorder(Color.GRAY));
     }

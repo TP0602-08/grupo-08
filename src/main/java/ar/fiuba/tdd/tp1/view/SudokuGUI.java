@@ -1,27 +1,40 @@
 package ar.fiuba.tdd.tp1.view;
 
-import ar.fiuba.tdd.tp1.Main;
+import ar.fiuba.tdd.tp1.controller.UserInputHandler;
+import ar.fiuba.tdd.tp1.model.Cell;
+import ar.fiuba.tdd.tp1.model.CellInfo;
 import ar.fiuba.tdd.tp1.model.Game;
 
 import java.awt.*;
+import java.util.*;
+import java.util.List;
 
 public class SudokuGUI extends GameGUI {
 
-    private Game gameModel;
+    private int subRegions;
+    private List<CellInfo> cellInfoList;
 
-    public SudokuGUI(Game gameModel) {
+    public SudokuGUI(int numberOfRows, int numberOfColumns, List<Integer> validInputs, List<CellInfo> cellInfoList, UserInputHandler
+            userInputHandler) {
         super();
-        this.gameModel = gameModel;
+        this.cellInfoList = cellInfoList;
+        this.numberOfRows = numberOfRows;
+        this.numberOfColumns = numberOfColumns;
+        this.subRegions = numberOfColumns;
+        this.validInputs = validInputs;
         this.drawBorder();
     }
 
-    public void drawGUI(int rows, int columns, int subRegions) {
-        int subGridColumns = (int) Math.sqrt(subRegions);
-        this.setLayout(new GridLayout(0,subGridColumns));
-        for (int regionNumber = 1; regionNumber < subRegions + 1 ; regionNumber++) {
-            this.add(new SubRegion(regionNumber, this.gameModel));
+    public void drawGUI() {
+        //int subGridColumns = (int) Math.sqrt(subRegions);
+        this.setLayout(new GridLayout(0,9));
+        for (CellInfo cellInfo : this.cellInfoList) {
+            this.add(new SudokuCellView(cellInfo));
         }
+    }
 
+    @Override
+    public void updateCell(int cellId, int value) {
 
     }
 

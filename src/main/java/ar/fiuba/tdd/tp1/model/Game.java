@@ -73,12 +73,12 @@ public class Game {
     public BoardReport getBoardReport() {
         boolean status = this.moveHistory.get(this.moveHistory.size() - 1).wasValid();
 
-        Map<Integer,Integer> boardValuesMap = this.board.getBoardValues();
+        Map<Integer, Integer> boardValuesMap = this.board.getBoardValues();
         List<BoardValue> boardValuesList = new LinkedList<>();
-        for ( Map.Entry<Integer,Integer> entry: boardValuesMap.entrySet()) {
-            boardValuesList.add(new BoardValue(entry.getKey(), board.getColumnQuantity(),entry.getValue()));
+        for (Map.Entry<Integer, Integer> entry : boardValuesMap.entrySet()) {
+            boardValuesList.add(new BoardValue(entry.getKey(), board.getColumnQuantity(), entry.getValue()));
         }
-        return new BoardReport(status,boardValuesList);
+        return new BoardReport(status, boardValuesList);
     }
 
     public Board getBoard() {
@@ -95,5 +95,18 @@ public class Game {
 
     public Rulebook getRulebook() {
         return this.rulebook;
+    }
+
+    public List<CellInfo> getCellsInfo() {
+        List<CellInfo> cellInfoList = new LinkedList<>();
+        String value;
+        boolean editable;
+
+        for (int cellId = 1; cellId <= board.getNumberOfCells(); cellId++) {
+            value = board.getCellFromCellId(cellId).datumToString();
+            editable = board.getCellFromCellId(cellId).isEmpty();
+            cellInfoList.add(new CellInfo(cellId, value, editable));
+        }
+        return cellInfoList;
     }
 }

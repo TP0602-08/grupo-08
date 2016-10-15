@@ -20,5 +20,7 @@ public interface Board {
 
     int getColumnQuantity();
 
+    int getNumberOfCells();
+
     Map<Integer,Integer> getBoardValues();
 }

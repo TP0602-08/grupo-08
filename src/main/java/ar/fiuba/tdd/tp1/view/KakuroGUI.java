@@ -1,43 +1,39 @@
 package ar.fiuba.tdd.tp1.view;
 
-import ar.fiuba.tdd.tp1.model.Game;
+import ar.fiuba.tdd.tp1.controller.UserInputHandler;
+import ar.fiuba.tdd.tp1.model.CellInfo;
 
 import java.awt.*;
+import java.util.List;
 
-public class KakuroGUI extends GameGUI {
+class KakuroGUI extends GameGUI {
 
-    private Game gameModel;
+    private List<CellInfo> cellInfoList;
 
-    public KakuroGUI(Game gameModel) {
-        super();
+    KakuroGUI(int numberOfRows, int numberOfColumns, List<Integer> validInputs, List<CellInfo> cellInfoList, UserInputHandler
+            userInputHandler) {
+        this.cellInfoList = cellInfoList;
+        this.numberOfRows = numberOfRows;
+        this.numberOfColumns = numberOfColumns;
+        this.validInputs = validInputs;
+        this.userInputHandle = userInputHandler;
         this.drawBorder();
-        this.gameModel = gameModel;
     }
 
-    public void drawGUI(int rows, int columns, int subRegions) {
-        this.setLayout(new GridLayout(0, columns));
-        this.fillBoard();
+    @Override
+    public void drawGUI() {
+        this.setLayout(new GridLayout(0,this.numberOfColumns));
+        for (CellInfo cellInfo : this.cellInfoList) {
+            this.add(new KakuroCellView(cellInfo,validInputs,userInputHandle));
+        }
     }
 
-    private void fillBoard() {
-        this.add(new KakuroCellView(gameModel.getCell(1).datumToString(), false));
-        this.add(new KakuroCellView("1\\", false));
-        this.add(new KakuroCellView("2\\", false));
-        this.add(new KakuroCellView("2\\3", false));
-        this.add(new KakuroCellView("", true));
-        this.add(new KakuroCellView("", true));
-        this.add(new KakuroCellView("", true));
-        this.add(new KakuroCellView("5\\7", false));
-        this.add(new KakuroCellView("", true));
-        this.add(new KakuroCellView("\\7", false));
-        this.add(new KakuroCellView("", true));
-        this.add(new KakuroCellView("", true));
-        this.add(new KakuroCellView("", true));
-        this.add(new KakuroCellView("4\\8", false));
-        this.add(new KakuroCellView("", true));
-
-
+    @Override
+    public void updateCell(int cellId, int value) {
+        Component cell = this.getComponent(cellId - 1);
+        ((KakuroCellView) cell).changeDisplayValue(value);
     }
+
 
 }
 
