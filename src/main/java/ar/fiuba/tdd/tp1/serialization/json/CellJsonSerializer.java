@@ -14,9 +14,9 @@ public class CellJsonSerializer implements CellSerializer {
 
     public Cell deserialize() {
         if (this.cellJson.isNumeric()) {
-            return new CellNumerical(Integer.valueOf(this.cellJson.getValue()), this.cellJson.getId());
+            return new CellNumerical(Integer.valueOf(this.cellJson.getValue()), this.cellJson.getId(), this.cellJson.isEditable());
         } else {
-            return new CellAlphabetical(this.cellJson.getValue(), this.cellJson.getId());
+            return new CellAlphabetical(this.cellJson.getValue(), this.cellJson.getId(), this.cellJson.isEditable());
         }
     }
 }

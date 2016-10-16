@@ -23,4 +23,8 @@ class SudokuCellView extends JButton implements Observer {
     public void update(Observable cell, Object datum) {
         this.setText(datum.toString());
     }
+
+    public void changeDisplayValue(int value) {
+
+    }
 }
