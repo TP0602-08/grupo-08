@@ -16,7 +16,7 @@ class KakuroGUI extends GameGUI {
         this.numberOfRows = numberOfRows;
         this.numberOfColumns = numberOfColumns;
         this.validInputs = validInputs;
-        this.userInputHandle = userInputHandler;
+        this.userInputHandler = userInputHandler;
         this.drawBorder();
     }
 
@@ -24,7 +24,7 @@ class KakuroGUI extends GameGUI {
     public void drawGUI() {
         this.setLayout(new GridLayout(0,this.numberOfColumns));
         for (CellInfo cellInfo : this.cellInfoList) {
-            this.add(new KakuroCellView(cellInfo,validInputs,userInputHandle));
+            this.add(new KakuroCellView(cellInfo,validInputs,userInputHandler));
         }
     }
 

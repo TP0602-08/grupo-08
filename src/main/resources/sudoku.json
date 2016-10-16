@@ -107,7 +107,7 @@
         {
             "type": "RuleNoRepeatedValues",
             "region": "r27"
-        },
+        }
     ],
     "board": {
         "rows": 9,
@@ -229,7 +229,7 @@
             },
             {
                 "position": [2,1],
-                "value": "4",
+                "value": "7",
                 "editable": false,
                 "id": 20 
             },

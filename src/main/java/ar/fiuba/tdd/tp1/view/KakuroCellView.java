@@ -11,8 +11,6 @@ import javax.swing.*;
 
 public class KakuroCellView extends JButton{
 
-
-
     public KakuroCellView(CellInfo cell, List<Integer> validInputs, UserInputHandler userInputHandler) {
         super();
         if (cell.isEditable()) {

@@ -14,7 +14,7 @@ abstract class GameGUI extends JPanel {
     protected int numberOfRows;
     protected int numberOfColumns;
     protected List<Integer> validInputs;
-    protected UserInputHandler userInputHandle;
+    protected UserInputHandler userInputHandler;
 
 
     public abstract void drawGUI();
