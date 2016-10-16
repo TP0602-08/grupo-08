@@ -21,6 +21,7 @@ public class RuleTotalProductEquals extends Rule implements VisitorOfCell {
         this.regionId = regionIdValue;
         this.name = "TotalProductEquals";
         this.product = product;
+        this.valid = false;
     }
 
     public RuleTotalProductEquals(Board board) {
@@ -28,6 +29,7 @@ public class RuleTotalProductEquals extends Rule implements VisitorOfCell {
         this.regionId = null;
         this.name = "TotalProductEquals";
         this.product = 0;
+        this.valid = false;
     }
 
     @Override
@@ -66,6 +68,9 @@ public class RuleTotalProductEquals extends Rule implements VisitorOfCell {
             List<Integer> conflictingCellIds = new ArrayList<Integer>(cellIds);
             conflictingCellIds.remove(move.getcellId());
             move.addViolationOfRule(new ViolationOfRule("El producto no es igual a " + product + ".", conflictingCellIds));
+            this.valid = false;
+        } else {
+            this.valid = true;
         }
     }
 

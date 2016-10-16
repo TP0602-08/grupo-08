@@ -101,6 +101,7 @@
             "value": "3"
         }
     ],
+    "endGameCondition": "EndGameAllCellsFilled",
     "board": {
         "rows": 5,
         "columns": 5,

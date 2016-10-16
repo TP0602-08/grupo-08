@@ -22,6 +22,7 @@ public class RuleTotalSumEquals extends Rule implements VisitorOfCell {
         super(boardValue);
         this.regionId = null;
         this.sum = 0;
+        this.valid = false;
     }
 
     //Regular constructor.
@@ -29,6 +30,7 @@ public class RuleTotalSumEquals extends Rule implements VisitorOfCell {
         super(boardValue);
         this.regionId = regionIdValue;
         this.sum = sumValue;
+        this.valid = false;
     }
 
     //Constructor with list of Objects as parameters.
@@ -37,6 +39,7 @@ public class RuleTotalSumEquals extends Rule implements VisitorOfCell {
         super(boardValue);
         this.regionId = (String) parametersList.get(0);
         this.sum = (int) parametersList.get(1);
+        this.valid = false;
     }
 
     @Override
@@ -78,6 +81,9 @@ public class RuleTotalSumEquals extends Rule implements VisitorOfCell {
             listOfConflictingCellIds.remove(newCellId);
             ViolationOfRule violationOfRule = new ViolationOfRule("La suma no es igual a " + sum + ".", listOfConflictingCellIds);
             move.addViolationOfRule(violationOfRule);
+            this.valid = false;
+        } else {
+            this.valid = true;
         }
     }
 

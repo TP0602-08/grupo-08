@@ -6,6 +6,7 @@ import java.util.List;
 
 public abstract class Rule {
     protected Board board;
+    protected Boolean valid;
 
     //This constructor with is for creating an instance that'll act as a prototype for creating new instances with method
     // "createNewInstance".
@@ -18,4 +19,8 @@ public abstract class Rule {
     public abstract boolean validate(Move move);
 
     public abstract Rule createNewInstance(List<Object> parametersList);
+
+    public Boolean isValid() {
+        return this.valid;
+    }
 }

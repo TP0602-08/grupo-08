@@ -2,10 +2,7 @@ package ar.fiuba.tdd.tp1.model;
 
 import ar.fiuba.tdd.tp1.model.interfaces.Board;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.IntBinaryOperator;
 import java.util.stream.Collectors;
 
@@ -162,6 +159,10 @@ public class BoardRectangularWithRegions implements Board {
             }
         }
         return mapValues;
+    }
+
+    public List<Cell> getCells() {
+        return cellsMap.values().stream().collect(Collectors.toList());
     }
 
     //Completes the board with all non editable cells (which don't appear in the XML file) and sets the state of the cells which start

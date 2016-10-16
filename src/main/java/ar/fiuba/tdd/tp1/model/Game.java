@@ -1,6 +1,7 @@
 package ar.fiuba.tdd.tp1.model;
 
 import ar.fiuba.tdd.tp1.model.interfaces.Board;
+import ar.fiuba.tdd.tp1.model.interfaces.EndGameCondition;
 import ar.fiuba.tdd.tp1.view.InputGameButton;
 
 import java.util.*;
@@ -10,11 +11,19 @@ public class Game {
     private Board board;
     private List<Move> moves;
     private List<MoveHistory> moveHistory = new ArrayList<>();
+    private EndGameCondition endGameCondition;
 
     //Both the Rulebook and the Board must be already initialized.
     public Game(Rulebook rulebookValue, Board boardValue) {
         this.rulebook = rulebookValue;
         this.board = boardValue;
+        this.endGameCondition = new EndGameAllCellsFilled(); // by default, let's consider the condition that all cells are filled
+    }
+
+    public Game(Rulebook rulebookValue, Board boardValue, EndGameCondition endGameCondition) {
+        this.rulebook = rulebookValue;
+        this.board = boardValue;
+        this.endGameCondition = endGameCondition;
     }
 
     //Receives a new user move and checks if it is valid. If it is valid, then it applies it to the board
@@ -108,5 +117,13 @@ public class Game {
             cellInfoList.add(new CellInfo(cellId, value, editable));
         }
         return cellInfoList;
+    }
+
+    public Boolean isGameWon() {
+        Boolean rulesValid = true;
+        for (Rule rule : this.rulebook.getRulesList()) {
+            rulesValid = rulesValid && rule.isValid();
+        }
+        return rulesValid && this.endGameCondition.validate((BoardRectangularWithRegions)this.board);
     }
 }

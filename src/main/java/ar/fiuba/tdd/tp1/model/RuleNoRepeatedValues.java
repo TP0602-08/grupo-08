@@ -17,6 +17,7 @@ public class RuleNoRepeatedValues extends Rule implements VisitorOfCell {
         super(boardValue);
         this.regionId = null;
         visitingCellValue = null;
+        this.valid = false;
     }
 
     //Regular constructor.
@@ -24,6 +25,7 @@ public class RuleNoRepeatedValues extends Rule implements VisitorOfCell {
         super(boardValue);
         this.regionId = regionIdValue;
         visitingCellValue = null;
+        this.valid = false;
     }
 
     //Constructor with list of Objects as parameters.
@@ -32,6 +34,7 @@ public class RuleNoRepeatedValues extends Rule implements VisitorOfCell {
         super(boardValue);
         this.regionId = (String) parametersList.get(0);
         visitingCellValue = null;
+        this.valid = false;
     }
 
     @Override
@@ -63,9 +66,12 @@ public class RuleNoRepeatedValues extends Rule implements VisitorOfCell {
     }
 
     private void finalizeValidate(List<Integer> listOfConflictingCellIds, Move move) {
-        if (listOfConflictingCellIds.isEmpty() == false) {
+        if (!listOfConflictingCellIds.isEmpty()) {
             ViolationOfRule violationOfRule = new ViolationOfRule("Valor repetido.", listOfConflictingCellIds);
             move.addViolationOfRule(violationOfRule);
+            this.valid = false;
+        } else {
+            this.valid = true;
         }
     }
 
