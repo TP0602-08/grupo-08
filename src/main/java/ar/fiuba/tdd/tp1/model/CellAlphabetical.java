@@ -12,6 +12,13 @@ public class CellAlphabetical extends Cell {
         this.empty = (datumValue == null);
     }
 
+    public CellAlphabetical(String datumValue, String nameValue, Boolean isEditable) {
+        this.name = nameValue;
+        this.datum = datumValue;
+        this.editable = isEditable;
+        this.empty = (datumValue == null);
+    }
+
     public void setDatum(String datumValue) {
         this.datum = datumValue;
     }

@@ -12,6 +12,13 @@ public class CellNumerical extends Cell {
         this.empty = (datumValue == 0);
     }
 
+    public CellNumerical(Integer datumValue, String nameValue, Boolean isEditable) {
+        this.datum = datumValue;
+        this.name = nameValue;
+        this.editable = isEditable;
+        this.empty = (datumValue == 0);
+    }
+
     public Integer getDatum() {
         return this.datum;
     }
