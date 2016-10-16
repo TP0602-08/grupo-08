@@ -49,7 +49,7 @@ public class GameController implements Observer {
         this.game.process(newMove);
         if (newMove.isValid()) {
             this.gameWindow.updateViewValue(cellId,cellValue);
-            moveInfo = "valid move";
+            moveInfo = "Movimiento válido";
         } else {
             moveInfo = newMove.getListOfViolationsOfRules().get(0).getExplanation();
         }

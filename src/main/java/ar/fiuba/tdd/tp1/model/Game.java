@@ -113,7 +113,7 @@ public class Game {
 
         for (int cellId = 1; cellId <= board.getNumberOfCells(); cellId++) {
             value = board.getCellFromCellId(cellId).datumToString();
-            editable = board.getCellFromCellId(cellId).isEmpty();
+            editable = board.getCellFromCellId(cellId).editable;
             cellInfoList.add(new CellInfo(cellId, value, editable));
         }
         return cellInfoList;

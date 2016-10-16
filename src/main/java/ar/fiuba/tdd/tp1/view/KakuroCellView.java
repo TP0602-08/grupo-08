@@ -21,7 +21,9 @@ public class KakuroCellView extends JButton{
             this.addMouseListener(cellController);
         } else {
             this.setBackground(Color.BLACK);
-            this.setText(cell.getValue());
+            if (!cell.getValue().equals("0")) {
+                this.setText(cell.getValue());
+            }
             this.setEnabled(false);
         }
     }

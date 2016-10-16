@@ -20,7 +20,7 @@ abstract class GameGUI extends JPanel {
     public abstract void drawGUI();
 
     protected void drawBorder() {
-        this.setBorder(BorderFactory.createLineBorder(Color.black, 5));
+        this.setBorder(BorderFactory.createLineBorder(Color.black, 3));
     }
 
     public abstract void updateCell(int cellId, int value);
