@@ -6,6 +6,7 @@ import ar.fiuba.tdd.tp1.model.Game;
 import ar.fiuba.tdd.tp1.model.Rulebook;
 import ar.fiuba.tdd.tp1.model.RulebookCatalog;
 import ar.fiuba.tdd.tp1.model.interfaces.Board;
+import ar.fiuba.tdd.tp1.model.interfaces.EndGameCondition;
 import ar.fiuba.tdd.tp1.serialization.interfaces.GameSerializer;
 
 import java.io.IOException;
@@ -25,6 +26,7 @@ public class GameJsonSerializer implements GameSerializer {
     public Game deserialize() {
         Board board = new BoardJsonSerializer(this.gameJson.getBoard()).deserialize();
         Rulebook rulebook = new RulebookJsonSerializer(this.gameJson.getRulebook(), new RulebookCatalog(board)).deserialize();
-        return new Game(rulebook, board);
+        EndGameCondition endGameCondition = new EndGameConditionJsonSerializer(this.gameJson.getEndGameCondition()).deserialize();
+        return new Game(rulebook, board, endGameCondition);
     }
 }

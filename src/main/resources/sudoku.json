@@ -109,6 +109,7 @@
             "region": "r27"
         },
     ],
+    "endGameCondition": "EndGameAllCellsFilled",
     "board": {
         "rows": 9,
         "columns": 9,
