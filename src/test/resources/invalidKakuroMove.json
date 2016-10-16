@@ -1,0 +1,14 @@
+{
+    "plays": [
+        {
+            "number": 1,
+            "position": [2, 3],
+            "value": "2"
+        },
+        {
+            "number": 2,
+            "position": [2, 4],
+            "value": "2"
+        }
+    ]
+}

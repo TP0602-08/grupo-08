@@ -1,10 +1,8 @@
 package ar.fiuba.tdd.tp1;
 
-import ar.fiuba.tdd.tp1.model.CellNumerical;
-import ar.fiuba.tdd.tp1.model.Game;
-import ar.fiuba.tdd.tp1.model.Move;
-import ar.fiuba.tdd.tp1.model.MoveHistory;
+import ar.fiuba.tdd.tp1.model.*;
 import ar.fiuba.tdd.tp1.serialization.json.GameJsonSerializer;
+import ar.fiuba.tdd.tp1.serialization.json.GameReportJsonSerializer;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,6 +18,10 @@ import static org.junit.Assert.assertTrue;
 public class SudokuTest {
     private static final String SUDOKUJSON = "src/main/resources/sudoku.json";
     private static final String VALORREPETIDO = "Valor repetido.";
+    private static final String INVALIDPLAYJSON = "src/test/resources/invalidSudokuPlay.json";
+    private static final String VALIDPLAYJSON = "src/test/resources/validSudokuPlay.json";
+    private static final String SUDOKUOUTPUTJSON = "src/test/resources/sudokuOutput.json";
+    private static final String WINGAMESUDOKU = "src/test/resources/winGameSudoku.json";
 
     private static Game game;
     private static List<Move> moves = new ArrayList<>(Arrays.asList(
@@ -212,6 +214,34 @@ public class SudokuTest {
     public void gameIsWonAfterEnteringAllValidMoves() {
         game.setMoves(moves);
         game.process();
+        List<MoveHistory> moveHistory = game.getMoveHistory();
+        GameReportJsonSerializer gameReport = new GameReportJsonSerializer(new GameReport(moveHistory), game.getBoardReport());
+        gameReport.serialize(SUDOKUOUTPUTJSON);
         assertTrue(game.isGameWon());
     }
+
+    @Test
+    public void invalidPlayFromFileCausesInvalidMove() throws IOException {
+        game = new GameJsonSerializer(SUDOKUJSON, INVALIDPLAYJSON).deserialize();
+        game.process();
+        assertFalse(game.getMoveHistory().get(0).wasValid());
+    }
+
+    @Test
+    public void validPlayFromFileCausesValidMove() throws IOException {
+        game = new GameJsonSerializer(SUDOKUJSON, VALIDPLAYJSON).deserialize();
+        game.process();
+        assertTrue(game.getMoveHistory().get(0).wasValid());
+    }
+
+    @Test
+    public void allValidPlaysFromFileCausesValidMovesAndGameWon() throws IOException {
+        game = new GameJsonSerializer(SUDOKUJSON, WINGAMESUDOKU).deserialize();
+        game.process();
+        for (MoveHistory move : game.getMoveHistory()) {
+            assertTrue(move.wasValid());
+        }
+        assertTrue(game.isGameWon());
+    }
+
 }

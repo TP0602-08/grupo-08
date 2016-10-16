@@ -21,6 +21,10 @@ public class InshiNoHeyaTest {
     private static final String INSHINOHEYAJSON = "src/main/resources/inshinoheya.json";
     private static final String VALORREPETIDO = "Valor repetido.";
     private static final String ELPRODUCTONOESIGUAL = "El producto no es igual a ";
+    private static final String INVALIDMOVEJSON = "src/test/resources/inshiNoHeyaInvalidMove.json";
+    private static final String VALIDMOVEJSON = "src/test/resources/inshiNoHeyaValidMove.json";
+    private static final String WINGAMEINSHINOHEYAJSON = "src/test/resources/winGameInshiNoHeya.json";
+
     private static List<Move> moves = new ArrayList<>(Arrays.asList(
             new Move(1, new CellNumerical(3, "1")),
             new Move(2, new CellNumerical(4, "2")),
@@ -48,7 +52,6 @@ public class InshiNoHeyaTest {
             new Move(24, new CellNumerical(3, "24")),
             new Move(25, new CellNumerical(1, "25"))
     ));
-
     private static Game game;
 
     @Before
@@ -181,6 +184,30 @@ public class InshiNoHeyaTest {
     public void gameIsWonAfterAllValidValuesAreInserted() {
         game.setMoves(moves);
         game.process();
+        assertTrue(game.isGameWon());
+    }
+
+    @Test
+    public void validPlayFromFileCausesValidMove() throws IOException {
+        game = new GameJsonSerializer(INSHINOHEYAJSON, VALIDMOVEJSON).deserialize();
+        game.process();
+        assertTrue(game.getMoveHistory().get(0).wasValid());
+    }
+
+    @Test
+    public void invalidPlayFromFileCausesInvalidMove() throws IOException {
+        game = new GameJsonSerializer(INSHINOHEYAJSON, INVALIDMOVEJSON).deserialize();
+        game.process();
+        assertFalse(game.getMoveHistory().get(1).wasValid());
+    }
+
+    @Test
+    public void allValidPlaysFromFileCausesValidMovesAndGameWon() throws IOException {
+        game = new GameJsonSerializer(INSHINOHEYAJSON, WINGAMEINSHINOHEYAJSON).deserialize();
+        game.process();
+        for (MoveHistory move : game.getMoveHistory()) {
+            assertTrue(move.wasValid());
+        }
         assertTrue(game.isGameWon());
     }
 }

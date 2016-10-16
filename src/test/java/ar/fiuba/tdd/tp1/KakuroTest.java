@@ -21,6 +21,9 @@ public class KakuroTest {
     private static final String KAKUROJSON = "src/main/resources/kakuro.json";
     private static final String VALORREPETIDO = "Valor repetido.";
     private static final String LASUMANOESIGUALA = "La suma no es igual a ";
+    private static final String INVALIDMOVEJSON = "src/test/resources/invalidKakuroMove.json";
+    private static final String VALIDMOVEJSON = "src/test/resources/validKakuroPlay.json";
+    private static final String WINGAMEKAKUROJSON = "src/test/resources/winGameKakuro.json";
 
     private static Game game;
     private static  List<Move> moves = new ArrayList<>(Arrays.asList(
@@ -204,6 +207,31 @@ public class KakuroTest {
     public void gameIsWonAfterEnteringAllValidValues() {
         game.setMoves(moves);
         game.process();
+        assertTrue(game.isGameWon());
+    }
+
+    @Test
+    public void invalidPlayFromFileCausesInvalidMove() throws IOException {
+        game = new GameJsonSerializer(KAKUROJSON, INVALIDMOVEJSON).deserialize();
+        game.process();
+        assertFalse(game.getMoveHistory().get(1).wasValid());
+    }
+
+    @Test
+    public void validPlayFromFileCausesInvalidMove() throws IOException {
+        game = new GameJsonSerializer(KAKUROJSON, VALIDMOVEJSON).deserialize();
+        game.process();
+        assertTrue(game.getMoveHistory().get(0).wasValid());
+        assertTrue(game.getMoveHistory().get(1).wasValid());
+    }
+
+    @Test
+    public void allValidPlaysFromFileCausesValidMovesAndGameWon() throws IOException {
+        game = new GameJsonSerializer(KAKUROJSON, WINGAMEKAKUROJSON).deserialize();
+        game.process();
+        for (MoveHistory move : game.getMoveHistory()) {
+            assertTrue(move.wasValid());
+        }
         assertTrue(game.isGameWon());
     }
 }
