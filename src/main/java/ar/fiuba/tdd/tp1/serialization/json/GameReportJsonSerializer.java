@@ -30,14 +30,19 @@ public class GameReportJsonSerializer {
     }
 
     public void serialize(String outputFilePath) {
-        String gameReportJson;
+        String serializedGameReport;
         Gson gson = new Gson();
-        gameReportJson = gson.toJson(this);
+
+        GameReportJson gameReportJson = new GameReportJson();
+        gameReportJson.setGameReport(this.gameReport);
+        gameReportJson.setBoardReport(this.boardReport);
+
+        serializedGameReport = gson.toJson(gameReportJson);
 
 
         try {
             OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(outputFilePath), StandardCharsets.UTF_8);
-            writer.write(gameReportJson);
+            writer.write(serializedGameReport);
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();

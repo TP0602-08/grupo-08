@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import ar.fiuba.tdd.tp1.model.Game;
 import ar.fiuba.tdd.tp1.model.GameReport;
 import ar.fiuba.tdd.tp1.model.MoveHistory;
+import ar.fiuba.tdd.tp1.serialization.json.GameReportJson;
 import ar.fiuba.tdd.tp1.serialization.json.GameReportJsonSerializer;
 import ar.fiuba.tdd.tp1.serialization.xml.GameMixedSerializer;
 
@@ -56,7 +57,7 @@ public class ActividadEntregaUnoTest { private static final String GAMEXML = "sr
         gameReportJsonSerializer.serialize(JSONOUTPUT);
         String report =  readFile(JSONOUTPUT, StandardCharsets.UTF_8);
         Gson otro = new Gson();
-        GameReport testReport = otro.fromJson(report, GameReport.class);
+        GameReportJson testReport = otro.fromJson(report, GameReportJson.class);
         assertNotNull(testReport);
     }
 }
