@@ -15,6 +15,8 @@ public class GameController implements Observer {
     private String gameName;
     private Game game;
     private GameWindow gameWindow;
+    private static final String VALIDMOVEMESSAGE = "Movimiento valido";
+    private static final String GAMEWONMESSAGE = "Movimiento valido, juego ganado";
 
     public GameController(String gameName,Game game) {
         this.gameName = gameName;
@@ -49,7 +51,10 @@ public class GameController implements Observer {
         this.game.process(newMove);
         if (newMove.isValid()) {
             this.gameWindow.updateViewValue(cellId,cellValue);
-            moveInfo = "Movimiento valido";
+            moveInfo = VALIDMOVEMESSAGE;
+            if (this.game.isGameWon()) {
+                moveInfo = GAMEWONMESSAGE;
+            }
         } else {
             moveInfo = newMove.getListOfViolationsOfRules().get(0).getExplanation();
         }
