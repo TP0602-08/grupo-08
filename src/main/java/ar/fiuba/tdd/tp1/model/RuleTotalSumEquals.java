@@ -74,6 +74,7 @@ public class RuleTotalSumEquals extends Rule implements VisitorOfCell {
     }
 
     private void finalizeValidate(Integer accumulator, Move move) {
+        this.valid = true;
         List<Integer> cellIdsList = board.getCellIdsListFromRegionId(regionId);
         if (this.nonEmptyCells == cellIdsList.size() && accumulator != this.sum) {
             List<Integer> listOfConflictingCellIds = new ArrayList<Integer>(cellIdsList);
@@ -82,8 +83,6 @@ public class RuleTotalSumEquals extends Rule implements VisitorOfCell {
             ViolationOfRule violationOfRule = new ViolationOfRule("La suma no es igual a " + sum + ".", listOfConflictingCellIds);
             move.addViolationOfRule(violationOfRule);
             this.valid = false;
-        } else {
-            this.valid = true;
         }
     }
 
@@ -93,10 +92,6 @@ public class RuleTotalSumEquals extends Rule implements VisitorOfCell {
         int newSum = Integer.parseInt(parametersList.get(1).toString());
         RuleTotalSumEquals newInstance = new RuleTotalSumEquals(this.board, newRegionId, newSum);
         return newInstance;
-    }
-
-    private boolean isDeleteMove(Move move) {
-        return move.getNewCell().empty;
     }
 
     @Override

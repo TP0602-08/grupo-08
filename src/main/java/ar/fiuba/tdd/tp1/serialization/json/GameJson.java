@@ -4,7 +4,7 @@ import java.util.List;
 
 public class GameJson {
     private List<RuleJson> rulebook;
-    private String endGameCondition;
+    private List<String> endGameConditions;
     private BoardJson board;
     private List<String> validInputs;
 
@@ -20,12 +20,12 @@ public class GameJson {
         return this.validInputs;
     }
 
-    public String getEndGameCondition() {
-        return this.endGameCondition;
+    public List<String> getEndGameConditions() {
+        return this.endGameConditions;
     }
 
-    public void setEndGameCondition(String endGameCondition) {
-        this.endGameCondition = endGameCondition;
+    public void setEndGameConditions(List<String> endGameConditions) {
+        this.endGameConditions = endGameConditions;
     }
 
     public void setRulebook(List<RuleJson> rules) {

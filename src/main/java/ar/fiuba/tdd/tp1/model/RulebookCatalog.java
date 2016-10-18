@@ -22,6 +22,7 @@ public class RulebookCatalog implements RulebookFactory {
         add("RuleNoRepeatedValues", new RuleNoRepeatedValues(board));
         add("RuleTotalSumEquals", new RuleTotalSumEquals(board));
         add("RuleTotalProductEquals", new RuleTotalProductEquals(board));
+        add("RuleMustTouchCornerXTimes", new RuleMustTouchCornerXTimes(board));
     }
 
     public void add(String name, Rule rule) {

@@ -1,107 +1,67 @@
 {
     "rulebook": [
         {
-            "type": "RuleNoRepeatedValues",
-            "region": "r1"
+            "type": "RuleMustTouchCornerXTimes",
+            "region": "r1",
+            "value": "2"
         },
         {
-            "type": "RuleNoRepeatedValues",
-            "region": "r2"
+            "type": "RuleMustTouchCornerXTimes",
+            "region": "r2",
+            "value": "1"
         },
         {
-            "type": "RuleNoRepeatedValues",
-            "region": "r3"
+            "type": "RuleMustTouchCornerXTimes",
+            "region": "r3",
+            "value": "3"
         },
         {
-            "type": "RuleNoRepeatedValues",
-            "region": "r4"
+            "type": "RuleMustTouchCornerXTimes",
+            "region": "r4",
+            "value": "3"
         },
         {
-            "type": "RuleNoRepeatedValues",
-            "region": "r5"
+            "type": "RuleMustTouchCornerXTimes",
+            "region": "r5",
+            "value": "0"
         },
         {
-            "type": "RuleNoRepeatedValues",
-            "region": "r6"
+            "type": "RuleMustTouchCornerXTimes",
+            "region": "r6",
+            "value": "3"
         },
         {
-            "type": "RuleNoRepeatedValues",
-            "region": "r7"
+            "type": "RuleMustTouchCornerXTimes",
+            "region": "r7",
+            "value": "3"
         },
         {
-            "type": "RuleNoRepeatedValues",
-            "region": "r8"
+            "type": "RuleMustTouchCornerXTimes",
+            "region": "r8",
+            "value": "0"
         },
         {
-            "type": "RuleNoRepeatedValues",
-            "region": "r9"
+            "type": "RuleMustTouchCornerXTimes",
+            "region": "r9",
+            "value": "3"
         },
         {
-            "type": "RuleNoRepeatedValues",
-            "region": "r10"
+            "type": "RuleMustTouchCornerXTimes",
+            "region": "r10",
+            "value": "3"
         },
         {
-            "type": "RuleTotalProductEquals",
+            "type": "RuleMustTouchCornerXTimes",
             "region": "r11",
-            "value": "6"
+            "value": "1"
         },
         {
-            "type": "RuleTotalProductEquals",
+            "type": "RuleMustTouchCornerXTimes",
             "region": "r12",
-            "value": "4"
-        },
-        {
-            "type": "RuleTotalProductEquals",
-            "region": "r13",
-            "value": "5"
-        },
-        {
-            "type": "RuleTotalProductEquals",
-            "region": "r14",
-            "value": "40"
-        },
-        {
-            "type": "RuleTotalProductEquals",
-            "region": "r15",
-            "value": "3"
-        },
-        {
-            "type": "RuleTotalProductEquals",
-            "region": "r16",
-            "value": "4"
-        },
-        {
-            "type": "RuleTotalProductEquals",
-            "region": "r17",
-            "value": "15"
-        },
-        {
-            "type": "RuleTotalProductEquals",
-            "region": "r18",
-            "value": "40"
-        },
-        {
-            "type": "RuleTotalProductEquals",
-            "region": "r19",
-            "value": "4"
-        },
-        {
-            "type": "RuleTotalProductEquals",
-            "region": "r20",
-            "value": "10"
-        },
-        {
-            "type": "RuleTotalProductEquals",
-            "region": "r21",
-            "value": "6"
-        },
-        {
-            "type": "RuleTotalProductEquals",
-            "region": "r22",
-            "value": "3"
+            "value": "1"
         }
     ],
-    "endGameConditions": ["EndGameAllCellsFilled"],
+    "endGameCondition": ["EndGameAllCellsFilled", "EndGameNoCycles"],
     "board": {
         "rows": 5,
         "columns": 5,
@@ -260,94 +220,53 @@
         "regions": [
             {
                 "id": "r1",
-                "cells": [1,2,3,4,5]
+                "cells": [1,2]
             },
             {
                 "id": "r2",
-                "cells": [6,7,8,9,10]
-            },
-            {
-                "id": "r3",
-                "cells": [11,12,13,14,15]
-            },
-            {
-                "id": "r4",
-                "cells": [16,17,18,19,20]
-            },
-            {
-                "id": "r5",
-                "cells": [21,22,23,24,25]
-            },
-            {
-                "id": "r6",
-                "cells": [1,6,11,16,21]
-            },
-            {
-                "id": "r7",
-                "cells": [2,7,12,17,22]
-            },
-            {
-                "id": "r8",
-                "cells": [3,8,13,18,23]
-            },
-            {
-                "id": "r9",
-                "cells": [4,9,14,19,24]
-            },
-            {
-                "id": "r10",
-                "cells": [5,10,15,20,25]
-            },
-            {
-                "id": "r11",
-                "cells": [1,6]
-            },
-            {
-                "id": "r12",
                 "cells": [2,3]
             },
             {
-                "id": "r13",
-                "cells": [4]
+                "id": "r3",
+                "cells": [2,3,7,8]
             },
             {
-                "id": "r14",
-                "cells": [5,10,15]
+                "id": "r4",
+                "cells": [3,4,8,9]
             },
             {
-                "id": "r15",
-                "cells": [7,8]
+                "id": "r5",
+                "cells": [5,10]
             },
             {
-                "id": "r16",
-                "cells": [9,14]
+                "id": "r6",
+                "cells": [12,13,17,18]
             },
             {
-                "id": "r17",
-                "cells": [11,12]
+                "id": "r7",
+                "cells": [13,14,18,19]
             },
             {
-                "id": "r18",
-                "cells": [13,18,23]
-            },
-            {
-                "id": "r19",
+                "id": "r8",
                 "cells": [16,21]
             },
             {
-                "id": "r20",
-                "cells": [17,22]
+                "id": "r9",
+                "cells": [18,19,23,24]
             },
             {
-                "id": "r21",
-                "cells": [19,20]
+                "id": "r10",
+                "cells": [19,20,24,25]
             },
             {
-                "id": "r22",
+                "id": "r11",
                 "cells": [24,25]
+            },
+            {
+                "id": "r12",
+                "cells": [25]
             }
-
         ]
     },
-    "validInputs": ["1","2","3","4","5","6","7","8","9"]
+    "validInputs": ["\\", "/"]
 }

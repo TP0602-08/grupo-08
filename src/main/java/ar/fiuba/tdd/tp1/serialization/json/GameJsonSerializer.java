@@ -32,12 +32,12 @@ public class GameJsonSerializer implements GameSerializer {
     public Game deserialize() {
         Board board = new BoardJsonSerializer(this.gameJson.getBoard()).deserialize();
         Rulebook rulebook = new RulebookJsonSerializer(this.gameJson.getRulebook(), new RulebookCatalog(board)).deserialize();
-        EndGameCondition endGameCondition = new EndGameConditionJsonSerializer(this.gameJson.getEndGameCondition()).deserialize();
+        List<EndGameCondition> endGameConditions = new EndGameConditionJsonSerializer(this.gameJson.getEndGameConditions()).deserialize();
         if (this.movesPath == null) {
-            return new Game(rulebook, board, endGameCondition);
+            return new Game(rulebook, board, endGameConditions);
         } else {
             try {
-                Game game = new Game(rulebook, board, endGameCondition);
+                Game game = new Game(rulebook, board, endGameConditions);
                 List<Move> moves = new MovesJsonSerializer(this.movesPath, (BoardRectangularWithRegions) game.getBoard()).deserialize();
                 game.setMoves(moves);
                 return game;

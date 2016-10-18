@@ -5,6 +5,11 @@ import ar.fiuba.tdd.tp1.model.interfaces.VisitorOfCell;
 public class CellAlphabetical extends Cell {
     private String datum;
 
+    // This is needed for CellBuilder
+    public CellAlphabetical() {
+
+    }
+
     public CellAlphabetical(String datumValue, String nameValue) {
         this.name = nameValue;
         this.datum = datumValue;
@@ -18,6 +23,7 @@ public class CellAlphabetical extends Cell {
         this.editable = isEditable;
         this.empty = (datumValue == null);
     }
+
 
     public void setDatum(String datumValue) {
         this.datum = datumValue;

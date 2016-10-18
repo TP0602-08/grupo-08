@@ -5,6 +5,11 @@ import ar.fiuba.tdd.tp1.model.interfaces.VisitorOfCell;
 public class CellNumerical extends Cell {
     private Integer datum;
 
+    // This is needed for the CellBuilder
+    public CellNumerical() {
+
+    }
+
     public CellNumerical(Integer datumValue, String nameValue) {
         this.datum = datumValue;
         this.name = nameValue;

@@ -10,12 +10,12 @@ public class BoardJson extends BoardConfigurable {
         return this.cells;
     }
 
-    public List<RegionJson> getRegions() {
-        return this.regions;
-    }
-
     public void setCells(List<CellJson> cells) {
         this.cells = cells;
+    }
+
+    public List<RegionJson> getRegions() {
+        return this.regions;
     }
 
     public void setRegions(List<RegionJson> regions) {

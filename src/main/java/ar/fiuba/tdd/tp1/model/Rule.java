@@ -23,4 +23,8 @@ public abstract class Rule {
     public Boolean isValid() {
         return this.valid;
     }
+
+    protected boolean isDeleteMove(Move move) {
+        return move.getNewCell().isEmpty();
+    }
 }

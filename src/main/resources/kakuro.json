@@ -433,7 +433,7 @@
             "value": "7"
         }
     ],
-    "endGameCondition": "EndGameAllCellsFilled",
+    "endGameConditions": ["EndGameAllCellsFilled"],
     "board": {
         "rows": 10,
         "columns": 12,

@@ -8,6 +8,23 @@ public abstract class Cell {
     public boolean editable;
     public boolean empty;
     protected String name;
+    protected int[] position = new int[] {-1, -1};
+
+    public int getRow() {
+        return this.position[0];
+    }
+
+    public int getColumn() {
+        return this.position[1];
+    }
+
+    public void setRow(int row) {
+        this.position[0] = row;
+    }
+
+    public void setColumn(int column) {
+        this.position[1] = column;
+    }
 
     public String getName() {
         return this.name;

@@ -75,9 +75,6 @@ public class RuleNoRepeatedValues extends Rule implements VisitorOfCell {
         }
     }
 
-    private boolean isDeleteMove(Move move) {
-        return move.getNewCell().isEmpty();
-    }
 
 
     @Override

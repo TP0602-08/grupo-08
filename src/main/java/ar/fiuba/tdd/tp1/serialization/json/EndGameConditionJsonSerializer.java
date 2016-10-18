@@ -3,15 +3,17 @@ package ar.fiuba.tdd.tp1.serialization.json;
 import ar.fiuba.tdd.tp1.model.EndGameConditionCatalog;
 import ar.fiuba.tdd.tp1.model.interfaces.EndGameCondition;
 
-public class EndGameConditionJsonSerializer {
-    private String endGameConditionJson;
+import java.util.List;
 
-    public EndGameConditionJsonSerializer(String endGameCondition) {
+public class EndGameConditionJsonSerializer {
+    private List<String> endGameConditionJson;
+
+    public EndGameConditionJsonSerializer(List<String> endGameCondition) {
         this.endGameConditionJson = endGameCondition;
     }
 
-    public EndGameCondition deserialize() {
+    public List<EndGameCondition> deserialize() {
         EndGameConditionCatalog catalog = new EndGameConditionCatalog();
-        return catalog.createEndGameCondition(this.endGameConditionJson);
+        return catalog.createEndGameConditions(this.endGameConditionJson);
     }
 }

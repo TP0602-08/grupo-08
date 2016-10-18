@@ -11,19 +11,23 @@ public class Game {
     private Board board;
     private List<Move> moves;
     private List<MoveHistory> moveHistory = new ArrayList<>();
-    private EndGameCondition endGameCondition;
+    private List<EndGameCondition> endGameConditions;
 
     //Both the Rulebook and the Board must be already initialized.
     public Game(Rulebook rulebookValue, Board boardValue) {
         this.rulebook = rulebookValue;
         this.board = boardValue;
-        this.endGameCondition = new EndGameAllCellsFilled(); // by default, let's consider the condition that all cells are filled
+        this.endGameConditions = new ArrayList<>(
+                Arrays.asList(
+                        new EndGameAllCellsFilled()
+                )
+        ); // by default, let's consider the condition that all cells are filled
     }
 
-    public Game(Rulebook rulebookValue, Board boardValue, EndGameCondition endGameCondition) {
+    public Game(Rulebook rulebookValue, Board boardValue, List<EndGameCondition> endGameConditions) {
         this.rulebook = rulebookValue;
         this.board = boardValue;
-        this.endGameCondition = endGameCondition;
+        this.endGameConditions = endGameConditions;
     }
 
     //Receives a new user move and checks if it is valid. If it is valid, then it applies it to the board
@@ -124,6 +128,9 @@ public class Game {
         for (Rule rule : this.rulebook.getRulesList()) {
             rulesValid = rulesValid && rule.isValid();
         }
-        return rulesValid && this.endGameCondition.validate((BoardRectangularWithRegions)this.board);
+        for (EndGameCondition endGameCondition : this.endGameConditions) {
+            rulesValid = rulesValid && endGameCondition.validate((BoardRectangularWithRegions)this.board);
+        }
+        return rulesValid;
     }
 }

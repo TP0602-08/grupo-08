@@ -100,8 +100,4 @@ public class RuleTotalProductEquals extends Rule implements VisitorOfCell {
     public int getProduct() {
         return this.product;
     }
-
-    private boolean isDeleteMove(Move move) {
-        return move.getNewCell().isEmpty();
-    }
 }
