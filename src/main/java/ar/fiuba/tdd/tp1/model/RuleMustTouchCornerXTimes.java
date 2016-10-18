@@ -54,8 +54,8 @@ public class RuleMustTouchCornerXTimes extends Rule implements VisitorOfCell {
         } else {
             // Here, we only need to know what corner the cell represents
             Cell corner = board.getCellFromCellId(this.cellsIdsList.get(0));
-            Boolean isBottomRight = corner.getRow() == board.getRowQuantity() && corner.getColumn() == board.getColumnQuantity();
-            Boolean isTopLeft = corner.getRow() == 1 && corner.getColumn() == 1;
+            Boolean isBottomRight = corner.getRow() == board.getRowQuantity() - 1 && corner.getColumn() == board.getColumnQuantity() - 1;
+            Boolean isTopLeft = corner.getRow() == 0 && corner.getColumn() == 0;
             if (isTopLeft || isBottomRight) {
                 this.howCellsTouchCorner.put(this.cellsIdsList.get(0), "\\");
             } else {
@@ -77,7 +77,7 @@ public class RuleMustTouchCornerXTimes extends Rule implements VisitorOfCell {
         Cell first = board.getCellFromCellId(this.cellsIdsList.get(0));
         Cell second = board.getCellFromCellId(this.cellsIdsList.get(1));
         Boolean isLeftBorder = first.getColumn() == 0 && second.getColumn() == 0;
-        Boolean isTopBorder = first.getRow() == board.getRowQuantity() && second.getRow() == board.getColumnQuantity();
+        Boolean isTopBorder = first.getRow() == board.getRowQuantity() - 1 && second.getRow() == board.getColumnQuantity() - 1;
         if (isLeftBorder || isTopBorder) {
             this.howCellsTouchCorner.put(this.cellsIdsList.get(0), "/");
             this.howCellsTouchCorner.put(this.cellsIdsList.get(1), "\\");
