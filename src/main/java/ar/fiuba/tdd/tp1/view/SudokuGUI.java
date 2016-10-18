@@ -14,20 +14,14 @@ import javax.swing.*;
 public class SudokuGUI extends GameGUI {
 
     private int subGrids;
-    private List<CellInfo> cellInfoList;
 
     public SudokuGUI(int numberOfRows, int numberOfColumns, List<String> validInputs, List<CellInfo> cellInfoList, UserInputHandler
             userInputHandler) {
-        super();
-        this.cellInfoList = cellInfoList;
-        this.userInputHandler = userInputHandler;
-        this.numberOfRows = numberOfRows;
-        this.numberOfColumns = numberOfColumns;
+        super(numberOfRows,numberOfColumns,validInputs,cellInfoList,userInputHandler);
         this.subGrids = numberOfColumns;
-        this.validInputs = validInputs;
-        this.drawBorder();
     }
 
+    @Override
     public void drawGUI() {
         int columnsPerSubGrid = (int) Math.sqrt(this.numberOfColumns);
         this.setLayout(new GridLayout(0, this.numberOfColumns / columnsPerSubGrid ));
@@ -85,7 +79,7 @@ public class SudokuGUI extends GameGUI {
 
     @Override
     public void updateCell(int cellId, int value) {
-        SudokuCellView cell = null;
+        SudokuCellView cell;
         for (Component subgrid : this.getComponents()) {
             cell = ((SubGrid)subgrid).find(cellId);
             if (cell != null) {

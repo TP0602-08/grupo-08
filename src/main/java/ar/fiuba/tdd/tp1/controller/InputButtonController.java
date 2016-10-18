@@ -27,7 +27,7 @@ public class InputButtonController extends MouseInputAdapter {
 
     @Override
     public void mouseClicked(MouseEvent event) {
-        this.userInputHandler.handleInput(this.cellId,this.inputGameButton.getIntValue());
+        this.userInputHandler.handleInput(this.cellId, this.inputGameButton.getIntValue());
         this.gameInputView.dispose();
     }
 }

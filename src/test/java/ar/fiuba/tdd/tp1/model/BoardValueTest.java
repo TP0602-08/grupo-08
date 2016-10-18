@@ -26,12 +26,12 @@ public class BoardValueTest {
 
     @Test
     public void getX() throws Exception {
-        assertEquals(3,this.valueOfBoard.getX());
+        assertEquals(2,this.valueOfBoard.getX());
     }
 
     @Test
     public void getY() throws Exception {
-        assertEquals(-2,this.valueOfBoard.getY());
+        assertEquals(7,this.valueOfBoard.getY());
     }
 
     @Test

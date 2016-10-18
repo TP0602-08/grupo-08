@@ -28,18 +28,30 @@ public class GameWindow extends JFrame {
 
     public void createGUI(int numberOfRows, int numberOfColumns, List<String> validInputs, List<CellInfo> cellInfoList, UserInputHandler
             userInputHandler) {
+
+
+        gameGUI = getGameGUI(this.gameName,numberOfRows,numberOfColumns,validInputs,cellInfoList,userInputHandler);
+
+        if (gameGUI != null) {
+            gameGUI.drawGUI();
+            this.moveInformationField = new MoveInformationField();
+            this.add(this.gameGUI);
+            this.add(this.moveInformationField);
+        }
+    }
+
+    private GameGUI getGameGUI(String gameName, int numberOfRows, int numberOfColumns, List<String> validInputs,
+                               List<CellInfo> cellInfoList, UserInputHandler userInputHandler) {
+
         if (this.gameName.equalsIgnoreCase("Sudoku")) {
-            this.gameGUI = new SudokuGUI(numberOfRows,numberOfColumns,validInputs,cellInfoList,userInputHandler);
+            return new SudokuGUI(numberOfRows,numberOfColumns,validInputs,cellInfoList,userInputHandler);
         }
 
         if (this.gameName.equalsIgnoreCase("Kakuro")) {
-            this.gameGUI = new KakuroGUI(numberOfRows,numberOfColumns,validInputs,cellInfoList,userInputHandler);
+            return new KakuroGUI(numberOfRows,numberOfColumns,validInputs,cellInfoList,userInputHandler);
+        } else {
+            return new InshiNoHeyaGUI(numberOfRows,numberOfColumns,validInputs,cellInfoList,userInputHandler);
         }
-
-        gameGUI.drawGUI();
-        this.moveInformationField = new MoveInformationField();
-        this.add(this.gameGUI);
-        this.add(this.moveInformationField);
     }
 
     public void updateViewValue(int cellId, int value) {
