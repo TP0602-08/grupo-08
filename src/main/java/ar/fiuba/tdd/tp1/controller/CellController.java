@@ -10,11 +10,11 @@ import javax.swing.event.MouseInputAdapter;
 
 public class CellController extends MouseInputAdapter {
 
-    private final List<Integer> validInputs;
+    private final List<String> validInputs;
     private int cellId;
     private UserInputHandler userInputHandler;
 
-    public CellController(int cellId, List<Integer> validInputs, UserInputHandler userInputHandler) {
+    public CellController(int cellId, List<String> validInputs, UserInputHandler userInputHandler) {
         this.cellId = cellId;
         this.validInputs = validInputs;
         this.userInputHandler = userInputHandler;

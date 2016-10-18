@@ -12,6 +12,7 @@ public class Game {
     private List<Move> moves;
     private List<MoveHistory> moveHistory = new ArrayList<>();
     private List<EndGameCondition> endGameConditions;
+    private List<String> validInputs;
 
     //Both the Rulebook and the Board must be already initialized.
     public Game(Rulebook rulebookValue, Board boardValue) {
@@ -74,9 +75,13 @@ public class Game {
         return this.board.getColumnQuantity();
     }
 
+    public void setValidInputs(List<String> validInputs) {
+        this.validInputs = validInputs;
+    }
+
     //Returns a list of the allowed user inputs for this game.
-    public List<Integer> getValidInputs() {
-        return new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
+    public List<String> getValidInputs() {
+        return this.validInputs;
     }
 
     public List<MoveHistory> getMoveHistory() {

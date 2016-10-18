@@ -19,10 +19,10 @@ public class GameInputView extends JDialog {
         this.setLayout(new FlowLayout());
     }
 
-    public void generateInputButtons(int cellId, List<Integer> validInputs, UserInputHandler userInputHandler) {
+    public void generateInputButtons(int cellId, List<String> validInputs, UserInputHandler userInputHandler) {
 
-        for (Integer validInput : validInputs) {
-            this.add(new InputGameButton(validInput.toString(),new InputButtonController(cellId,userInputHandler,this)));
+        for (String validInput : validInputs) {
+            this.add(new InputGameButton(validInput,new InputButtonController(cellId,userInputHandler,this)));
         }
 
         this.add(new InputDeleteButton("Delete", new DeleteButtonController(cellId,userInputHandler,this)));

@@ -10,7 +10,7 @@ class KakuroGUI extends GameGUI {
 
     private List<CellInfo> cellInfoList;
 
-    KakuroGUI(int numberOfRows, int numberOfColumns, List<Integer> validInputs, List<CellInfo> cellInfoList, UserInputHandler
+    KakuroGUI(int numberOfRows, int numberOfColumns, List<String> validInputs, List<CellInfo> cellInfoList, UserInputHandler
             userInputHandler) {
         this.cellInfoList = cellInfoList;
         this.numberOfRows = numberOfRows;

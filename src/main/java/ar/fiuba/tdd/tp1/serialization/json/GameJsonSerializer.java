@@ -8,6 +8,8 @@ import ar.fiuba.tdd.tp1.model.interfaces.EndGameCondition;
 import ar.fiuba.tdd.tp1.serialization.interfaces.GameSerializer;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class GameJsonSerializer implements GameSerializer {
@@ -33,18 +35,23 @@ public class GameJsonSerializer implements GameSerializer {
         Board board = new BoardJsonSerializer(this.gameJson.getBoard()).deserialize();
         Rulebook rulebook = new RulebookJsonSerializer(this.gameJson.getRulebook(), new RulebookCatalog(board)).deserialize();
         List<EndGameCondition> endGameConditions = new EndGameConditionJsonSerializer(this.gameJson.getEndGameConditions()).deserialize();
+        List<String> validInputs = this.gameJson.getValidInputs();
         if (this.movesPath == null) {
-            return new Game(rulebook, board, endGameConditions);
+            Game game = new Game(rulebook,board,endGameConditions);
+            game.setValidInputs(validInputs);
+            return game;
         } else {
             try {
                 Game game = new Game(rulebook, board, endGameConditions);
                 List<Move> moves = new MovesJsonSerializer(this.movesPath, (BoardRectangularWithRegions) game.getBoard()).deserialize();
                 game.setMoves(moves);
+                game.setValidInputs(validInputs);
                 return game;
             } catch (IOException ex) {
                 return null;
             }
         }
+
 
     }
 }

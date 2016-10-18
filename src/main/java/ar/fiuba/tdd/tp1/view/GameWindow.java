@@ -26,7 +26,7 @@ public class GameWindow extends JFrame {
         this.setVisible(true);
     }
 
-    public void createGUI(int numberOfRows, int numberOfColumns, List<Integer> validInputs, List<CellInfo> cellInfoList, UserInputHandler
+    public void createGUI(int numberOfRows, int numberOfColumns, List<String> validInputs, List<CellInfo> cellInfoList, UserInputHandler
             userInputHandler) {
         if (this.gameName.equalsIgnoreCase("Sudoku")) {
             this.gameGUI = new SudokuGUI(numberOfRows,numberOfColumns,validInputs,cellInfoList,userInputHandler);

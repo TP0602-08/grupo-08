@@ -16,7 +16,7 @@ public class SudokuGUI extends GameGUI {
     private int subGrids;
     private List<CellInfo> cellInfoList;
 
-    public SudokuGUI(int numberOfRows, int numberOfColumns, List<Integer> validInputs, List<CellInfo> cellInfoList, UserInputHandler
+    public SudokuGUI(int numberOfRows, int numberOfColumns, List<String> validInputs, List<CellInfo> cellInfoList, UserInputHandler
             userInputHandler) {
         super();
         this.cellInfoList = cellInfoList;

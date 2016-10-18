@@ -15,7 +15,7 @@ class SudokuCellView extends JButton {
 
     private int id;
 
-    public SudokuCellView(CellInfo cell, List<Integer> validInputs, UserInputHandler userInputHandler) {
+    public SudokuCellView(CellInfo cell, List<String> validInputs, UserInputHandler userInputHandler) {
         super();
         this.setBackground(Color.WHITE);
         this.setPreferredSize(new Dimension(50,50));

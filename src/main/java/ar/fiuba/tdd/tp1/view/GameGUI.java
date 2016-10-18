@@ -10,10 +10,9 @@ import javax.swing.*;
 
 abstract class GameGUI extends JPanel {
 
-    protected Game gameModel;
     protected int numberOfRows;
     protected int numberOfColumns;
-    protected List<Integer> validInputs;
+    protected List<String> validInputs;
     protected UserInputHandler userInputHandler;
 
 

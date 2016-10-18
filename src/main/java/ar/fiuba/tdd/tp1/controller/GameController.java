@@ -35,7 +35,7 @@ public class GameController implements Observer {
         userInputHandler.addObserver(this);
         int numberOfRows = this.game.getNumberOfRows();
         int numberOfColumns = this.game.getNumberOfColumns();
-        List<Integer> validInputs = this.game.getValidInputs();
+        List<String> validInputs = this.game.getValidInputs();
         List<CellInfo> cellInfoList = this.game.getCellsInfo();
         gameWindow.createGUI(numberOfRows,numberOfColumns,validInputs,cellInfoList,userInputHandler);
     }
