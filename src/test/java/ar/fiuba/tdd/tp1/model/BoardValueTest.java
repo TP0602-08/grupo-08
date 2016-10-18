@@ -8,24 +8,25 @@ import static org.junit.Assert.*;
 /**
  * Created by marcos on 18/10/16.
  */
+
 public class BoardValueTest {
-   private BoardValue valueOfBoard;
-   private int cellId;
-   private int value;
-   private int valueOfColums;
+    private BoardValue valueOfBoard;
+    private int cellId;
+    private int value;
+    private int valueOfColums;
 
     @Before
     public void setUp() throws Exception {
-         this.cellId = 16;
-         this.value = 12;
-         this.valueOfColums = 9;
-         this.valueOfBoard = new BoardValue(this.cellId,this.valueOfColums,this.value);
+        this.cellId = 16;
+        this.value = 12;
+        this.valueOfColums = 9;
+        this.valueOfBoard = new BoardValue(this.cellId,this.valueOfColums,this.value);
 
     }
 
     @Test
     public void getX() throws Exception {
-         assertEquals(3,this.valueOfBoard.getX());
+        assertEquals(3,this.valueOfBoard.getX());
     }
 
     @Test
