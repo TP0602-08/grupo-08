@@ -11,7 +11,7 @@ import java.util.List;
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 
-class SudokuCellView extends JButton {
+class SudokuCellView extends CellView {
 
     private int id;
 
@@ -31,18 +31,8 @@ class SudokuCellView extends JButton {
 
     }
 
-    public void changeDisplayValue(int value) {
-        if (value != 0) {
-            this.setText(Integer.toString(value));
-        } else {
-            this.setText("");
-        }
-    }
-
     public int getId() {
         return this.id;
     }
-
-
 
 }

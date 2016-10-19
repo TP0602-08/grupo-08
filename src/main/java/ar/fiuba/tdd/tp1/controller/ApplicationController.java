@@ -18,8 +18,9 @@ import static javax.swing.SwingUtilities.isLeftMouseButton;
 
 public class ApplicationController extends MouseInputAdapter {
 
-    private static String sudokuJsonPath = "src\\main\\resources\\sudoku.json";
-    private static String kakuroJsonPath = "src\\main\\resources\\kakuro.json";
+    private static final String sudokuJsonPath = "src\\main\\resources\\sudoku.json";
+    private static final String kakuroJsonPath = "src\\main\\resources\\kakuro.json";
+    private static final String inshinohenshaJsonPath = "src\\main\\resources\\inshinoheya.json";
 
     private Game game;
     private GameJsonSerializer gameJsonSerializer;
@@ -53,14 +54,16 @@ public class ApplicationController extends MouseInputAdapter {
     }
 
     private boolean validGameName(String gameName) {
-        return gameName.equals("sudoku") || gameName.equals("kakuro");
+        return gameName.equals("sudoku") || gameName.equals("kakuro") || gameName.equals("inshinoheya");
     }
 
     private GameJsonSerializer getGameJsonSerializer(String gameName) throws IOException {
         if (gameName.equalsIgnoreCase("sudoku")) {
             return new GameJsonSerializer(sudokuJsonPath);
-        } else {
+        } else if (gameName.equalsIgnoreCase("kakuro")) {
             return new GameJsonSerializer(kakuroJsonPath);
+        } else {
+            return new GameJsonSerializer(inshinohenshaJsonPath);
         }
     }
 

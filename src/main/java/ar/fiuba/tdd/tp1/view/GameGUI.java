@@ -2,6 +2,7 @@ package ar.fiuba.tdd.tp1.view;
 
 
 import ar.fiuba.tdd.tp1.controller.UserInputHandler;
+import ar.fiuba.tdd.tp1.model.CellInfo;
 import ar.fiuba.tdd.tp1.model.Game;
 
 import java.awt.*;
@@ -14,13 +15,27 @@ abstract class GameGUI extends JPanel {
     protected int numberOfColumns;
     protected List<String> validInputs;
     protected UserInputHandler userInputHandler;
+    protected List<CellInfo>  cellInfoList;
+
+    protected GameGUI(int numberOfRows, int numberOfColumns, List<String> validInputs, List<CellInfo> cellInfoList, UserInputHandler
+            userInputHandler) {
+        this.numberOfRows = numberOfRows;
+        this.numberOfColumns = numberOfColumns;
+        this.validInputs = validInputs;
+        this.cellInfoList = cellInfoList;
+        this.userInputHandler = userInputHandler;
+        this.drawBorder();
+    }
 
 
     public abstract void drawGUI();
 
-    protected void drawBorder() {
+    private void drawBorder() {
         this.setBorder(BorderFactory.createLineBorder(Color.black, 3));
     }
 
-    public abstract void updateCell(int cellId, int value);
+    public void updateCell(int cellId, int value) {
+        Component cell = this.getComponent(cellId - 1);
+        ((CellView) cell).changeDisplayValue(value);
+    }
 }

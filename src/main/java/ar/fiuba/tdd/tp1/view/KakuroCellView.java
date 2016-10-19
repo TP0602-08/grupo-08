@@ -9,7 +9,7 @@ import java.util.*;
 import java.util.List;
 import javax.swing.*;
 
-public class KakuroCellView extends JButton{
+public class KakuroCellView extends CellView{
 
     public KakuroCellView(CellInfo cell, List<String> validInputs, UserInputHandler userInputHandler) {
         super();
@@ -26,11 +26,4 @@ public class KakuroCellView extends JButton{
         }
     }
 
-    public void changeDisplayValue(int value) {
-        if (value != 0) {
-            this.setText(Integer.toString(value));
-        } else {
-            this.setText("");
-        }
-    }
 }
