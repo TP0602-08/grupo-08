@@ -4,6 +4,18 @@ import ar.fiuba.tdd.tp1.model.interfaces.VisitorOfCell;
 
 import java.util.Observable;
 
+/**
+ * It is representing an abstract interface cell
+ Within the model, a cell represents a box on the board and its contents.
+ Each cell is self-defined itself by which will be part of its attributes:
+ -The position it takes on the board (row number, column number).
+ -His content
+ -If it is editable or not (ie, if its content can be changed).
+ -A name recognition.
+ - And implementation of the method accept (Visitor design pattern) of states that
+ form give the value of the cell to a visitor class.
+ */
+
 public abstract class Cell {
     public boolean editable;
     public boolean empty;
