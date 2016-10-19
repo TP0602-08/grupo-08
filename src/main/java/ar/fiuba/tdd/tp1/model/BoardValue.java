@@ -7,7 +7,7 @@ public class BoardValue {
 
     public BoardValue(int cellId, int numberOfColumns, int value) {
         int row = 1;
-        while (cellId > 5) {
+        while (cellId > numberOfColumns) {
             cellId = cellId - numberOfColumns;
             row++;
         }

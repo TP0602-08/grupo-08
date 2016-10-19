@@ -6,10 +6,14 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * Created by marcos on 18/10/16.
+ *This class is for the unit test of Board Value class .
+ The getX method, you should return the X  coordinate (rows)of the board.
+ The getY method should return the Y coordinate (columns) of the board.
+ The getValue method should return the valor of cell.
  */
 
 public class BoardValueTest {
+
     private BoardValue valueOfBoard;
     private int cellId;
     private int value;
@@ -26,12 +30,14 @@ public class BoardValueTest {
 
     @Test
     public void getX() throws Exception {
-        assertEquals(3,this.valueOfBoard.getX());
+        int expectedCordXValue = 2;
+        assertEquals(expectedCordXValue,this.valueOfBoard.getX());
     }
 
     @Test
     public void getY() throws Exception {
-        assertEquals(-2,this.valueOfBoard.getY());
+        int expectedCordYValue = 7;
+        assertEquals(expectedCordYValue,this.valueOfBoard.getY());
     }
 
     @Test
