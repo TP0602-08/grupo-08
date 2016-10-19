@@ -1,9 +1,6 @@
 package ar.fiuba.tdd.tp1.controller;
 
-import ar.fiuba.tdd.tp1.model.CellInfo;
-import ar.fiuba.tdd.tp1.model.CellNumerical;
-import ar.fiuba.tdd.tp1.model.Game;
-import ar.fiuba.tdd.tp1.model.Move;
+import ar.fiuba.tdd.tp1.model.*;
 import ar.fiuba.tdd.tp1.view.GameWindow;
 
 import java.util.List;
@@ -15,6 +12,7 @@ public class GameController implements Observer {
     private String gameName;
     private Game game;
     private GameWindow gameWindow;
+    private boolean alphabeticalCell;
     private static final String VALIDMOVEMESSAGE = "Movimiento valido";
     private static final String GAMEWONMESSAGE = "Movimiento valido, juego ganado";
 
@@ -22,6 +20,11 @@ public class GameController implements Observer {
         this.gameName = gameName;
         this.game = game;
         this.gameWindow = null;
+        if (gameName.equalsIgnoreCase("gogikennaname")) {
+            this.alphabeticalCell = true;
+        } else {
+            this.alphabeticalCell = false;
+        }
     }
 
     public void run() {
@@ -44,10 +47,10 @@ public class GameController implements Observer {
     @Override
     public void update(Observable observable, Object arg) {
         int cellId = ((UserInputHandler)arg).getCellId();
-        int cellValue = ((UserInputHandler)arg).getValue();
+        String cellValue = ((UserInputHandler)arg).getValue();
         String moveInfo;
 
-        Move newMove = new Move(cellId,new CellNumerical(cellValue,Integer.toString(cellId)));
+        Move newMove = createMove(cellId,cellValue);
         this.game.process(newMove);
         if (newMove.isValid()) {
             this.gameWindow.updateViewValue(cellId,cellValue);
@@ -60,5 +63,16 @@ public class GameController implements Observer {
         }
 
         this.gameWindow.updateMoveInfoField(moveInfo);
+    }
+
+    private Move createMove(int cellId,String cellValue) {
+        Cell cell;
+        if (this.alphabeticalCell) {
+            cell = new CellAlphabetical(cellValue,Integer.toString(cellId));
+        } else {
+            cell = new CellNumerical(Integer.parseInt(cellValue),Integer.toString(cellId));
+        }
+
+        return new Move(cellId,cell);
     }
 }

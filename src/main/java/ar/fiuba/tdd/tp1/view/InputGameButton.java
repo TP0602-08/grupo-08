@@ -16,8 +16,8 @@ public class InputGameButton extends JButton {
 
     }
 
-    public int getIntValue() {
-        return Integer.parseInt(this.getText());
+    public String getValue() {
+        return this.getText();
     }
 
 }

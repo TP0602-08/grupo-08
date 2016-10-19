@@ -4,9 +4,9 @@ import javax.swing.*;
 
 public class CellView extends JButton {
 
-    public void changeDisplayValue(int value) {
-        if (value != 0) {
-            this.setText(Integer.toString(value));
+    public void changeDisplayValue(String value) {
+        if (! value.equals("0")) {
+            this.setText(value);
         } else {
             this.setText("");
         }

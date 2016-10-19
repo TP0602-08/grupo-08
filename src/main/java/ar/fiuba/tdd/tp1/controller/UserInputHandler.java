@@ -8,14 +8,14 @@ import java.util.Observable;
 public class UserInputHandler extends Observable {
 
     private Integer cellId;
-    private Integer value;
+    private String value;
 
     public UserInputHandler() {
         this.cellId = null;
         this.value = null;
     }
 
-    public void handleInput(int cellId, int value) {
+    public void handleInput(int cellId, String value) {
         this.cellId = cellId;
         this.value = value;
         setChanged();
@@ -26,7 +26,7 @@ public class UserInputHandler extends Observable {
         return this.cellId;
     }
 
-    public Integer getValue() {
+    public String getValue() {
         return this.value;
     }
 

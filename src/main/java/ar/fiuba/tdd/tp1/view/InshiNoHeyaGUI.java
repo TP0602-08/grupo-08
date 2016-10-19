@@ -11,22 +11,9 @@ import javax.swing.*;
 
 public class InshiNoHeyaGUI extends GameGUI {
 
-    private boolean regions;
-
     public InshiNoHeyaGUI(int numberOfRows, int numberOfColumns, List<String> validInputs, List<CellInfo> cellInfoList, UserInputHandler
             userInputHandler) {
         super(numberOfRows, numberOfColumns, validInputs, cellInfoList, userInputHandler);
-        this.regions = true;
-    }
-
-    @Override
-    public void drawGUI() {
-        this.setLayout(new GridLayout(0, this.numberOfColumns));
-        for (CellInfo cellInfo : this.cellInfoList) {
-            this.add(new InshiNoHeyaCellView(cellInfo, validInputs, userInputHandler));
-        }
-        addClues();
-        drawRegionBorders();
     }
 
     private void addClues() {
@@ -40,6 +27,15 @@ public class InshiNoHeyaGUI extends GameGUI {
     private InshiNoHeyaCellView getCellById(int id) {
         Component cell = this.getComponent(id);
         return ((InshiNoHeyaCellView) cell);
+    }
+
+    @Override
+    public void drawGUI() {
+        for (CellInfo cellInfo : this.cellInfoList) {
+            this.add(new InshiNoHeyaCellView(cellInfo, validInputs, userInputHandler));
+        }
+        addClues();
+        drawRegionBorders();
     }
 
     private Map<Integer,String> getClues() {

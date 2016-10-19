@@ -78,7 +78,7 @@ public class SudokuGUI extends GameGUI {
     }
 
     @Override
-    public void updateCell(int cellId, int value) {
+    public void updateCell(int cellId, String value) {
         SudokuCellView cell;
         for (Component subgrid : this.getComponents()) {
             cell = ((SubGrid)subgrid).find(cellId);

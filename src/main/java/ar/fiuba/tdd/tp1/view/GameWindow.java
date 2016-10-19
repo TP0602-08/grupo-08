@@ -30,7 +30,7 @@ public class GameWindow extends JFrame {
             userInputHandler) {
 
 
-        gameGUI = getGameGUI(this.gameName,numberOfRows,numberOfColumns,validInputs,cellInfoList,userInputHandler);
+        gameGUI = getGameGUI(numberOfRows,numberOfColumns,validInputs,cellInfoList,userInputHandler);
 
         if (gameGUI != null) {
             gameGUI.drawGUI();
@@ -40,21 +40,22 @@ public class GameWindow extends JFrame {
         }
     }
 
-    private GameGUI getGameGUI(String gameName, int numberOfRows, int numberOfColumns, List<String> validInputs,
+    private GameGUI getGameGUI(int numberOfRows, int numberOfColumns, List<String> validInputs,
                                List<CellInfo> cellInfoList, UserInputHandler userInputHandler) {
 
         if (this.gameName.equalsIgnoreCase("Sudoku")) {
             return new SudokuGUI(numberOfRows,numberOfColumns,validInputs,cellInfoList,userInputHandler);
         }
-
         if (this.gameName.equalsIgnoreCase("Kakuro")) {
             return new KakuroGUI(numberOfRows,numberOfColumns,validInputs,cellInfoList,userInputHandler);
-        } else {
+        } else if (this.gameName.equalsIgnoreCase("InshinoHeya")) {
             return new InshiNoHeyaGUI(numberOfRows,numberOfColumns,validInputs,cellInfoList,userInputHandler);
+        } else {
+            return new GokigenNanameGUI(numberOfRows,numberOfColumns,validInputs,cellInfoList,userInputHandler);
         }
     }
 
-    public void updateViewValue(int cellId, int value) {
+    public void updateViewValue(int cellId, String value) {
         this.gameGUI.updateCell(cellId,value);
     }
 

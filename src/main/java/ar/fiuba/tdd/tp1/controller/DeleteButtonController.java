@@ -19,7 +19,7 @@ public class DeleteButtonController extends MouseInputAdapter{
 
     @Override
     public void mouseClicked(MouseEvent event) {
-        this.userInputHandler.handleInput(this.cellId,0);
+        this.userInputHandler.handleInput(this.cellId,"0");
         this.gameInputView.dispose();
     }
 }

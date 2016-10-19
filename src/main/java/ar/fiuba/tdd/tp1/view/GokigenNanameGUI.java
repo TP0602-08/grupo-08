@@ -6,23 +6,21 @@ import ar.fiuba.tdd.tp1.model.CellInfo;
 import java.awt.*;
 import java.util.List;
 
-class KakuroGUI extends GameGUI {
+public class GokigenNanameGUI extends GameGUI {
 
-    KakuroGUI(int numberOfRows, int numberOfColumns, List<String> validInputs, List<CellInfo> cellInfoList, UserInputHandler
+    boolean addedCells;
+
+    public GokigenNanameGUI(int numberOfRows, int numberOfColumns, List<String> validInputs, List<CellInfo> cellInfoList, UserInputHandler
             userInputHandler) {
         super(numberOfRows,numberOfColumns,validInputs,cellInfoList,userInputHandler);
+        this.addedCells = false;
     }
 
     @Override
     public void drawGUI() {
         for (CellInfo cellInfo : this.cellInfoList) {
-            this.add(new KakuroCellView(cellInfo,validInputs,userInputHandler));
+            this.add(new GokigenNanameCellView(cellInfo,validInputs,userInputHandler));
         }
+        this.addedCells = true;
     }
 }
-
-
-
-
-
-

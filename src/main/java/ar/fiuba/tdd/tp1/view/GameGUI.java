@@ -24,6 +24,7 @@ abstract class GameGUI extends JPanel {
         this.validInputs = validInputs;
         this.cellInfoList = cellInfoList;
         this.userInputHandler = userInputHandler;
+        this.setLayout((new GridLayout(0,this.numberOfColumns)));
         this.drawBorder();
     }
 
@@ -34,7 +35,7 @@ abstract class GameGUI extends JPanel {
         this.setBorder(BorderFactory.createLineBorder(Color.black, 3));
     }
 
-    public void updateCell(int cellId, int value) {
+    public void updateCell(int cellId, String value) {
         Component cell = this.getComponent(cellId - 1);
         ((CellView) cell).changeDisplayValue(value);
     }
