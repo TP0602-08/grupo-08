@@ -10,7 +10,10 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 /**
- * Created by marcos on 18/10/16.
+ *Class designed to test the current state of the board.
+ The getValues method should return the list of values of the board.
+ The getStatus method should return the state in which the board is
+ (Valid or invalid).
  */
 public class BoardReportTest {
 
@@ -22,8 +25,13 @@ public class BoardReportTest {
 
     @Before
     public void setUp() throws Exception {
-        this.oneValue = new BoardValue(12,5,2);
-        this.secondValue = new BoardValue(1,5,3);
+        int cellId = 12;
+        int cellId2 = 1;
+        int numberOfColumns = 5;
+        int cellValue1 = 2;
+        int cellValue2 = 3;
+        this.oneValue = new BoardValue(cellId,numberOfColumns,cellValue1);
+        this.secondValue = new BoardValue(cellId2,numberOfColumns,cellValue2);
         this.values = new ArrayList<BoardValue>(Arrays.asList(this.oneValue,this.secondValue));
         this.report = new BoardReport(true,this.values);
     }
