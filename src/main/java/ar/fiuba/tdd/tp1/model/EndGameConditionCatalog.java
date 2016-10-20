@@ -18,6 +18,11 @@ public class EndGameConditionCatalog {
                 return new EndGameAllCellsFilled();
             }
         });
+        this.catalog.put("EndGameNoCycles", new EndGameConditionFactory() {
+            public EndGameCondition createEndGameCondition() {
+                return new EndGameNoCycles();
+            }
+        });
     }
 
     public EndGameCondition createEndGameCondition(String name) {

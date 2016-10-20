@@ -25,6 +25,7 @@ public class RuleMustTouchCornerXTimes extends Rule implements VisitorOfCell {
         super(boardValue);
         this.regionId = regionIdValue;
         this.cellsIdsList = board.getCellIdsListFromRegionId(regionId);
+        this.howCellsTouchCorner = new HashMap<>();
         buildHowCellsTouchCorner();
         this.timesTouched = timesTouched;
         this.valid = false;

@@ -61,7 +61,7 @@
             "value": "1"
         }
     ],
-    "endGameCondition": ["EndGameAllCellsFilled", "EndGameNoCycles"],
+    "endGameConditions": ["EndGameAllCellsFilled", "EndGameNoCycles"],
     "board": {
         "rows": 5,
         "columns": 5,
