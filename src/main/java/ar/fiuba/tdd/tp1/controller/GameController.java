@@ -20,11 +20,7 @@ public class GameController implements Observer {
         this.gameName = gameName;
         this.game = game;
         this.gameWindow = null;
-        if (gameName.equalsIgnoreCase("gokigennaname")) {
-            this.alphabeticalCell = true;
-        } else {
-            this.alphabeticalCell = false;
-        }
+        this.alphabeticalCell = gameName.equalsIgnoreCase("gokigennaname");
     }
 
     public void run() {
@@ -69,9 +65,8 @@ public class GameController implements Observer {
         Cell cell;
         if (this.alphabeticalCell) {
             if (cellValue.equals("\\")) {
-                cellValue = "\\\\";
+                cellValue = "\\";
             }
-
             cell = new CellAlphabetical(cellValue,Integer.toString(cellId));
         } else {
             cell = new CellNumerical(Integer.parseInt(cellValue),Integer.toString(cellId));

@@ -33,6 +33,14 @@ public class GokigenNanameTest {
     }
 
     @Test
+    public void fillingOneCellInAZeroCellRegionCauseInvalidMove() {
+        CellAlphabetical cell = new CellAlphabetical("\\", "5");
+        Move invalidMove = new Move(5, cell);
+        game.process(invalidMove);
+        assertFalse(invalidMove.isValid());
+    }
+
+    @Test
     public void fillingCellsInRegionWithoutMeetingTheCornerTouchesCausesInvalidMove() {
         CellAlphabetical cell = new CellAlphabetical("\\", "1");
         Move move = new Move(1, cell);
