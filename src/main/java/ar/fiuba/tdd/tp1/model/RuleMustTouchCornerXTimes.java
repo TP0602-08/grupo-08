@@ -78,7 +78,7 @@ public class RuleMustTouchCornerXTimes extends Rule implements VisitorOfCell {
         Cell first = board.getCellFromCellId(this.cellsIdsList.get(0));
         Cell second = board.getCellFromCellId(this.cellsIdsList.get(1));
         Boolean isLeftBorder = first.getColumn() == 0 && second.getColumn() == 0;
-        Boolean isTopBorder = first.getRow() == board.getRowQuantity() - 1 && second.getRow() == board.getColumnQuantity() - 1;
+        Boolean isTopBorder = first.getRow() == 0 && second.getRow() == 0;
         if (isLeftBorder || isTopBorder) {
             this.howCellsTouchCorner.put(this.cellsIdsList.get(0), "/");
             this.howCellsTouchCorner.put(this.cellsIdsList.get(1), "\\");
