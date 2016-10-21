@@ -45,8 +45,8 @@ public class RuleMustTouchCornerXTimes extends Rule implements VisitorOfCell {
             // I store the values that each cell must have to count as touching in this map, according to its id
             this.howCellsTouchCorner.put(this.cellsIdsList.get(0), "\\");
             this.howCellsTouchCorner.put(this.cellsIdsList.get(1), "/");
-            this.howCellsTouchCorner.put(this.cellsIdsList.get(2), "\\");
-            this.howCellsTouchCorner.put(this.cellsIdsList.get(3), "/");
+            this.howCellsTouchCorner.put(this.cellsIdsList.get(2), "/");
+            this.howCellsTouchCorner.put(this.cellsIdsList.get(3), "\\");
         } else if (this.cellsIdsList.size() == 2) {
             // If there are two, however, it's more complicated. The "region" can either include 2 "upper" cells (that is, the corner
             // is in the bottom border of the board), 2 "lower" cells (the corner is in the top border), 2 "left" cells (right border)
@@ -122,7 +122,14 @@ public class RuleMustTouchCornerXTimes extends Rule implements VisitorOfCell {
         if (this.nonEmptyCells == this.cellsIdsList.size() && accumulatedTouches != this.timesTouched) {
             move.addViolationOfRule(new ViolationOfRule("La esquina no es tocada " + this.timesTouched + " veces.", this.cellsIdsList));
             this.valid = false;
+        } else {
+            if (this.timesTouched == 0 && accumulatedTouches != 0) {
+                move.addViolationOfRule(new ViolationOfRule("La esquina no es tocada " + this.timesTouched + " veces.", this.cellsIdsList));
+                this.valid = false;
+            }
         }
+
+
     }
 
     private int isCornerTouchedByCell(Cell cell) {

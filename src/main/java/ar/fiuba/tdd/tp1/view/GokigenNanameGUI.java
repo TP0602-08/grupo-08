@@ -21,6 +21,12 @@ public class GokigenNanameGUI extends GameGUI {
         for (CellInfo cellInfo : this.cellInfoList) {
             this.add(new GokigenNanameCellView(cellInfo,validInputs,userInputHandler));
         }
-        this.addedCells = true;
+        if (addedCells) {
+            drawClues();
+        }
+    }
+
+    private void drawClues() {
+
     }
 }
