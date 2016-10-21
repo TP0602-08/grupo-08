@@ -49,4 +49,9 @@ public class GameReportJsonSerializer {
         }
     }
 
+    public GameReportJson deserialize(String jsonString) {
+        Gson gson = new Gson();
+        return gson.fromJson(jsonString, GameReportJson.class);
+    }
+
 }

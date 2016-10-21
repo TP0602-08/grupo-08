@@ -3,25 +3,21 @@ package ar.fiuba.tdd.tp1.controller;
 
 import ar.fiuba.tdd.tp1.model.Game;
 import ar.fiuba.tdd.tp1.serialization.json.GameJsonSerializer;
-import ar.fiuba.tdd.tp1.serialization.xml.GameXmlSerializer;
 import ar.fiuba.tdd.tp1.view.ApplicationView;
-import ar.fiuba.tdd.tp1.view.ConfigFileErrorWindow;
-import ar.fiuba.tdd.tp1.view.GameWindow;
 import ar.fiuba.tdd.tp1.view.InvalidGameWindow;
 
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import javax.swing.event.MouseInputAdapter;
-import javax.xml.bind.JAXBException;
 
 import static javax.swing.SwingUtilities.isLeftMouseButton;
 
 public class ApplicationController extends MouseInputAdapter {
 
-    private static final String sudokuJsonPath = "src\\main\\resources\\sudoku.json";
-    private static final String kakuroJsonPath = "src\\main\\resources\\kakuro.json";
-    private static final String inshinohenshaJsonPath = "src\\main\\resources\\inshinoheya.json";
-    private static final String gokigenNanameJsonPath = "src\\main\\resources\\gokigenNaname.json";
+    private static final String sudokuJsonPath = "src/main/resources/sudoku.json";
+    private static final String kakuroJsonPath = "src/main/resources/kakuro.json";
+    private static final String inshinoheshaJsonPath = "src/main/resources/inshinoheya.json";
+    private static final String gokigenNanameJsonPath = "src/main/resources/gokigenNaname.json";
 
     private Game game;
     private GameJsonSerializer gameJsonSerializer;
@@ -65,7 +61,7 @@ public class ApplicationController extends MouseInputAdapter {
         } else if (gameName.equalsIgnoreCase("kakuro")) {
             return new GameJsonSerializer(kakuroJsonPath);
         } else if (gameName.equalsIgnoreCase("inshinoheya")) {
-            return new GameJsonSerializer(inshinohenshaJsonPath);
+            return new GameJsonSerializer(inshinoheshaJsonPath);
         } else {
             return new GameJsonSerializer(gokigenNanameJsonPath);
         }

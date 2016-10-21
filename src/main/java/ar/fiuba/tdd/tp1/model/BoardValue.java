@@ -1,5 +1,7 @@
 package ar.fiuba.tdd.tp1.model;
 
+import ar.fiuba.tdd.tp1.model.interfaces.Board;
+
 public class BoardValue {
 
     private int[] position;
@@ -27,5 +29,9 @@ public class BoardValue {
 
     public int getValue() {
         return this.value;
+    }
+
+    public boolean compareValue(BoardValue valueToCompare) {
+        return ((this.getX() == valueToCompare.getX()) && (this.getY() == valueToCompare.getY()));
     }
 }

@@ -20,4 +20,17 @@ public class PlayReport {
     public String getBoardStatus() {
         return this.boardStatus;
     }
+
+    public boolean areEquals(PlayReport playReportToCompare) {
+        return ((this.boardStatus.equals(playReportToCompare.boardStatus)) && (this.number == playReportToCompare.number));
+    }
+
+    //TODO ivan revisar porque esta comparacion no anda
+   /* public boolean equals(Object playReportToCompare) {
+        return playReportToCompare.equals(this);
+    }
+
+    public boolean equals(PlayReport playReportToCompare) {
+        return true;//this.number == playReportToCompare.number && this.boardStatus.equals(playReportToCompare.boardStatus);
+    }*/
 }
