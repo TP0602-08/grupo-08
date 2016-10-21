@@ -22,7 +22,7 @@ public class ApplicationView extends JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
 
-        this.imageLabel = new JLabel(new ImageIcon("src\\main\\resources\\LogoFiuba.jpg"));
+        this.imageLabel = new JLabel(new ImageIcon("src/main/resources/LogoFiuba.jpg"));
         this.add(imageLabel);
 
         this.configFilePathTextField = new JTextField(40);

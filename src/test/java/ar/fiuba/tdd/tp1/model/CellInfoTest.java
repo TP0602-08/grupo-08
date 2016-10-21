@@ -7,10 +7,10 @@ import static org.junit.Assert.*;
 
 /**
  *This class is for the unit test of class InfoCell.
- The getId method, you should return the cell ID.
+ The getId method, should return the cell ID.
  The getValue method should return the value of the cell.
  The isEditable method should return a Boolean condition that
- does not say whether the cell is editable or not.
+ says whether the cell is editable or not.
  */
 public class CellInfoTest {
     private CellInfo cellInfo;

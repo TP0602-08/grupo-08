@@ -16,4 +16,17 @@ public class GameReport {
             playNumber++;
         }
     }
+
+    public boolean comparePlays(GameReport gameReportToCompare) {
+
+        for (int i = 0; i < this.plays.size() ; i++) {
+            if (! this.plays.get(i).areEquals(gameReportToCompare.plays.get(i))) {
+                return false;
+            }
+
+        }
+        return true;
+    }
+
+
 }
