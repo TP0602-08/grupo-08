@@ -87,5 +87,5 @@ public class GokigenNanameTest {
         assertTrue(move.isValid());
     }
 
-    
+
 }
