@@ -39,7 +39,7 @@ public class Game {
                 board.apply(move);
             }
         } else {
-            List<Integer> listOfConflictingCellIds = new ArrayList<Integer>();
+            List<Integer> listOfConflictingCellIds = new ArrayList<>();
             listOfConflictingCellIds.add(move.getcellId());
             move.addViolationOfRule(new ViolationOfRule("Not and editable cell", listOfConflictingCellIds));
         }
@@ -91,9 +91,9 @@ public class Game {
     public BoardReport getBoardReport() {
         boolean status = this.moveHistory.get(this.moveHistory.size() - 1).wasValid();
 
-        Map<Integer, Integer> boardValuesMap = this.board.getBoardValues();
+        Map<Integer, String> boardValuesMap = this.board.getBoardValues();
         List<BoardValue> boardValuesList = new LinkedList<>();
-        for (Map.Entry<Integer, Integer> entry : boardValuesMap.entrySet()) {
+        for (Map.Entry<Integer, String> entry : boardValuesMap.entrySet()) {
             boardValuesList.add(new BoardValue(entry.getKey(), board.getColumnQuantity(), entry.getValue()));
         }
         return new BoardReport(status, boardValuesList);

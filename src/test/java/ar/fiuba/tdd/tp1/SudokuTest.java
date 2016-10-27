@@ -3,9 +3,11 @@ package ar.fiuba.tdd.tp1;
 import ar.fiuba.tdd.tp1.model.*;
 import ar.fiuba.tdd.tp1.serialization.json.GameJsonSerializer;
 import ar.fiuba.tdd.tp1.serialization.json.GameReportJsonSerializer;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -253,6 +255,12 @@ public class SudokuTest {
         assertNotNull(validInputs);
         assertTrue(validInputs.size() == expectedInputs.size());
         assertTrue(validInputs.equals(expectedInputs));
+    }
+
+    @After
+    public void cleanUp() {
+        File file = new File(SUDOKUOUTPUTJSON);
+        file.delete();
     }
 
 }

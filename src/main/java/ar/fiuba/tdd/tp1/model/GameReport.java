@@ -1,7 +1,5 @@
 package ar.fiuba.tdd.tp1.model;
 
-
-
 import java.util.LinkedList;
 import java.util.List;
 
@@ -23,10 +21,7 @@ public class GameReport {
             if (! this.plays.get(i).areEquals(gameReportToCompare.plays.get(i))) {
                 return false;
             }
-
         }
         return true;
     }
-
-
 }

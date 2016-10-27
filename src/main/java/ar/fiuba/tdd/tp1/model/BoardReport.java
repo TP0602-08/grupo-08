@@ -1,6 +1,5 @@
 package ar.fiuba.tdd.tp1.model;
 
-import java.util.LinkedList;
 import java.util.List;
 
 public class BoardReport {

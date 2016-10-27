@@ -22,5 +22,5 @@ public interface Board {
 
     int getNumberOfCells();
 
-    Map<Integer,Integer> getBoardValues();
+    Map<Integer,String> getBoardValues();
 }

@@ -9,9 +9,11 @@ import ar.fiuba.tdd.tp1.serialization.json.GameReportJson;
 import ar.fiuba.tdd.tp1.serialization.json.GameReportJsonSerializer;
 import ar.fiuba.tdd.tp1.serialization.xml.GameMixedSerializer;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
@@ -21,7 +23,7 @@ import static org.junit.Assert.*;
 
 public class ActividadEntregaUnoTest { private static final String GAMEXML = "src/main/resources/inshinoheya.xml";
     private static final String MOVESJSON = "src/main/resources/plays.json";
-    private static final String JSONOUTPUT = "src/main/resources/gameOutput.json";
+    private static final String JSONOUTPUT = "src/test/resources//gameOutput.json";
     private static Game game;
     private static GameReportJsonSerializer gameReportJsonSerializer;
 
@@ -59,5 +61,12 @@ public class ActividadEntregaUnoTest { private static final String GAMEXML = "sr
         Gson otro = new Gson();
         GameReportJson testReport = otro.fromJson(report, GameReportJson.class);
         assertNotNull(testReport);
+    }
+
+
+    @After
+    public void cleanUp() {
+        File file = new File(JSONOUTPUT);
+        file.delete();
     }
 }

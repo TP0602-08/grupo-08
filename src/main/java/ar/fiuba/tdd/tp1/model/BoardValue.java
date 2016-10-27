@@ -1,13 +1,11 @@
 package ar.fiuba.tdd.tp1.model;
 
-import ar.fiuba.tdd.tp1.model.interfaces.Board;
-
 public class BoardValue {
 
     private int[] position;
-    private int value;
+    private String value;
 
-    public BoardValue(int cellId, int numberOfColumns, int value) {
+    public BoardValue(int cellId, int numberOfColumns, String value) {
         int row = 1;
         while (cellId > numberOfColumns) {
             cellId = cellId - numberOfColumns;
@@ -27,7 +25,7 @@ public class BoardValue {
         return this.position[1];
     }
 
-    public int getValue() {
+    public String getValue() {
         return this.value;
     }
 

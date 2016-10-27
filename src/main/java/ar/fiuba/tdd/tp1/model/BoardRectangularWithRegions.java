@@ -150,12 +150,12 @@ public class BoardRectangularWithRegions implements Board {
         return cellsMap.size();
     }
 
-    public Map<Integer,Integer> getBoardValues() {
-        Map<Integer,Integer> mapValues = new HashMap<Integer,Integer>();
+    public Map<Integer,String> getBoardValues() {
+        Map<Integer,String> mapValues = new HashMap<>();
 
         for (Integer key: cellsMap.keySet()) {
             if ( ! cellsMap.get(key).getDatum().equals(0)) {
-                mapValues.put(key, (Integer) cellsMap.get(key).getDatum());
+                mapValues.put(key, cellsMap.get(key).datumToString());
             }
         }
         return mapValues;

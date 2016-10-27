@@ -15,13 +15,13 @@ import static org.junit.Assert.*;
 public class BoardValueTest {
     private BoardValue valueOfBoard;
     private int cellId;
-    private int value;
+    private String value;
     private int valueOfColums;
 
     @Before
     public void setUp() throws Exception {
         this.cellId = 16;
-        this.value = 12;
+        this.value = "12";
         this.valueOfColums = 9;
         this.valueOfBoard = new BoardValue(this.cellId,this.valueOfColums,this.value);
 
