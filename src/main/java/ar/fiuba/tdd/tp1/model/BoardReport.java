@@ -1,6 +1,5 @@
 package ar.fiuba.tdd.tp1.model;
 
-import java.util.LinkedList;
 import java.util.List;
 
 public class BoardReport {
@@ -24,6 +23,20 @@ public class BoardReport {
 
     public List<BoardValue> getValues() {
         return this.values;
+    }
+
+    public boolean compareValues(BoardReport boardReportToCompare) {
+
+        if (! this.status.equals(boardReportToCompare.status) ) {
+            return false;
+        }
+
+        for (int i = 0; i < this.getValues().size() ; i++) {
+            if ( !this.getValues().get(i).compareValue(boardReportToCompare.getValues().get(i))) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }

@@ -11,11 +11,10 @@ import org.junit.Test;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class KakuroTest {
     private static final String KAKUROJSON = "src/main/resources/kakuro.json";
@@ -233,5 +232,17 @@ public class KakuroTest {
             assertTrue(move.wasValid());
         }
         assertTrue(game.isGameWon());
+    }
+
+    @Test
+    public void deserializedGameReturnsCorrectListOfInputs() {
+        List<String> validInputs = game.getValidInputs();
+        List<String> expectedInputs = new LinkedList<>();
+        for (int i = 1 ; i < 10 ; i++) {
+            expectedInputs.add(Integer.toString(i));
+        }
+        assertNotNull(validInputs);
+        assertTrue(validInputs.size() == expectedInputs.size());
+        assertTrue(validInputs.equals(expectedInputs));
     }
 }

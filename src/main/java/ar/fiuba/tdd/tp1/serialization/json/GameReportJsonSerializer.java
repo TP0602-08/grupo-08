@@ -35,7 +35,7 @@ public class GameReportJsonSerializer {
 
         GameReportJson gameReportJson = new GameReportJson();
         gameReportJson.setGameReport(this.gameReport);
-        gameReportJson.setBoardReport(this.boardReport);
+        gameReportJson.setBoard(this.boardReport);
 
         serializedGameReport = gson.toJson(gameReportJson);
 
@@ -47,6 +47,11 @@ public class GameReportJsonSerializer {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public GameReportJson deserialize(String jsonString) {
+        Gson gson = new Gson();
+        return gson.fromJson(jsonString, GameReportJson.class);
     }
 
 }

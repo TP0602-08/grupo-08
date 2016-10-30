@@ -3,17 +3,18 @@ package ar.fiuba.tdd.tp1;
 import ar.fiuba.tdd.tp1.model.*;
 import ar.fiuba.tdd.tp1.serialization.json.GameJsonSerializer;
 import ar.fiuba.tdd.tp1.serialization.json.GameReportJsonSerializer;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class SudokuTest {
     private static final String SUDOKUJSON = "src/main/resources/sudoku.json";
@@ -242,6 +243,24 @@ public class SudokuTest {
             assertTrue(move.wasValid());
         }
         assertTrue(game.isGameWon());
+    }
+
+    @Test
+    public void deserializedGameReturnsCorrectListOfInputs() {
+        List<String> validInputs = game.getValidInputs();
+        List<String> expectedInputs = new LinkedList<>();
+        for (int i = 1 ; i < 10 ; i++) {
+            expectedInputs.add(Integer.toString(i));
+        }
+        assertNotNull(validInputs);
+        assertTrue(validInputs.size() == expectedInputs.size());
+        assertTrue(validInputs.equals(expectedInputs));
+    }
+
+    @After
+    public void cleanUp() {
+        File file = new File(SUDOKUOUTPUTJSON);
+        file.delete();
     }
 
 }

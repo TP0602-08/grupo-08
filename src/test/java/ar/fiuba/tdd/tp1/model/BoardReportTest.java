@@ -28,11 +28,11 @@ public class BoardReportTest {
         int cellId = 12;
         int cellId2 = 1;
         int numberOfColumns = 5;
-        int cellValue1 = 2;
-        int cellValue2 = 3;
+        String cellValue1 = "2";
+        String cellValue2 = "3";
         this.oneValue = new BoardValue(cellId,numberOfColumns,cellValue1);
         this.secondValue = new BoardValue(cellId2,numberOfColumns,cellValue2);
-        this.values = new ArrayList<BoardValue>(Arrays.asList(this.oneValue,this.secondValue));
+        this.values = new ArrayList<>(Arrays.asList(this.oneValue, this.secondValue));
         this.report = new BoardReport(true,this.values);
     }
 
