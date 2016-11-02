@@ -31,6 +31,8 @@ public class BoardRectangularWithRegions implements Board {
         Cell oldCell = cellsMap.get(cellId);
         Cell newCell = move.getNewCell();
         newCell.setName(oldCell.getName());
+        newCell.setColumn(oldCell.getColumn());
+        newCell.setRow(oldCell.getRow());
         cellsMap.put(cellId, newCell);
     }
 
@@ -65,6 +67,9 @@ public class BoardRectangularWithRegions implements Board {
 
     //Translates row and column coordinates into the cellId used by te cellsMap.
     public Integer computeCellId(int row, int column) {
+        if (row < 0 || row >= this.getRowQuantity() || column < 0 || column >= this.getColumnQuantity()) {
+            return -1;
+        }
         int position = 1 + (row * columnQuantity) + column;
         return position;
     }
@@ -131,15 +136,6 @@ public class BoardRectangularWithRegions implements Board {
 
     public Map<String, Region> getRegionsMap() {
         return regionsMap;
-    }
-
-    public List<Cell> getCellsListFromRegion(String regionId) {
-        List<Cell> cellsList = new ArrayList<Cell>();
-        Region region = regionsMap.get(regionId);
-        for (String cellNameIterator : region.getCellNamesList()) {
-            cellsList.add(cellsMap.get(this.cellNamesMap.get(cellNameIterator)));
-        }
-        return cellsList;
     }
 
     public int getNumberOfRegions() {

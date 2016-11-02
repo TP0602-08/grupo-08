@@ -23,6 +23,8 @@ public class RulebookCatalog implements RulebookFactory {
         add("RuleTotalSumEquals", new RuleTotalSumEquals(board));
         add("RuleTotalProductEquals", new RuleTotalProductEquals(board));
         add("RuleMustTouchCornerXTimes", new RuleMustTouchCornerXTimes(board));
+        add("RuleMustHaveTwoContinuousBlackCells", new RuleMustHaveTwoContinuousBlackCells(board));
+        add("RuleBlackCellsMustTouchOtherRegions", new RuleBlackCellsMustTouchOtherRegions(board));
     }
 
     public void add(String name, Rule rule) {

@@ -23,6 +23,11 @@ public class EndGameConditionCatalog {
                 return new EndGameNoCycles();
             }
         });
+        this.catalog.put("EndGameAllRegionsFilled", new EndGameConditionFactory() {
+            public EndGameCondition createEndGameCondition() {
+                return new EndGameAllRegionsFilled();
+            }
+        });
     }
 
     public EndGameCondition createEndGameCondition(String name) {
