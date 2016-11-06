@@ -32,10 +32,15 @@ public class InshiNoHeyaGUI extends GameGUI {
     @Override
     public void drawGUI() {
         for (CellInfo cellInfo : this.cellInfoList) {
-            this.add(new InshiNoHeyaCellView(cellInfo, validInputs, userInputHandler));
+            this.add(createNewCellView(cellInfo));
         }
         addClues();
         drawRegionBorders();
+    }
+
+    @Override
+    protected CellView createNewCellView(CellInfo cellInfo) {
+        return new InshiNoHeyaCellView(cellInfo,this.validInputs,this.userInputHandler);
     }
 
     private Map<Integer,String> getClues() {

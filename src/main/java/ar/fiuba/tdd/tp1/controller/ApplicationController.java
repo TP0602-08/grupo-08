@@ -56,14 +56,15 @@ public class ApplicationController extends MouseInputAdapter {
     }
 
     private GameJsonSerializer getGameJsonSerializer(String gameName) throws IOException {
-        if (gameName.equalsIgnoreCase("sudoku")) {
-            return new GameJsonSerializer(sudokuJsonPath);
-        } else if (gameName.equalsIgnoreCase("kakuro")) {
-            return new GameJsonSerializer(kakuroJsonPath);
-        } else if (gameName.equalsIgnoreCase("inshinoheya")) {
-            return new GameJsonSerializer(inshinoheshaJsonPath);
-        } else {
-            return new GameJsonSerializer(gokigenNanameJsonPath);
+        switch (gameName) {
+            case "sudoku":
+                return new GameJsonSerializer(sudokuJsonPath);
+            case "kakuro":
+                return new GameJsonSerializer(kakuroJsonPath);
+            case "inshinoheya":
+                return new GameJsonSerializer(inshinoheshaJsonPath);
+            default:
+                return new GameJsonSerializer(gokigenNanameJsonPath);
         }
     }
 

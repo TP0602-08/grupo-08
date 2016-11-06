@@ -19,11 +19,16 @@ public class GokigenNanameGUI extends GameGUI {
     @Override
     public void drawGUI() {
         for (CellInfo cellInfo : this.cellInfoList) {
-            this.add(new GokigenNanameCellView(cellInfo,validInputs,userInputHandler));
+            this.add(createNewCellView(cellInfo));
         }
         if (addedCells) {
             drawClues();
         }
+    }
+
+    @Override
+    protected CellView createNewCellView(CellInfo cellInfo) {
+        return new GokigenNanameCellView(cellInfo,validInputs,userInputHandler);
     }
 
     private void drawClues() {

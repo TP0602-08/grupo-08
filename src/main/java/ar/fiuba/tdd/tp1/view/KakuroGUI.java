@@ -8,17 +8,16 @@ import java.util.List;
 
 class KakuroGUI extends GameGUI {
 
-    KakuroGUI(int numberOfRows, int numberOfColumns, List<String> validInputs, List<CellInfo> cellInfoList, UserInputHandler
+    public KakuroGUI(int numberOfRows, int numberOfColumns, List<String> validInputs, List<CellInfo> cellInfoList, UserInputHandler
             userInputHandler) {
         super(numberOfRows,numberOfColumns,validInputs,cellInfoList,userInputHandler);
     }
 
     @Override
-    public void drawGUI() {
-        for (CellInfo cellInfo : this.cellInfoList) {
-            this.add(new KakuroCellView(cellInfo,validInputs,userInputHandler));
-        }
+    protected CellView createNewCellView(CellInfo cellInfo) {
+        return new KakuroCellView(cellInfo,this.validInputs,this.userInputHandler);
     }
+
 }
 
 

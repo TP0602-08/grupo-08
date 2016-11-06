@@ -29,6 +29,11 @@ public class SudokuGUI extends GameGUI {
         fillBoard(columnsPerSubGrid);
     }
 
+    @Override
+    protected CellView createNewCellView(CellInfo cellInfo) {
+        return new SudokuCellView(cellInfo,this.validInputs,this.userInputHandler);
+    }
+
     private void fillBoard(int columnsPerSubGrid) {
         int firstCellNumber = 0;
         int firstGridNumber = 0;
@@ -54,7 +59,7 @@ public class SudokuGUI extends GameGUI {
             grid = getSubgridByNumber(gridNumber);
             for (int i = 0; i < columnsPerSubGrid ; i++) {
                 cellInfo = this.cellInfoList.get(cellNumber);
-                grid.add(new SudokuCellView(cellInfo,this.validInputs,this.userInputHandler));
+                grid.add(createNewCellView(cellInfo));
                 cellsAdded++;
                 cellNumber++;
             }

@@ -29,7 +29,13 @@ abstract class GameGUI extends JPanel {
     }
 
 
-    public abstract void drawGUI();
+    public void drawGUI() {
+        for (CellInfo cellInfo : this.cellInfoList) {
+            this.add(createNewCellView(cellInfo));
+        }
+    }
+
+    protected abstract CellView createNewCellView(CellInfo cellInfo);
 
     private void drawBorder() {
         this.setBorder(BorderFactory.createLineBorder(Color.black, 3));
