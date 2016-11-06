@@ -6,6 +6,10 @@ import ar.fiuba.tdd.tp1.model.CellInfo;
 import ar.fiuba.tdd.tp1.model.Game;
 
 import java.awt.*;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 import javax.swing.*;
 

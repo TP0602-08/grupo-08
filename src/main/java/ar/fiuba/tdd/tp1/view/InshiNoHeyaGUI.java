@@ -2,12 +2,15 @@ package ar.fiuba.tdd.tp1.view;
 
 import ar.fiuba.tdd.tp1.controller.UserInputHandler;
 import ar.fiuba.tdd.tp1.model.CellInfo;
+import ar.fiuba.tdd.tp1.serialization.json.CellBorderJsonSerializer;
 
 import java.awt.*;
-import java.util.HashMap;
+import java.io.IOException;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
-import javax.swing.*;
+import javax.swing.border.MatteBorder;
+
+
 
 public class InshiNoHeyaGUI extends GameGUI {
 
@@ -60,53 +63,24 @@ public class InshiNoHeyaGUI extends GameGUI {
         return clues;
     }
 
-    private void drawRegionBorders() {
-        drawBordersFirstRow();
-        drawBordersSecondRow();
-        drawBordersThreeRow();
-        drawBordersFourthRow();
-        drawBordersFifthRow();
+    private void drawRegionBorders()  {
+        CellBorderJsonSerializer cellBorderJsonSerializer = new CellBorderJsonSerializer("inshinoheya");
+        if (cellBorderJsonSerializer.fileExists()) {
+            try {
+                List<MatteBorder> borders = cellBorderJsonSerializer.getBorders();
+                for (int i = 0; i < borders.size(); i++) {
+                    this.getCellById(i).setBorder(borders.get(i));
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
     }
 
-    private void drawBordersFifthRow() {
-        getCellById(20).setBorder(BorderFactory.createMatteBorder(1,2,2,2,Color.black));
-        getCellById(21).setBorder(BorderFactory.createMatteBorder(1,2,2,2,Color.black));
-        getCellById(22).setBorder(BorderFactory.createMatteBorder(1,2,2,2,Color.black));
-        getCellById(23).setBorder(BorderFactory.createMatteBorder(2,2,2,1,Color.black));
-        getCellById(24).setBorder(BorderFactory.createMatteBorder(2,1,2,2,Color.black));
-    }
 
-    private void drawBordersFourthRow() {
-        getCellById(15).setBorder(BorderFactory.createMatteBorder(2,2,1,2,Color.black));
-        getCellById(16).setBorder(BorderFactory.createMatteBorder(2,2,1,1,Color.black));
-        getCellById(17).setBorder(BorderFactory.createMatteBorder(1,2,1,2,Color.black));
-        getCellById(18).setBorder(BorderFactory.createMatteBorder(2,2,2,1,Color.black));
-        getCellById(19).setBorder(BorderFactory.createMatteBorder(2,1,2,2,Color.black));
-    }
 
-    private void drawBordersThreeRow() {
-        getCellById(10).setBorder(BorderFactory.createMatteBorder(2,2,2,1,Color.black));
-        getCellById(11).setBorder(BorderFactory.createMatteBorder(2,1,2,2,Color.black));
-        getCellById(12).setBorder(BorderFactory.createMatteBorder(2,2,1,2,Color.black));
-        getCellById(13).setBorder(BorderFactory.createMatteBorder(1,2,2,2,Color.black));
-        getCellById(14).setBorder(BorderFactory.createMatteBorder(1,2,2,2,Color.black));
-    }
 
-    private void drawBordersSecondRow() {
-        getCellById(5).setBorder(BorderFactory.createMatteBorder(1,2,2,2,Color.black));
-        getCellById(6).setBorder(BorderFactory.createMatteBorder(2,2,2,1,Color.black));
-        getCellById(7).setBorder(BorderFactory.createMatteBorder(2,1,2,2,Color.black));
-        getCellById(8).setBorder(BorderFactory.createMatteBorder(2,2,1,2,Color.black));
-        getCellById(9).setBorder(BorderFactory.createMatteBorder(1,2,1,2,Color.black));
-    }
-
-    private void drawBordersFirstRow() {
-        getCellById(0).setBorder(BorderFactory.createMatteBorder(2,2,1,2,Color.black));
-        getCellById(1).setBorder(BorderFactory.createMatteBorder(2,2,2,1,Color.black));
-        getCellById(2).setBorder(BorderFactory.createMatteBorder(2,1,2,2,Color.black));
-        getCellById(3).setBorder(BorderFactory.createMatteBorder(2,2,2,2,Color.BLACK));
-        getCellById(4).setBorder(BorderFactory.createMatteBorder(2,2,1,2,Color.black));
-    }
 }
 
 
