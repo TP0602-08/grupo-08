@@ -12,7 +12,7 @@ public class GokigenNanameCellView extends CellView {
         super();
         this.setPreferredSize(new Dimension(60,60));
         this.setBackground(Color.WHITE);
-        CellController cellController = new CellController(cell.getId(),validInputs,userInputHandler);
+        CellController cellController = new CellController(cell.getId(),validInputs,userInputHandler,true);
         this.addMouseListener(cellController);
     }
 }

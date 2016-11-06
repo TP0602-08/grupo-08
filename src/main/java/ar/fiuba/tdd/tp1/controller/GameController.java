@@ -20,7 +20,7 @@ public class GameController implements Observer {
         this.gameName = gameName;
         this.game = game;
         this.gameWindow = null;
-        this.alphabeticalCell = gameName.equalsIgnoreCase("gokigennaname");
+        this.alphabeticalCell = gameName.equalsIgnoreCase("gokigennaname") || gameName.equalsIgnoreCase("norinori");
     }
 
     public void run() {

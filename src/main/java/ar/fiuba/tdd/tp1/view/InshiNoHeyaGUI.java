@@ -14,23 +14,21 @@ import javax.swing.border.MatteBorder;
 
 public class InshiNoHeyaGUI extends GameGUI {
 
-    public InshiNoHeyaGUI(int numberOfRows, int numberOfColumns, List<String> validInputs, List<CellInfo> cellInfoList, UserInputHandler
+    public InshiNoHeyaGUI(String gameName, int numberOfRows, int numberOfColumns,
+                          List<String> validInputs, List<CellInfo> cellInfoList, UserInputHandler
             userInputHandler) {
-        super(numberOfRows, numberOfColumns, validInputs, cellInfoList, userInputHandler);
+        super(gameName, numberOfRows, numberOfColumns, validInputs, cellInfoList, userInputHandler);
     }
 
     private void addClues() {
         Map<Integer,String> clueMap;
         clueMap = getClues();
         for (Map.Entry<Integer,String> entry : clueMap.entrySet()) {
-            getCellById(entry.getKey() - 1).addClue(entry.getValue());
+            ((InshiNoHeyaCellView)getCellById(entry.getKey() - 1)).addClue(entry.getValue());
         }
     }
 
-    private InshiNoHeyaCellView getCellById(int id) {
-        Component cell = this.getComponent(id);
-        return ((InshiNoHeyaCellView) cell);
-    }
+
 
     @Override
     public void drawGUI() {
@@ -63,24 +61,11 @@ public class InshiNoHeyaGUI extends GameGUI {
         return clues;
     }
 
-    private void drawRegionBorders()  {
-        CellBorderJsonSerializer cellBorderJsonSerializer = new CellBorderJsonSerializer("inshinoheya");
-        if (cellBorderJsonSerializer.fileExists()) {
-            try {
-                List<MatteBorder> borders = cellBorderJsonSerializer.getBorders();
-                for (int i = 0; i < borders.size(); i++) {
-                    this.getCellById(i).setBorder(borders.get(i));
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        }
-    }
-
-
-
-
 }
+
+
+
+
+
 
 

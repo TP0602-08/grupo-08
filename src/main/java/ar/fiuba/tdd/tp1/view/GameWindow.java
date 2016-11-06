@@ -29,7 +29,6 @@ public class GameWindow extends JFrame {
     public void createGUI(int numberOfRows, int numberOfColumns, List<String> validInputs, List<CellInfo> cellInfoList, UserInputHandler
             userInputHandler) {
 
-
         gameGUI = getGameGUI(numberOfRows,numberOfColumns,validInputs,cellInfoList,userInputHandler);
 
         if (gameGUI != null) {
@@ -42,16 +41,17 @@ public class GameWindow extends JFrame {
 
     private GameGUI getGameGUI(int numberOfRows, int numberOfColumns, List<String> validInputs,
                                List<CellInfo> cellInfoList, UserInputHandler userInputHandler) {
-
-        if (this.gameName.equalsIgnoreCase("Sudoku")) {
-            return new SudokuGUI(numberOfRows,numberOfColumns,validInputs,cellInfoList,userInputHandler);
-        }
-        if (this.gameName.equalsIgnoreCase("Kakuro")) {
-            return new KakuroGUI(numberOfRows,numberOfColumns,validInputs,cellInfoList,userInputHandler);
-        } else if (this.gameName.equalsIgnoreCase("InshinoHeya")) {
-            return new InshiNoHeyaGUI(numberOfRows,numberOfColumns,validInputs,cellInfoList,userInputHandler);
-        } else {
-            return new GokigenNanameGUI(numberOfRows,numberOfColumns,validInputs,cellInfoList,userInputHandler);
+        switch (this.gameName) {
+            case "sudoku":
+                return new SudokuGUI(this.gameName,numberOfRows,numberOfColumns,validInputs,cellInfoList,userInputHandler);
+            case "kakuro":
+                return new KakuroGUI(this.gameName,numberOfRows,numberOfColumns,validInputs,cellInfoList,userInputHandler);
+            case "inshinoheya":
+                return new InshiNoHeyaGUI(this.gameName,numberOfRows,numberOfColumns,validInputs,cellInfoList,userInputHandler);
+            case "gokigennaname":
+                return new GokigenNanameGUI(this.gameName,numberOfRows,numberOfColumns,validInputs,cellInfoList,userInputHandler);
+            default:
+                return new NorinoriGUI(this.gameName,numberOfRows,numberOfColumns,validInputs,cellInfoList,userInputHandler);
         }
     }
 

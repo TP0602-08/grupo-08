@@ -18,6 +18,7 @@ public class ApplicationController extends MouseInputAdapter {
     private static final String kakuroJsonPath = "src/main/resources/kakuro.json";
     private static final String inshinoheshaJsonPath = "src/main/resources/inshinoheya.json";
     private static final String gokigenNanameJsonPath = "src/main/resources/gokigenNaname.json";
+    private static final String norinoriJsonPath = "src/main/resources/norinori.json";
 
     private Game game;
     private GameJsonSerializer gameJsonSerializer;
@@ -52,7 +53,7 @@ public class ApplicationController extends MouseInputAdapter {
 
     private boolean validGameName(String gameName) {
         return gameName.equals("sudoku") || gameName.equals("kakuro")
-                || gameName.equals("inshinoheya") || gameName.equals("gokigennaname");
+                || gameName.equals("inshinoheya") || gameName.equals("gokigennaname") || gameName.equals("norinori");
     }
 
     private GameJsonSerializer getGameJsonSerializer(String gameName) throws IOException {
@@ -63,8 +64,11 @@ public class ApplicationController extends MouseInputAdapter {
                 return new GameJsonSerializer(kakuroJsonPath);
             case "inshinoheya":
                 return new GameJsonSerializer(inshinoheshaJsonPath);
-            default:
+            case "gokigennaname":
                 return new GameJsonSerializer(gokigenNanameJsonPath);
+            default:
+                return new GameJsonSerializer(norinoriJsonPath);
+
         }
     }
 

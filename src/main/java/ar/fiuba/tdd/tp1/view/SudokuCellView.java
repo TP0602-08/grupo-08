@@ -22,7 +22,7 @@ class SudokuCellView extends CellView {
         this.id = cell.getId();
 
         if (cell.isEditable()) {
-            CellController cellController = new CellController(cell.getId(),validInputs,userInputHandler);
+            CellController cellController = new CellController(cell.getId(),validInputs,userInputHandler,true);
             this.addMouseListener(cellController);
         } else {
             this.setText(cell.getValue());
