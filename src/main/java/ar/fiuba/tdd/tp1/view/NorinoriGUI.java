@@ -9,12 +9,12 @@ public class NorinoriGUI extends GameGUI {
 
     @Override
     protected CellView createNewCellView(CellInfo cellInfo) {
-        return new NorinoriCellView(cellInfo,this.validInputs,this.userInputHandler);
+        return new NorinoriCellView(cellInfo, this.validInputs, this.userInputHandler);
     }
 
     public NorinoriGUI(String gameName, int numberOfRows, int numberOfColumns,
                        List<String> validInputs, List<CellInfo> cellInfoList, UserInputHandler
-            userInputHandler) {
-        super(gameName, numberOfRows,numberOfColumns,validInputs,cellInfoList,userInputHandler);
+                               userInputHandler) {
+        super(gameName, numberOfRows, numberOfColumns, validInputs, cellInfoList, userInputHandler);
     }
 }

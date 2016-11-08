@@ -69,7 +69,7 @@ public class RuleMustHaveTwoContinuousBlackCells extends Rule implements Visitor
     private void finalizeValidate(Move move, List<int[]> blackCellsPositions) {
         this.valid = true;
         if (this.blackCells > 2) {
-            move.addViolationOfRule(new ViolationOfRule("Hay más de 2 celdas en negro en la región", this.cellsIdsList));
+            move.addViolationOfRule(new ViolationOfRule("Hay mas de 2 celdas en negro en la region", this.cellsIdsList));
             this.valid = false;
         } else if (this.blackCells == 2 && !checkContinuity(blackCellsPositions)) {
             // TODO: Probablemente deba ser otra regla

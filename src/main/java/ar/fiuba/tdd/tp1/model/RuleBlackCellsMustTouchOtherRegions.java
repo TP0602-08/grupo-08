@@ -71,7 +71,7 @@ public class RuleBlackCellsMustTouchOtherRegions extends Rule implements Visitor
     private void finalizeValidate(Move move, Boolean invalidRegion) {
         this.valid = true;
         if (invalidRegion) {
-            move.addViolationOfRule(new ViolationOfRule("Las celdas negras de la región están continuas a celdas negras de otra región",
+            move.addViolationOfRule(new ViolationOfRule("Las celdas negras de la region estan continuas a celdas negras de otra region",
                     this.cellsIdsList));
             this.valid = false;
         }
