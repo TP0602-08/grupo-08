@@ -92,8 +92,6 @@ public class GameController implements Observer {
         if (this.alphabeticalCell) {
             if (cellValue.equals("\\")) {
                 cellValue = "\\";
-            } else {
-                cellValue = null;
             }
             cell = new CellAlphabetical(cellValue,Integer.toString(cellId));
         } else {
