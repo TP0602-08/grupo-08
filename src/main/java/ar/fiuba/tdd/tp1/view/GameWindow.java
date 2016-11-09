@@ -1,5 +1,6 @@
 package ar.fiuba.tdd.tp1.view;
 
+import ar.fiuba.tdd.tp1.controller.UndoButtonHandler;
 import ar.fiuba.tdd.tp1.controller.UserInputHandler;
 import ar.fiuba.tdd.tp1.model.CellInfo;
 
@@ -27,7 +28,7 @@ public class GameWindow extends JFrame {
     }
 
     public void createGUI(int numberOfRows, int numberOfColumns, List<String> validInputs, List<CellInfo> cellInfoList, UserInputHandler
-            userInputHandler) {
+            userInputHandler, UndoButtonHandler undoButtonHandler) {
 
         gameGUI = getGameGUI(numberOfRows,numberOfColumns,validInputs,cellInfoList,userInputHandler);
 
@@ -36,6 +37,7 @@ public class GameWindow extends JFrame {
             this.moveInformationField = new MoveInformationField();
             this.add(this.gameGUI);
             this.add(this.moveInformationField);
+            this.add(new UndoMoveButton(undoButtonHandler));
         }
     }
 

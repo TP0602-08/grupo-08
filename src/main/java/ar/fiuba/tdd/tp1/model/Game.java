@@ -80,8 +80,12 @@ public class Game {
         }
     }
 
-    public Stack<Move> getAppliedMoves() {
-        return this.appliedMoves;
+    public int getAppliedMovesCount() {
+        return this.appliedMoves.size();
+    }
+
+    public int getIdOfLastAppliedMove() {
+        return this.appliedMoves.peek().getcellId();
     }
 
     public List<Integer> getCellsIdInRegion(String regionId) {

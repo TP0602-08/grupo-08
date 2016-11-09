@@ -42,13 +42,13 @@ public class UndoTest {
     public void undoRemovesMoveFromAppliedMoves() {
         game.process(move);
         game.undo(UNDOVALUE);
-        assertTrue(game.getAppliedMoves().size() == 0);
+        assertTrue(game.getAppliedMovesCount() == 0);
     }
 
     @Test
     public void invalidMoveDoesNotAddToAppliedMoves() {
         game.process(invalidMove);
-        assertTrue(game.getAppliedMoves().isEmpty());
+        assertTrue(game.getAppliedMovesCount() == 0);
     }
 
     @Test
