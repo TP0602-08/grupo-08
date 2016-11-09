@@ -1,7 +1,11 @@
 package ar.fiuba.tdd.tp1.model;
 
 import java.util.List;
-
+/*Esta intefaz representa una region de celdas que puede de disitas formas en el tablero
+ Tien una lista de objetos cell que nos determina que id de que celda pertenecen a la region
+ para luego aplicar validacion y reglas sobre ella.
+ Cada region tendra un id para identificarla univocamente representado en el campo "param" del constructor
+* */
 public class Region {
     private String param;
 
