@@ -10,9 +10,11 @@ public class Game {
     private Rulebook rulebook;
     private Board board;
     private List<Move> moves;
+    private Stack<Move> appliedMoves = new Stack<>();
     private List<MoveHistory> moveHistory = new ArrayList<>();
     private List<EndGameCondition> endGameConditions;
     private List<String> validInputs;
+    private boolean alphabeticalCell;
 
     //Both the Rulebook and the Board must be already initialized.
     public Game(Rulebook rulebookValue, Board boardValue) {
@@ -37,6 +39,7 @@ public class Game {
             rulebook.validate(move);
             if (move.isValid()) {
                 board.apply(move);
+                this.appliedMoves.push(move);
             }
         } else {
             List<Integer> listOfConflictingCellIds = new ArrayList<>();
@@ -53,9 +56,32 @@ public class Game {
             rulebook.validate(move);
             if (move.isValid()) {
                 board.apply(move);
+                this.appliedMoves.push(move);
             }
             this.moveHistory.add(new MoveHistory(move, move.isValid()));
         }
+    }
+
+    public void undo(String value) {
+        if (! this.appliedMoves.isEmpty()) {
+            int newCellId = this.appliedMoves.pop().getcellId();
+            Cell newCell = createCell(value,newCellId);
+            Move undoMove = new Move(newCellId,newCell);
+            this.board.apply(undoMove);
+            this.moveHistory.add(new MoveHistory(undoMove, undoMove.isValid()));
+        }
+    }
+
+    private Cell createCell(String value, int newCellId) {
+        if (this.alphabeticalCell) {
+            return new CellAlphabetical(value, Integer.toString(newCellId),true);
+        } else {
+            return new CellNumerical(Integer.parseInt(value), Integer.toString(newCellId));
+        }
+    }
+
+    public Stack<Move> getAppliedMoves() {
+        return this.appliedMoves;
     }
 
     public List<Integer> getCellsIdInRegion(String regionId) {
@@ -137,5 +163,9 @@ public class Game {
             rulesValid = rulesValid && endGameCondition.validate((BoardRectangularWithRegions)this.board);
         }
         return rulesValid;
+    }
+
+    public void setAlphabeticalCell(boolean value) {
+        this.alphabeticalCell = value;
     }
 }

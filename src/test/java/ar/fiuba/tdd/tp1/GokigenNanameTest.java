@@ -21,6 +21,7 @@ public class GokigenNanameTest {
     private static final String INVALIDMOVEJSON = "src/test/resources/gokigenNanameInvalidMove.json";
     private static final String VALIDMOVESWITHLOOPGAMEJSON = "src/test/resources/validMovesWithLoopGameGokigenNaname.json";
     private static final String WINGAMEGOKIGENNANAME = "src/test/resources/winGameGokigenNaname.json";
+    private static final String UNDOVALUE = null;
     private static Game game;
 
     @Before
@@ -147,6 +148,17 @@ public class GokigenNanameTest {
         assertNotNull(validInputs);
         assertTrue(validInputs.size() == expectedInputs.size());
         assertTrue(validInputs.equals(expectedInputs));
+    }
+
+    @Test
+    public void undoMoveInWonGameMakesGameNotWon() throws IOException {
+        game = new GameJsonSerializer(GOKIGENNANAMEJSON, WINGAMEGOKIGENNANAME).deserialize();
+        game.setAlphabeticalCell(true);
+        game.process();
+        assertTrue(game.isGameWon());
+        game.undo(UNDOVALUE);
+        assertFalse(game.isGameWon());
+
     }
     
 }
