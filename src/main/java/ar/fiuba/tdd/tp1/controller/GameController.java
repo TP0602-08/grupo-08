@@ -13,10 +13,10 @@ public class GameController implements Observer {
     private Game game;
     private GameWindow gameWindow;
     private boolean alphabeticalCell;
-    private static final String VALIDMOVEMESSAGE = "Movimiento valido";
-    private static final String GAMEWONMESSAGE = "Movimiento valido, juego ganado";
-    private static final String CANTUNDOMESSAGE = "No quedan movimientos para deshacer";
-    private static final String CANUNDOMESSAGE =  "Se deshizo el ultimo movimiento";
+    private static final String VALIDMOVEMESSAGE = "Movimiento valido. ";
+    private static final String GAMEWONMESSAGE = "Movimiento valido, juego ganado. ";
+    private static final String CANTUNDOMESSAGE = "No quedan movimientos para deshacer. ";
+    private static final String CANUNDOMESSAGE =  "Se deshizo el ultimo movimiento. ";
     private String moveInfo;
 
 
@@ -37,7 +37,7 @@ public class GameController implements Observer {
 
     private void createGUI(GameWindow gameWindow) {
         UserInputHandler userInputHandler = new UserInputHandler();
-        UndoButtonHandler undoButtonHandler = new UndoButtonHandler(getUndoMoveValue());
+        UndoButtonHandler undoButtonHandler = new UndoButtonHandler();
         userInputHandler.addObserver(this);
         undoButtonHandler.addObserver(this);
         int numberOfRows = this.game.getNumberOfRows();
@@ -52,7 +52,7 @@ public class GameController implements Observer {
     public void update(Observable observable, Object arg) {
 
         if (arg instanceof UndoButtonHandler) {
-            undoMove(((UndoButtonHandler)arg));
+            undoMove();
         } else if (arg instanceof UserInputHandler) {
             applyMove(((UserInputHandler)arg));
         }
@@ -75,15 +75,19 @@ public class GameController implements Observer {
         }
     }
 
-    private void undoMove(UndoButtonHandler undoButtonHandler) {
+    private void undoMove() {
 
         if (game.getAppliedMovesCount() == 0) {
             moveInfo = CANTUNDOMESSAGE;
         } else {
             int cellId = game.getIdOfLastAppliedMove();
-            game.undo(undoButtonHandler.getUndoValue());
-            this.gameWindow.updateViewValue(cellId, undoButtonHandler.getUndoValue());
+            String replacedValue = game.getStringValueOfLastAppliedMove();
+            game.undo();
+            this.gameWindow.updateViewValue(cellId, replacedValue);
             moveInfo = CANUNDOMESSAGE;
+            if (game.isGameWon()) {
+                moveInfo += GAMEWONMESSAGE;
+            }
         }
     }
 
@@ -98,16 +102,5 @@ public class GameController implements Observer {
             cell = new CellNumerical(Integer.parseInt(cellValue),Integer.toString(cellId));
         }
         return new Move(cellId,cell);
-    }
-
-    private String getUndoMoveValue() {
-        switch (this.gameName) {
-            case "norinori":
-                return "white";
-            case "gokigennaname":
-                return null;
-            default:
-                return "0";
-        }
     }
 }

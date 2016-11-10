@@ -4,10 +4,8 @@ import java.util.Observable;
 
 public class UndoButtonHandler extends Observable {
 
-    private String undoValue;
+    public UndoButtonHandler() {
 
-    public UndoButtonHandler(String undoValue) {
-        this.undoValue = undoValue;
     }
 
     public void handleUndo() {
@@ -15,7 +13,4 @@ public class UndoButtonHandler extends Observable {
         notifyObservers(this);
     }
 
-    public String getUndoValue() {
-        return this.undoValue;
-    }
 }

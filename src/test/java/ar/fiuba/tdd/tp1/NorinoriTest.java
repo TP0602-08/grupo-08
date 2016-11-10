@@ -25,6 +25,7 @@ public class NorinoriTest {
     @Before
     public void setUp() throws IOException {
         game = new GameJsonSerializer(NORINORIJSON).deserialize();
+        game.setAlphabeticalCell(true);
     }
 
     @Test
@@ -99,6 +100,7 @@ public class NorinoriTest {
     @Test
     public void allValidPlaysFromFileCausesValidMovesAndGameWon() throws IOException {
         game = new GameJsonSerializer(NORINORIJSON, WINGAMENORINORIJSON).deserialize();
+        game.setAlphabeticalCell(true);
         game.process();
         for (MoveHistory move : game.getMoveHistory()) {
             assertTrue(move.wasValid());
