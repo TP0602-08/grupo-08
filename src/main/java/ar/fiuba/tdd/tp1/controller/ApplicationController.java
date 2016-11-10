@@ -4,10 +4,10 @@ package ar.fiuba.tdd.tp1.controller;
 import ar.fiuba.tdd.tp1.model.Game;
 import ar.fiuba.tdd.tp1.serialization.json.GameJsonSerializer;
 import ar.fiuba.tdd.tp1.view.ApplicationView;
-import ar.fiuba.tdd.tp1.view.InvalidGameWindow;
 
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+import javax.swing.*;
 import javax.swing.event.MouseInputAdapter;
 
 import static javax.swing.SwingUtilities.isLeftMouseButton;
@@ -37,23 +37,19 @@ public class ApplicationController extends MouseInputAdapter {
         String gameName;
 
         if (isLeftMouseButton(mouseEvent)) {
-            gameName = this.applicationView.getTextField();
-            if (validGameName(gameName.toLowerCase())) {
+            if (mouseEvent.getComponent() instanceof JButton) {
+                JButton gameButton = ((JButton) mouseEvent.getComponent());
+                gameName = gameButton.getText();
+                gameName = gameName.replaceAll("\\s+", "");
+                gameName = gameName.toLowerCase();
                 try {
-                    gameJsonSerializer = getGameJsonSerializer(gameName);
+                    this.gameJsonSerializer = getGameJsonSerializer(gameName);
+                    initGame(gameName, gameJsonSerializer);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                initGame(gameName, gameJsonSerializer);
-            } else {
-                new InvalidGameWindow();
             }
         }
-    }
-
-    private boolean validGameName(String gameName) {
-        return gameName.equals("sudoku") || gameName.equals("kakuro")
-                || gameName.equals("inshinoheya") || gameName.equals("gokigennaname") || gameName.equals("norinori");
     }
 
     private GameJsonSerializer getGameJsonSerializer(String gameName) throws IOException {
@@ -68,12 +64,11 @@ public class ApplicationController extends MouseInputAdapter {
                 return new GameJsonSerializer(gokigenNanameJsonPath);
             default:
                 return new GameJsonSerializer(norinoriJsonPath);
-
         }
     }
 
     private void initGame(String gameName, GameJsonSerializer gameJsonSerializer) {
-        this.applicationView.dispose();
+        this.applicationView.dismissView();
         game = gameJsonSerializer.deserialize();
         GameController gameController = new GameController(gameName,game);
         gameController.run();

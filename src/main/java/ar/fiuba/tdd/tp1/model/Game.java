@@ -10,7 +10,7 @@ public class Game {
     private Rulebook rulebook;
     private Board board;
     private List<Move> moves;
-    private Stack<Move> appliedMoves = new Stack<>();
+    private Stack<Cell> appliedMoves = new Stack<>();
     private List<MoveHistory> moveHistory = new ArrayList<>();
     private List<EndGameCondition> endGameConditions;
     private List<String> validInputs;
@@ -38,8 +38,7 @@ public class Game {
         if (board.getCellFromCellId(move.getcellId()).editable) {
             rulebook.validate(move);
             if (move.isValid()) {
-                board.apply(move);
-                this.appliedMoves.push(move);
+                applyMove(move);
             }
         } else {
             List<Integer> listOfConflictingCellIds = new ArrayList<>();
@@ -55,33 +54,48 @@ public class Game {
         for (Move move : moves) {
             rulebook.validate(move);
             if (move.isValid()) {
-                board.apply(move);
-                this.appliedMoves.push(move);
+                applyMove(move);
             }
             this.moveHistory.add(new MoveHistory(move, move.isValid()));
         }
     }
 
-    public void undo(String value) {
+    private void applyMove(Move move) {
+        this.appliedMoves.push(createCell(board.getCellFromCellId(move.getcellId()).datumToString(), move.getcellId()));
+        board.apply(move);
+    }
+
+    public void undo() {
         if (! this.appliedMoves.isEmpty()) {
-            int newCellId = this.appliedMoves.pop().getcellId();
-            Cell newCell = createCell(value,newCellId);
-            Move undoMove = new Move(newCellId,newCell);
+            Move undoMove = new Move(Integer.parseInt(this.appliedMoves.peek().getName()),this.appliedMoves.pop());
             this.board.apply(undoMove);
             this.moveHistory.add(new MoveHistory(undoMove, undoMove.isValid()));
         }
     }
 
+
+
     private Cell createCell(String value, int newCellId) {
         if (this.alphabeticalCell) {
+            if (value == null || value.equals("0")) {
+                value = null;
+            }
             return new CellAlphabetical(value, Integer.toString(newCellId),true);
         } else {
             return new CellNumerical(Integer.parseInt(value), Integer.toString(newCellId));
         }
     }
 
-    public Stack<Move> getAppliedMoves() {
-        return this.appliedMoves;
+    public int getAppliedMovesCount() {
+        return this.appliedMoves.size();
+    }
+
+    public int getIdOfLastAppliedMove() {
+        return Integer.parseInt(this.appliedMoves.peek().getName());
+    }
+
+    public String getStringValueOfLastAppliedMove() {
+        return this.appliedMoves.peek().datumToString();
     }
 
     public List<Integer> getCellsIdInRegion(String regionId) {

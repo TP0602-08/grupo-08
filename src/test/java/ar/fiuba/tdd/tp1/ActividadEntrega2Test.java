@@ -65,6 +65,7 @@ public class ActividadEntrega2Test {
     @Test
     public void gokigenNanameActividad2Test() throws IOException {
         game = new GameJsonSerializer(GOKIGENNANAMEJSON, GOKIGENNANAMEMOVESJSON).deserialize();
+        game.setAlphabeticalCell(true);
         game.process();
         List<MoveHistory> moveHistory = game.getMoveHistory();
         GameReportJsonSerializer gameReportJsonSerializer = new GameReportJsonSerializer(new GameReport(moveHistory),

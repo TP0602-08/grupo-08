@@ -23,7 +23,6 @@ public class SudokuTest {
     private static final String VALIDPLAYJSON = "src/test/resources/validSudokuPlay.json";
     private static final String SUDOKUOUTPUTJSON = "src/test/resources/sudokuOutput.json";
     private static final String WINGAMESUDOKU = "src/test/resources/winGameSudoku.json";
-    private static final String UNDOVALUE = "0";
 
     private static Game game;
     private static List<Move> moves = new ArrayList<>(Arrays.asList(
@@ -263,7 +262,7 @@ public class SudokuTest {
         game.setMoves(moves);
         game.process();
         assertTrue(game.isGameWon());
-        game.undo(UNDOVALUE);
+        game.undo();
         assertFalse(game.isGameWon());
 
     }

@@ -26,14 +26,14 @@ public class UndoTest {
     @Test
     public void undoMoveAddsToMoveHistory() {
         game.process(move);
-        game.undo(UNDOVALUE);
+        game.undo();
         assertTrue(game.getMoveHistory().size() == 2);
     }
 
     @Test
     public void undoInvalidMoveDoesNotAddToMoveHistory() {
         game.process(invalidMove);
-        game.undo(UNDOVALUE);
+        game.undo();
         assertTrue(game.getMoveHistory().size() == 1);
     }
 
@@ -41,26 +41,26 @@ public class UndoTest {
     @Test
     public void undoRemovesMoveFromAppliedMoves() {
         game.process(move);
-        game.undo(UNDOVALUE);
-        assertTrue(game.getAppliedMoves().size() == 0);
+        game.undo();
+        assertTrue(game.getAppliedMovesCount() == 0);
     }
 
     @Test
     public void invalidMoveDoesNotAddToAppliedMoves() {
         game.process(invalidMove);
-        assertTrue(game.getAppliedMoves().isEmpty());
+        assertTrue(game.getAppliedMovesCount() == 0);
     }
 
     @Test
     public void undoWhenThereAreNoPlaysDoestNothing() {
-        game.undo(UNDOVALUE);
+        game.undo();
         assertTrue(game.getMoveHistory().isEmpty());
     }
 
     @Test
     public void undoMoveIsValid() {
         game.process(move);
-        game.undo(UNDOVALUE);
+        game.undo();
         assertTrue(game.getMoveHistory().get(1).wasValid());
     }
 }

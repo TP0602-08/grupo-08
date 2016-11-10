@@ -21,12 +21,12 @@ public class GokigenNanameTest {
     private static final String INVALIDMOVEJSON = "src/test/resources/gokigenNanameInvalidMove.json";
     private static final String VALIDMOVESWITHLOOPGAMEJSON = "src/test/resources/validMovesWithLoopGameGokigenNaname.json";
     private static final String WINGAMEGOKIGENNANAME = "src/test/resources/winGameGokigenNaname.json";
-    private static final String UNDOVALUE = null;
     private static Game game;
 
     @Before
     public void setUp() throws IOException {
         game = new GameJsonSerializer(GOKIGENNANAMEJSON).deserialize();
+        game.setAlphabeticalCell(true);
     }
 
     @Test
@@ -103,6 +103,7 @@ public class GokigenNanameTest {
     @Test
     public void validPlayFromFileCausesValidMove() throws IOException {
         game = new GameJsonSerializer(GOKIGENNANAMEJSON, VALIDMOVEJSON).deserialize();
+        game.setAlphabeticalCell(true);
         game.process();
         for (MoveHistory move : game.getMoveHistory()) {
             assertTrue(move.wasValid());
@@ -122,6 +123,7 @@ public class GokigenNanameTest {
     @Test
     public void playsFileWithValidMovesAndLoopDoesNotCauseGameWon() throws IOException {
         game = new GameJsonSerializer(GOKIGENNANAMEJSON, VALIDMOVESWITHLOOPGAMEJSON).deserialize();
+        game.setAlphabeticalCell(true);
         game.process();
         for (MoveHistory move : game.getMoveHistory()) {
             assertTrue(move.wasValid());
@@ -132,6 +134,7 @@ public class GokigenNanameTest {
     @Test
     public void fileWithAllValidMovesAndNoLoopsCausesGameWon() throws IOException {
         game = new GameJsonSerializer(GOKIGENNANAMEJSON, WINGAMEGOKIGENNANAME).deserialize();
+        game.setAlphabeticalCell(true);
         game.process();
         for (MoveHistory move : game.getMoveHistory()) {
             assertTrue(move.wasValid());
@@ -156,7 +159,7 @@ public class GokigenNanameTest {
         game.setAlphabeticalCell(true);
         game.process();
         assertTrue(game.isGameWon());
-        game.undo(UNDOVALUE);
+        game.undo();
         assertFalse(game.isGameWon());
 
     }
