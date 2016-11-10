@@ -1,5 +1,10 @@
 package ar.fiuba.tdd.tp1.model;
-
+/* This class gives us the value of the position of a cell in the form board (x, y)
+   The get (x) method gives us the x position of the coordinate
+   The get (y) method gives us the position and the coordinate
+   The getValue method returns the value of the cell
+   The compare method is used to compare two values of type BoardValue
+*/
 public class BoardValue {
 
     private int[] position;
