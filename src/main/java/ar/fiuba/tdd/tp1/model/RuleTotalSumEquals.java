@@ -79,7 +79,7 @@ public class RuleTotalSumEquals extends Rule implements VisitorOfCell {
             List<Integer> listOfConflictingCellIds = new ArrayList<Integer>(cellIdsList);
             Integer newCellId = move.getcellId();
             listOfConflictingCellIds.remove(newCellId);
-            ViolationOfRule violationOfRule = new ViolationOfRule("La suma no es igual a " + sum + ".", listOfConflictingCellIds);
+            ViolationOfRule violationOfRule = new ViolationOfRule("Sum not equal to  " + sum + ".", listOfConflictingCellIds);
             move.addViolationOfRule(violationOfRule);
             this.valid = false;
         }

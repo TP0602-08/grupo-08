@@ -17,8 +17,9 @@ public class NorinoriTest {
     private static final String NORINORIJSON = "src/main/resources/norinori.json";
     private static final String WINGAMENORINORIJSON = "src/test/resources/winGameNorinori.json";
     private static final String BLACK = "black";
-    private static final String HAYMASDEDOSCELDAS = "Hay mas de 2 celdas en negro en la region";
-    private static final String CELDASNEGRASCONTINUAS = "Las celdas negras de la region estan continuas a celdas negras de otra region";
+    private static final String HAYMASDEDOSCELDAS = "There are more than 2 black cells in region.";
+    private static final String CELDASNEGRASCONTINUAS = "Black cells in region are continuous to black cells"
+            + " in another region";
 
     private static Game game;
 

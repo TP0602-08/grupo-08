@@ -35,6 +35,8 @@ public class BoardValue {
     }
 
     public boolean compareValue(BoardValue valueToCompare) {
-        return ((this.getX() == valueToCompare.getX()) && (this.getY() == valueToCompare.getY()));
+
+        return (((this.getX() == valueToCompare.getX()) && (this.getY() == valueToCompare.getY()) && (this.value.equals(valueToCompare
+                .getValue()))));
     }
 }

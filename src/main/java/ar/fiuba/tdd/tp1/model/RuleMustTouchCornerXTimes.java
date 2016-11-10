@@ -119,11 +119,12 @@ public class RuleMustTouchCornerXTimes extends Rule implements VisitorOfCell {
     private void finalizeValidate(Integer accumulatedTouches, Move move) {
         this.valid = true;
         if (this.nonEmptyCells == this.cellsIdsList.size() && accumulatedTouches != this.timesTouched) {
-            move.addViolationOfRule(new ViolationOfRule("La esquina no es tocada " + this.timesTouched + " veces.", this.cellsIdsList));
+            move.addViolationOfRule(new ViolationOfRule("The corner is not touched " + this.timesTouched + " times.", this.cellsIdsList));
             this.valid = false;
         } else {
             if (this.timesTouched == 0 && accumulatedTouches != 0) {
-                move.addViolationOfRule(new ViolationOfRule("La esquina no es tocada " + this.timesTouched + " veces.", this.cellsIdsList));
+                move.addViolationOfRule(new ViolationOfRule("The corner is not touched " + this.timesTouched + " "
+                        + " times.", this.cellsIdsList));
                 this.valid = false;
             }
         }

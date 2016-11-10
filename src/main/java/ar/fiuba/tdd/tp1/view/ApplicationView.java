@@ -14,8 +14,8 @@ public class ApplicationView extends JFrame {
     private JLabel imageLabel;
     private ApplicationController applicationController;
     private java.util.List<String> supportedGames = Arrays.asList("Sudoku", "Kakuro", "Inshi No Heya", "Gokigen Naname", "Norinori");
-    private static final int GRIDLAYOUTROWS = 0;
-    private static final int GRIDLAYOUTCOLUMNS = 3;
+    private static final int GAMESPANELGRIDLAYOUTROWS = 0;
+    private static final int GAMESPANELGRIDLAYOUTCOLUMNS = 3;
 
     public ApplicationView() {
         super("GameEngine - Group8");
@@ -28,7 +28,7 @@ public class ApplicationView extends JFrame {
         this.imageLabel = new JLabel(new ImageIcon("src/main/resources/LogoFiuba.jpg"));
         this.add(imageLabel);
         this.gamesPanel = new JPanel();
-        this.gamesPanel.setLayout(new GridLayout(GRIDLAYOUTROWS,GRIDLAYOUTCOLUMNS));
+        this.gamesPanel.setLayout(new GridLayout(GAMESPANELGRIDLAYOUTROWS, GAMESPANELGRIDLAYOUTCOLUMNS));
         TitledBorder titledBorder = new TitledBorder("Select game ");
         this.gamesPanel.setBorder(titledBorder);
         this.add(gamesPanel);

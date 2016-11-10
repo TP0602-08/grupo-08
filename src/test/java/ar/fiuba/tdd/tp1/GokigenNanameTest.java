@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
 
 public class GokigenNanameTest {
     private static final String GOKIGENNANAMEJSON = "src/main/resources/gokigenNaname.json";
-    private static final String LAESQUINANOESTOCADA = "La esquina no es tocada";
+    private static final String LAESQUINANOESTOCADA = "The corner is not touched ";
     private static final String VALIDMOVEJSON = "src/test/resources/gokigenNanameValidMove.json";
     private static final String INVALIDMOVEJSON = "src/test/resources/gokigenNanameInvalidMove.json";
     private static final String VALIDMOVESWITHLOOPGAMEJSON = "src/test/resources/validMovesWithLoopGameGokigenNaname.json";

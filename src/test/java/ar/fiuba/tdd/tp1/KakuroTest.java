@@ -18,8 +18,8 @@ import static org.junit.Assert.*;
 
 public class KakuroTest {
     private static final String KAKUROJSON = "src/main/resources/kakuro.json";
-    private static final String VALORREPETIDO = "Valor repetido.";
-    private static final String LASUMANOESIGUALA = "La suma no es igual a ";
+    private static final String VALORREPETIDO = "Repeated Value.";
+    private static final String LASUMANOESIGUALA = "Sum not equal to  ";
     private static final String INVALIDMOVEJSON = "src/test/resources/invalidKakuroMove.json";
     private static final String VALIDMOVEJSON = "src/test/resources/validKakuroPlay.json";
     private static final String WINGAMEKAKUROJSON = "src/test/resources/winGameKakuro.json";

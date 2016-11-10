@@ -8,10 +8,15 @@ import static org.junit.Assert.*;
 
 public class PlayReportTest {
     private PlayReport playReport;
+    private PlayReport identicalPlayReport;
+    private PlayReport differentPlayReport;
 
     @Before
     public void setUp() throws Exception {
         this.playReport = new PlayReport(1,true);
+        this.identicalPlayReport = new PlayReport(1,true);
+        this.differentPlayReport = new PlayReport(1,false);
+
     }
 
     @Test
@@ -28,6 +33,16 @@ public class PlayReportTest {
     public void getBoardStatusTestInValid() throws Exception {
         this.playReport = new PlayReport(2,false);
         assertEquals("invalid",playReport.getBoardStatus());
+    }
+
+    @Test
+    public void comparingTwoIdenticalReportsReturnsTrue() {
+        assertTrue(playReport.areEquals(identicalPlayReport));
+    }
+
+    @Test
+    public void comparingTwoDifferentReportsReturnsFalse() {
+        assertFalse(playReport.areEquals(differentPlayReport));
     }
 
 }

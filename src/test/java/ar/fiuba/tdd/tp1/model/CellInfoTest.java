@@ -34,8 +34,10 @@ public class CellInfoTest {
 
     @Test
     public void getValue() throws Exception {
-        assertEquals(this.cellValue,this.cellValue);
+        assertEquals(this.cellValue,this.cellInfo.getValue());
     }
+
+
 
     @Test
     public void isEditable() throws Exception {
