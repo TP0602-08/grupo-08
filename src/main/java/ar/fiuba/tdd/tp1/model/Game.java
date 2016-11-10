@@ -1,8 +1,6 @@
 package ar.fiuba.tdd.tp1.model;
 
-import ar.fiuba.tdd.tp1.model.interfaces.Board;
 import ar.fiuba.tdd.tp1.model.interfaces.EndGameCondition;
-import ar.fiuba.tdd.tp1.view.InputGameButton;
 
 import java.util.*;
 
@@ -174,7 +172,7 @@ public class Game {
             rulesValid = rulesValid && rule.isValid();
         }
         for (EndGameCondition endGameCondition : this.endGameConditions) {
-            rulesValid = rulesValid && endGameCondition.validate((BoardRectangularWithRegions)this.board);
+            rulesValid = rulesValid && endGameCondition.validate((Board)this.board);
         }
         return rulesValid;
     }

@@ -1,12 +1,9 @@
 package ar.fiuba.tdd.tp1.model;
 
-import ar.fiuba.tdd.tp1.model.interfaces.Board;
-
 import java.util.*;
-import java.util.function.IntBinaryOperator;
 import java.util.stream.Collectors;
 
-public class BoardRectangularWithRegions implements Board {
+public class Board {
     private int rowQuantity;
     private int columnQuantity;
     private Map<Integer, Cell> cellsMap; //The Integer that identifies each cell is the number of cell in the board, starting from one,
@@ -16,7 +13,7 @@ public class BoardRectangularWithRegions implements Board {
     private Map<String, Region> regionsMap; //The String that identifies each region can be anything. It's purpose is to facilitate the
     // manual input on the game XML file.
 
-    public BoardRectangularWithRegions(int rowQuantityValue, int columnQuantityValue) {
+    public Board(int rowQuantityValue, int columnQuantityValue) {
         this.rowQuantity = rowQuantityValue;
         this.columnQuantity = columnQuantityValue;
         this.cellsMap = new HashMap<Integer, Cell>(rowQuantityValue * rowQuantityValue);
@@ -25,7 +22,6 @@ public class BoardRectangularWithRegions implements Board {
     }
 
     //Effectively changes the contents of the cell, the move at this points is certain to be valid.
-    @Override
     public void apply(Move move) {
         Integer cellId = move.getcellId();
         Cell oldCell = cellsMap.get(cellId);
@@ -36,14 +32,12 @@ public class BoardRectangularWithRegions implements Board {
         cellsMap.put(cellId, newCell);
     }
 
-    @Override
     public List<Integer> getCellIdsListFromRegionId(String regionId) {
         Region region = regionsMap.get(regionId);
         List<Integer> listOfCellIds = region.getCellNamesList().stream().map(Integer::parseInt).collect(Collectors.toList());
         return listOfCellIds;
     }
 
-    @Override
     public Cell getCellFromCellId(Integer cellId) {
         return cellsMap.get(cellId);
     }

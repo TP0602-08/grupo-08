@@ -1,6 +1,5 @@
 package ar.fiuba.tdd.tp1.model;
 
-import ar.fiuba.tdd.tp1.model.interfaces.Board;
 import ar.fiuba.tdd.tp1.model.interfaces.VisitorOfCell;
 
 import java.util.ArrayList;
@@ -80,7 +79,7 @@ public class RuleBlackCellsMustTouchOtherRegions extends Rule implements Visitor
     private Boolean doesBlackCellTouchOtherRegionsBlackCells(Cell newCell) {
         int[] differentials = new int[] {-1, 1};
         for (int differential : differentials) {
-            CellAlphabetical neighborCell = (CellAlphabetical) ((BoardRectangularWithRegions)board).getCellByCoordinates(
+            CellAlphabetical neighborCell = (CellAlphabetical) ((Board)board).getCellByCoordinates(
                     newCell.getRow() + differential, newCell.getColumn());
 
             if (neighborCell != null && neighborCell.getDatum().equals(BLACK)
@@ -88,7 +87,7 @@ public class RuleBlackCellsMustTouchOtherRegions extends Rule implements Visitor
                 return true;
             }
 
-            neighborCell = (CellAlphabetical) ((BoardRectangularWithRegions)board).getCellByCoordinates(
+            neighborCell = (CellAlphabetical) ((Board)board).getCellByCoordinates(
                     newCell.getRow(), newCell.getColumn() + differential);
 
             if (neighborCell != null && neighborCell.getDatum().equals(BLACK)

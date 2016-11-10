@@ -1,6 +1,6 @@
 package ar.fiuba.tdd.tp1;
 
-import ar.fiuba.tdd.tp1.model.BoardRectangularWithRegions;
+import ar.fiuba.tdd.tp1.model.Board;
 import ar.fiuba.tdd.tp1.serialization.xml.BoardXml;
 import ar.fiuba.tdd.tp1.serialization.xml.BoardXmlSerializer;
 import ar.fiuba.tdd.tp1.serialization.xml.CellNumericalXml;
@@ -158,7 +158,7 @@ public class BoardXmlSerializationTest {
     public void deserializedBoardHasSameNumberOfRegions() {
         try {
             BoardXml board = (BoardXml)unmarshaller.unmarshal(withRegionsXml);
-            BoardRectangularWithRegions deserializedBoard = new BoardXmlSerializer(board).deserialize();
+            Board deserializedBoard = new BoardXmlSerializer(board).deserialize();
             assertEquals(board.getRegions().size(), deserializedBoard.getNumberOfRegions());
         } catch (Exception ex) {
             fail(ex.getMessage());
@@ -169,7 +169,7 @@ public class BoardXmlSerializationTest {
     public void deserializedBoardHasSameNumberOfCells() {
         try {
             BoardXml board = (BoardXml)unmarshaller.unmarshal(withRegionsXml);
-            BoardRectangularWithRegions deserializedBoard = new BoardXmlSerializer(board).deserialize();
+            Board deserializedBoard = new BoardXmlSerializer(board).deserialize();
             assertEquals(board.getCells().size(), deserializedBoard.getNumberOfCells());
         } catch (Exception ex) {
             fail(ex.getMessage());

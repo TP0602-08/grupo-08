@@ -1,6 +1,6 @@
 package ar.fiuba.tdd.tp1.serialization;
 
-import ar.fiuba.tdd.tp1.model.BoardRectangularWithRegions;
+import ar.fiuba.tdd.tp1.model.Board;
 import ar.fiuba.tdd.tp1.model.Game;
 import ar.fiuba.tdd.tp1.model.Rule;
 import ar.fiuba.tdd.tp1.model.Rulebook;
@@ -45,12 +45,12 @@ public class GameJsonSerializerTest {
 
     @Test
     public void gameHasCorrectNumberOfCells() {
-        assertEquals(((BoardRectangularWithRegions)game.getBoard()).getNumberOfCells(), ROWS * COLUMNS);
+        assertEquals(((Board)game.getBoard()).getNumberOfCells(), ROWS * COLUMNS);
     }
 
     @Test
     public void gameHasCorrectNumberOfRegions() {
-        assertEquals(((BoardRectangularWithRegions)game.getBoard()).getNumberOfRegions(), REGIONS);
+        assertEquals(((Board)game.getBoard()).getNumberOfRegions(), REGIONS);
     }
 
     @Test

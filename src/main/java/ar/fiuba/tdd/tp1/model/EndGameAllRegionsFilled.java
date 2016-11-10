@@ -10,7 +10,7 @@ public class EndGameAllRegionsFilled implements EndGameCondition {
     private static final String BLACK = "black";
 
     @Override
-    public Boolean validate(BoardRectangularWithRegions board) {
+    public Boolean validate(Board board) {
         for (String regionId : board.getRegionsMap().keySet()) {
             List<CellAlphabetical> regionsCells = board.getCellsListFromRegionId(regionId)
                     .stream().map(x -> (CellAlphabetical)x).collect(Collectors.toList());

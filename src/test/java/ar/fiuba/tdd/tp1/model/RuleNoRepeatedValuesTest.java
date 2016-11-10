@@ -1,8 +1,5 @@
 package ar.fiuba.tdd.tp1.model;
 
-import ar.fiuba.tdd.tp1.model.BoardRectangularWithRegions;
-import ar.fiuba.tdd.tp1.model.interfaces.Board;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,7 +8,7 @@ import java.util.*;
 import static org.junit.Assert.*;
 
 public class RuleNoRepeatedValuesTest {
-    private BoardRectangularWithRegions oneBoard;
+    private Board oneBoard;
     private RuleNoRepeatedValues oneRule;
     private RuleNoRepeatedValues otherRule;
     private RuleNoRepeatedValues oneMoreRule;
@@ -29,7 +26,7 @@ public class RuleNoRepeatedValuesTest {
     @Before
     public void setUp() throws Exception {
         this.integer1 = new Integer(4);
-        this.oneBoard = new BoardRectangularWithRegions(9, 9);
+        this.oneBoard = new Board(9, 9);
         this.oneRule = new RuleNoRepeatedValues(oneBoard,"1");
         this.numericCell = new CellNumerical(integer1,"4");
 

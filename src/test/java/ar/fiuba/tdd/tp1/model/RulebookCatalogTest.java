@@ -1,6 +1,5 @@
 package ar.fiuba.tdd.tp1.model;
 
-import ar.fiuba.tdd.tp1.model.interfaces.Board;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -14,7 +13,7 @@ public class RulebookCatalogTest {
     @Test
     public void rulebookCatalogIsCreated() {
         Map<String, Rule> map = new HashMap<String, Rule>();
-        Board board = new BoardRectangularWithRegions(5, 5);
+        Board board = new Board(5, 5);
         Rule rule1 = new RuleNoRepeatedValues(board);
         Rule rule2 = new RuleTotalSumEquals(board);
         map.put(rule1.getName(), rule1);
@@ -26,7 +25,7 @@ public class RulebookCatalogTest {
     @Test
     public void add() {
         Map<String, Rule> map = new HashMap<String, Rule>();
-        Board board = new BoardRectangularWithRegions(5, 5);
+        Board board = new Board(5, 5);
         Rule rule1 = new RuleNoRepeatedValues(board);
         Rule rule2 = new RuleTotalSumEquals(board);
         map.put(rule1.getName(), rule1);
@@ -80,7 +79,7 @@ public class RulebookCatalogTest {
 
     @Test
     public void createRulebook() {
-        Board board = new BoardRectangularWithRegions(5, 5);
+        Board board = new Board(5, 5);
         Rule rule1 = new RuleNoRepeatedValues(board);
         Rule rule2 = new RuleTotalSumEquals(board);
         Map<String, Rule> map = createMap(board, rule1, rule2);

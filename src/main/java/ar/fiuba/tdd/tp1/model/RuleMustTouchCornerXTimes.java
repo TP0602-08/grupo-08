@@ -1,6 +1,5 @@
 package ar.fiuba.tdd.tp1.model;
 
-import ar.fiuba.tdd.tp1.model.interfaces.Board;
 import ar.fiuba.tdd.tp1.model.interfaces.VisitorOfCell;
 
 import java.util.*;

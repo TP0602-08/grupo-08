@@ -4,7 +4,7 @@ import ar.fiuba.tdd.tp1.model.interfaces.EndGameCondition;
 
 public class EndGameAllCellsFilled implements EndGameCondition {
 
-    public Boolean validate(BoardRectangularWithRegions board) {
+    public Boolean validate(Board board) {
         for (Cell cell : board.getCells()) {
             if (cell.editable && cell.isEmpty()) {
                 return false;
