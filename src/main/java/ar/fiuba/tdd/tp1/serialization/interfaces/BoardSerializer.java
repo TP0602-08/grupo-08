@@ -1,7 +1,7 @@
 package ar.fiuba.tdd.tp1.serialization.interfaces;
 
-import ar.fiuba.tdd.tp1.model.BoardRectangularWithRegions;
+import ar.fiuba.tdd.tp1.model.Board;
 
 public interface BoardSerializer {
-    BoardRectangularWithRegions deserialize();
+    Board deserialize();
 }

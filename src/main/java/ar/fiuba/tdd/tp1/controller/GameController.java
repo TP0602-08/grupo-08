@@ -13,10 +13,10 @@ public class GameController implements Observer {
     private Game game;
     private GameWindow gameWindow;
     private boolean alphabeticalCell;
-    private static final String VALIDMOVEMESSAGE = "Movimiento valido. ";
-    private static final String GAMEWONMESSAGE = "Movimiento valido, juego ganado. ";
-    private static final String CANTUNDOMESSAGE = "No quedan movimientos para deshacer. ";
-    private static final String CANUNDOMESSAGE =  "Se deshizo el ultimo movimiento. ";
+    private static final String VALIDMOVEMESSAGE = "Not a valid Move. ";
+    private static final String GAMEWONMESSAGE = "Valid move, game won. ";
+    private static final String CANTUNDOMESSAGE = "No more moves to undo. ";
+    private static final String CANUNDOMESSAGE =  "Las move has been undone. ";
     private String moveInfo;
 
 

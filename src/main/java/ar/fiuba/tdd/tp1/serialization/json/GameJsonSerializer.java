@@ -3,13 +3,10 @@ package ar.fiuba.tdd.tp1.serialization.json;
 import com.google.gson.Gson;
 
 import ar.fiuba.tdd.tp1.model.*;
-import ar.fiuba.tdd.tp1.model.interfaces.Board;
 import ar.fiuba.tdd.tp1.model.interfaces.EndGameCondition;
 import ar.fiuba.tdd.tp1.serialization.interfaces.GameSerializer;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class GameJsonSerializer implements GameSerializer {
@@ -43,7 +40,7 @@ public class GameJsonSerializer implements GameSerializer {
         } else {
             try {
                 Game game = new Game(rulebook, board, endGameConditions);
-                List<Move> moves = new MovesJsonSerializer(this.movesPath, (BoardRectangularWithRegions) game.getBoard()).deserialize();
+                List<Move> moves = new MovesJsonSerializer(this.movesPath, (Board) game.getBoard()).deserialize();
                 game.setMoves(moves);
                 game.setValidInputs(validInputs);
                 return game;

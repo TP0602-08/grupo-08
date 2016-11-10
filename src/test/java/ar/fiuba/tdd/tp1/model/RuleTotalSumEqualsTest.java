@@ -8,7 +8,7 @@ import java.util.*;
 import static org.junit.Assert.*;
 
 public class RuleTotalSumEqualsTest {
-    private BoardRectangularWithRegions oneBoard;
+    private Board oneBoard;
     private RuleTotalSumEquals oneRule;
     private List<Integer> listOfConflictingCellIds;
     private List<Object> listParams;
@@ -24,7 +24,7 @@ public class RuleTotalSumEqualsTest {
 
     @Before
     public void setUp() throws Exception {
-        this.oneBoard = new BoardRectangularWithRegions(9,9);
+        this.oneBoard = new Board(9,9);
         this.sumTotalDeLaRegion = 10;
         this.regionID = "2";
         this.oneRule = new RuleTotalSumEquals(this.oneBoard,this.regionID,this.sumTotalDeLaRegion);

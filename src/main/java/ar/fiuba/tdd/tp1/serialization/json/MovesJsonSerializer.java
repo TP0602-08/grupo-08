@@ -6,17 +6,14 @@ import ar.fiuba.tdd.tp1.model.*;
 import ar.fiuba.tdd.tp1.serialization.interfaces.MovesSerializer;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MovesJsonSerializer implements MovesSerializer {
     private MovesJson movesJson;
-    private BoardRectangularWithRegions board;
+    private Board board;
 
-    public MovesJsonSerializer(String path, BoardRectangularWithRegions board) throws IOException {
+    public MovesJsonSerializer(String path, Board board) throws IOException {
         Gson gson = new Gson();
         this.movesJson = gson.fromJson(Json.getJsonString(path), MovesJson.class);
         this.board = board;

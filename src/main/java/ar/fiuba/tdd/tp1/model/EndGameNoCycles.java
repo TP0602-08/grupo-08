@@ -7,7 +7,7 @@ import ar.fiuba.tdd.tp1.model.interfaces.EndGameCondition;
  */
 public class EndGameNoCycles implements EndGameCondition {
 
-    public Boolean validate(BoardRectangularWithRegions board) {
+    public Boolean validate(Board board) {
         for (int i = 1;i < board.getRowQuantity() ;i ++ ) {
             for (int j = 1;j < board.getColumnQuantity() ;j ++ ) {
                 Cell firstCell = board.getCellByCoordinates(i - 1,j - 1);
