@@ -1,6 +1,6 @@
 package ar.fiuba.tdd.tp1.serialization.xml;
 
-import ar.fiuba.tdd.tp1.model.BoardRectangularWithRegions;
+import ar.fiuba.tdd.tp1.model.Board;
 import ar.fiuba.tdd.tp1.model.Game;
 import ar.fiuba.tdd.tp1.model.Move;
 import ar.fiuba.tdd.tp1.serialization.interfaces.GameSerializer;
@@ -22,7 +22,7 @@ public class GameMixedSerializer implements GameSerializer {
     public Game deserialize() {
         try {
             Game game = this.gameXmlSerializer.deserialize();
-            List<Move> moves = new MovesJsonSerializer(this.movesPath, (BoardRectangularWithRegions)game.getBoard()).deserialize();
+            List<Move> moves = new MovesJsonSerializer(this.movesPath, (Board)game.getBoard()).deserialize();
             game.setMoves(moves);
             return game;
         } catch (JAXBException ex) {

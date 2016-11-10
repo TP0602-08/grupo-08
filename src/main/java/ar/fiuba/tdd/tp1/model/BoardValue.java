@@ -1,13 +1,16 @@
 package ar.fiuba.tdd.tp1.model;
-
-import ar.fiuba.tdd.tp1.model.interfaces.Board;
-
+/* This class gives us the value of the position of a cell in the form board (x, y)
+   The get (x) method gives us the x position of the coordinate
+   The get (y) method gives us the position and the coordinate
+   The getValue method returns the value of the cell
+   The compare method is used to compare two values of type BoardValue
+*/
 public class BoardValue {
 
     private int[] position;
-    private int value;
+    private String value;
 
-    public BoardValue(int cellId, int numberOfColumns, int value) {
+    public BoardValue(int cellId, int numberOfColumns, String value) {
         int row = 1;
         while (cellId > numberOfColumns) {
             cellId = cellId - numberOfColumns;
@@ -27,11 +30,13 @@ public class BoardValue {
         return this.position[1];
     }
 
-    public int getValue() {
+    public String getValue() {
         return this.value;
     }
 
     public boolean compareValue(BoardValue valueToCompare) {
-        return ((this.getX() == valueToCompare.getX()) && (this.getY() == valueToCompare.getY()));
+
+        return (((this.getX() == valueToCompare.getX()) && (this.getY() == valueToCompare.getY()) && (this.value.equals(valueToCompare
+                .getValue()))));
     }
 }

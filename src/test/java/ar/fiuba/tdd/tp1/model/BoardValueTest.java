@@ -14,16 +14,20 @@ import static org.junit.Assert.*;
 
 public class BoardValueTest {
     private BoardValue valueOfBoard;
+    private BoardValue identicalValue;
+    private BoardValue differentValue;
     private int cellId;
-    private int value;
+    private String value;
     private int valueOfColums;
 
     @Before
     public void setUp() throws Exception {
         this.cellId = 16;
-        this.value = 12;
+        this.value = "12";
         this.valueOfColums = 9;
         this.valueOfBoard = new BoardValue(this.cellId,this.valueOfColums,this.value);
+        this.identicalValue = new BoardValue(this.cellId,this.valueOfColums,this.value);
+        this.differentValue = new BoardValue(15, 9,this.value);
 
     }
 
@@ -42,6 +46,16 @@ public class BoardValueTest {
     @Test
     public void getValue() throws Exception {
         assertEquals(this.value,this.valueOfBoard.getValue());
+    }
+
+    @Test
+    public void compareTwoIdenticalValuesReturnsTrue() {
+        assertTrue(this.valueOfBoard.compareValue(this.identicalValue));
+    }
+
+    @Test
+    public void compareTwoDifferentValuesReturnsFalse() {
+        assertFalse(this.valueOfBoard.compareValue(this.differentValue));
     }
 
 }

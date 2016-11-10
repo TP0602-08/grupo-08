@@ -1,12 +1,9 @@
 package ar.fiuba.tdd.tp1.model;
 
-import ar.fiuba.tdd.tp1.model.interfaces.Board;
-
 import java.util.*;
-import java.util.function.IntBinaryOperator;
 import java.util.stream.Collectors;
 
-public class BoardRectangularWithRegions implements Board {
+public class Board {
     private int rowQuantity;
     private int columnQuantity;
     private Map<Integer, Cell> cellsMap; //The Integer that identifies each cell is the number of cell in the board, starting from one,
@@ -16,7 +13,7 @@ public class BoardRectangularWithRegions implements Board {
     private Map<String, Region> regionsMap; //The String that identifies each region can be anything. It's purpose is to facilitate the
     // manual input on the game XML file.
 
-    public BoardRectangularWithRegions(int rowQuantityValue, int columnQuantityValue) {
+    public Board(int rowQuantityValue, int columnQuantityValue) {
         this.rowQuantity = rowQuantityValue;
         this.columnQuantity = columnQuantityValue;
         this.cellsMap = new HashMap<Integer, Cell>(rowQuantityValue * rowQuantityValue);
@@ -25,23 +22,22 @@ public class BoardRectangularWithRegions implements Board {
     }
 
     //Effectively changes the contents of the cell, the move at this points is certain to be valid.
-    @Override
     public void apply(Move move) {
         Integer cellId = move.getcellId();
         Cell oldCell = cellsMap.get(cellId);
         Cell newCell = move.getNewCell();
         newCell.setName(oldCell.getName());
+        newCell.setColumn(oldCell.getColumn());
+        newCell.setRow(oldCell.getRow());
         cellsMap.put(cellId, newCell);
     }
 
-    @Override
     public List<Integer> getCellIdsListFromRegionId(String regionId) {
         Region region = regionsMap.get(regionId);
         List<Integer> listOfCellIds = region.getCellNamesList().stream().map(Integer::parseInt).collect(Collectors.toList());
         return listOfCellIds;
     }
 
-    @Override
     public Cell getCellFromCellId(Integer cellId) {
         return cellsMap.get(cellId);
     }
@@ -65,6 +61,9 @@ public class BoardRectangularWithRegions implements Board {
 
     //Translates row and column coordinates into the cellId used by te cellsMap.
     public Integer computeCellId(int row, int column) {
+        if (row < 0 || row >= this.getRowQuantity() || column < 0 || column >= this.getColumnQuantity()) {
+            return -1;
+        }
         int position = 1 + (row * columnQuantity) + column;
         return position;
     }
@@ -133,15 +132,6 @@ public class BoardRectangularWithRegions implements Board {
         return regionsMap;
     }
 
-    public List<Cell> getCellsListFromRegion(String regionId) {
-        List<Cell> cellsList = new ArrayList<Cell>();
-        Region region = regionsMap.get(regionId);
-        for (String cellNameIterator : region.getCellNamesList()) {
-            cellsList.add(cellsMap.get(this.cellNamesMap.get(cellNameIterator)));
-        }
-        return cellsList;
-    }
-
     public int getNumberOfRegions() {
         return regionsMap.size();
     }
@@ -150,12 +140,12 @@ public class BoardRectangularWithRegions implements Board {
         return cellsMap.size();
     }
 
-    public Map<Integer,Integer> getBoardValues() {
-        Map<Integer,Integer> mapValues = new HashMap<Integer,Integer>();
+    public Map<Integer,String> getBoardValues() {
+        Map<Integer,String> mapValues = new HashMap<>();
 
         for (Integer key: cellsMap.keySet()) {
             if ( ! cellsMap.get(key).getDatum().equals(0)) {
-                mapValues.put(key, (Integer) cellsMap.get(key).getDatum());
+                mapValues.put(key, cellsMap.get(key).datumToString());
             }
         }
         return mapValues;

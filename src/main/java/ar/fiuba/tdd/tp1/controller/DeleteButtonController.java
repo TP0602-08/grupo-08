@@ -10,6 +10,7 @@ public class DeleteButtonController extends MouseInputAdapter{
     private int cellId;
     private UserInputHandler userInputHandler;
     private GameInputView gameInputView;
+    private static final String DELETEVALUE = "0";
 
     public DeleteButtonController(int cellId, UserInputHandler userInputHandler, GameInputView gameInputView) {
         this.cellId = cellId;
@@ -19,7 +20,7 @@ public class DeleteButtonController extends MouseInputAdapter{
 
     @Override
     public void mouseClicked(MouseEvent event) {
-        this.userInputHandler.handleInput(this.cellId,"0");
+        this.userInputHandler.handleInput(this.cellId,DELETEVALUE);
         this.gameInputView.dispose();
     }
 }

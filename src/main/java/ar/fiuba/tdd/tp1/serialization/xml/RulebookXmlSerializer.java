@@ -2,7 +2,6 @@ package ar.fiuba.tdd.tp1.serialization.xml;
 
 import ar.fiuba.tdd.tp1.model.*;
 import ar.fiuba.tdd.tp1.model.Rule;
-import ar.fiuba.tdd.tp1.model.interfaces.Board;
 import ar.fiuba.tdd.tp1.serialization.interfaces.RulebookSerializer;
 
 import java.util.ArrayList;
@@ -30,7 +29,7 @@ public class RulebookXmlSerializer implements RulebookSerializer{
     }
 
     private Rulebook deserializerKakuroOrInshi(String gameName) {
-        Map<String, Region> regions = ((BoardRectangularWithRegions)this.board).getRegionsMap();
+        Map<String, Region> regions = ((Board)this.board).getRegionsMap();
         for (Map.Entry<String, Region> region : regions.entrySet()) {
             if (gameName.equals("Inshinoheya")) {
                 if (region.getValue().getParam() != null) {
@@ -45,7 +44,7 @@ public class RulebookXmlSerializer implements RulebookSerializer{
     }
 
     private Rulebook deserializerKakuro() {
-        for (Map.Entry<String, Region> kakuroRegion : ((BoardRectangularWithRegions)this.board).getRegionsMap().entrySet()) {
+        for (Map.Entry<String, Region> kakuroRegion : ((Board)this.board).getRegionsMap().entrySet()) {
             rules.add(new RuleTotalSumEquals(this.board, kakuroRegion.getKey(), Integer.parseInt(kakuroRegion.getValue().getParam())));
             rules.add(new RuleNoRepeatedValues(this.board, kakuroRegion.getKey()));
         }
@@ -53,7 +52,7 @@ public class RulebookXmlSerializer implements RulebookSerializer{
     }
 
     private Rulebook deserializeSudoku() {
-        for (String region : ((BoardRectangularWithRegions)this.board).getRegionsMap().keySet()) {
+        for (String region : ((Board)this.board).getRegionsMap().keySet()) {
             rules.add(new RuleNoRepeatedValues(this.board, region));
         }
         return new Rulebook(rules);

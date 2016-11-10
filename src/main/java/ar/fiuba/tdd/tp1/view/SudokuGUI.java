@@ -15,9 +15,10 @@ public class SudokuGUI extends GameGUI {
 
     private int subGrids;
 
-    public SudokuGUI(int numberOfRows, int numberOfColumns, List<String> validInputs, List<CellInfo> cellInfoList, UserInputHandler
+    public SudokuGUI(String gameName, int numberOfRows, int numberOfColumns,
+                     List<String> validInputs, List<CellInfo> cellInfoList, UserInputHandler
             userInputHandler) {
-        super(numberOfRows,numberOfColumns,validInputs,cellInfoList,userInputHandler);
+        super(gameName,numberOfRows,numberOfColumns,validInputs,cellInfoList,userInputHandler);
         this.subGrids = numberOfColumns;
     }
 
@@ -27,6 +28,11 @@ public class SudokuGUI extends GameGUI {
         this.setLayout(new GridLayout(0, this.numberOfColumns / columnsPerSubGrid ));
         createSubGrids();
         fillBoard(columnsPerSubGrid);
+    }
+
+    @Override
+    protected CellView createNewCellView(CellInfo cellInfo) {
+        return new SudokuCellView(cellInfo,this.validInputs,this.userInputHandler);
     }
 
     private void fillBoard(int columnsPerSubGrid) {
@@ -54,7 +60,7 @@ public class SudokuGUI extends GameGUI {
             grid = getSubgridByNumber(gridNumber);
             for (int i = 0; i < columnsPerSubGrid ; i++) {
                 cellInfo = this.cellInfoList.get(cellNumber);
-                grid.add(new SudokuCellView(cellInfo,this.validInputs,this.userInputHandler));
+                grid.add(createNewCellView(cellInfo));
                 cellsAdded++;
                 cellNumber++;
             }

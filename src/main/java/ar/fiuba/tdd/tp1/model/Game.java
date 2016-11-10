@@ -1,8 +1,6 @@
 package ar.fiuba.tdd.tp1.model;
 
-import ar.fiuba.tdd.tp1.model.interfaces.Board;
 import ar.fiuba.tdd.tp1.model.interfaces.EndGameCondition;
-import ar.fiuba.tdd.tp1.view.InputGameButton;
 
 import java.util.*;
 
@@ -10,9 +8,11 @@ public class Game {
     private Rulebook rulebook;
     private Board board;
     private List<Move> moves;
+    private Stack<Cell> appliedMoves = new Stack<>();
     private List<MoveHistory> moveHistory = new ArrayList<>();
     private List<EndGameCondition> endGameConditions;
     private List<String> validInputs;
+    private boolean alphabeticalCell;
 
     //Both the Rulebook and the Board must be already initialized.
     public Game(Rulebook rulebookValue, Board boardValue) {
@@ -36,10 +36,10 @@ public class Game {
         if (board.getCellFromCellId(move.getcellId()).editable) {
             rulebook.validate(move);
             if (move.isValid()) {
-                board.apply(move);
+                applyMove(move);
             }
         } else {
-            List<Integer> listOfConflictingCellIds = new ArrayList<Integer>();
+            List<Integer> listOfConflictingCellIds = new ArrayList<>();
             listOfConflictingCellIds.add(move.getcellId());
             move.addViolationOfRule(new ViolationOfRule("Not and editable cell", listOfConflictingCellIds));
         }
@@ -52,10 +52,48 @@ public class Game {
         for (Move move : moves) {
             rulebook.validate(move);
             if (move.isValid()) {
-                board.apply(move);
+                applyMove(move);
             }
             this.moveHistory.add(new MoveHistory(move, move.isValid()));
         }
+    }
+
+    private void applyMove(Move move) {
+        this.appliedMoves.push(createCell(board.getCellFromCellId(move.getcellId()).datumToString(), move.getcellId()));
+        board.apply(move);
+    }
+
+    public void undo() {
+        if (! this.appliedMoves.isEmpty()) {
+            Move undoMove = new Move(Integer.parseInt(this.appliedMoves.peek().getName()),this.appliedMoves.pop());
+            this.board.apply(undoMove);
+            this.moveHistory.add(new MoveHistory(undoMove, undoMove.isValid()));
+        }
+    }
+
+
+
+    private Cell createCell(String value, int newCellId) {
+        if (this.alphabeticalCell) {
+            if (value == null || value.equals("0")) {
+                value = null;
+            }
+            return new CellAlphabetical(value, Integer.toString(newCellId),true);
+        } else {
+            return new CellNumerical(Integer.parseInt(value), Integer.toString(newCellId));
+        }
+    }
+
+    public int getAppliedMovesCount() {
+        return this.appliedMoves.size();
+    }
+
+    public int getIdOfLastAppliedMove() {
+        return Integer.parseInt(this.appliedMoves.peek().getName());
+    }
+
+    public String getStringValueOfLastAppliedMove() {
+        return this.appliedMoves.peek().datumToString();
     }
 
     public List<Integer> getCellsIdInRegion(String regionId) {
@@ -91,9 +129,9 @@ public class Game {
     public BoardReport getBoardReport() {
         boolean status = this.moveHistory.get(this.moveHistory.size() - 1).wasValid();
 
-        Map<Integer, Integer> boardValuesMap = this.board.getBoardValues();
+        Map<Integer, String> boardValuesMap = this.board.getBoardValues();
         List<BoardValue> boardValuesList = new LinkedList<>();
-        for (Map.Entry<Integer, Integer> entry : boardValuesMap.entrySet()) {
+        for (Map.Entry<Integer, String> entry : boardValuesMap.entrySet()) {
             boardValuesList.add(new BoardValue(entry.getKey(), board.getColumnQuantity(), entry.getValue()));
         }
         return new BoardReport(status, boardValuesList);
@@ -134,8 +172,12 @@ public class Game {
             rulesValid = rulesValid && rule.isValid();
         }
         for (EndGameCondition endGameCondition : this.endGameConditions) {
-            rulesValid = rulesValid && endGameCondition.validate((BoardRectangularWithRegions)this.board);
+            rulesValid = rulesValid && endGameCondition.validate((Board)this.board);
         }
         return rulesValid;
+    }
+
+    public void setAlphabeticalCell(boolean value) {
+        this.alphabeticalCell = value;
     }
 }

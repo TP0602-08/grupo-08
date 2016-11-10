@@ -3,30 +3,24 @@ package ar.fiuba.tdd.tp1.view;
 import ar.fiuba.tdd.tp1.controller.UserInputHandler;
 import ar.fiuba.tdd.tp1.model.CellInfo;
 
-import java.awt.*;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class GokigenNanameGUI extends GameGUI {
 
-    boolean addedCells;
-
-    public GokigenNanameGUI(int numberOfRows, int numberOfColumns, List<String> validInputs, List<CellInfo> cellInfoList, UserInputHandler
-            userInputHandler) {
-        super(numberOfRows,numberOfColumns,validInputs,cellInfoList,userInputHandler);
-        this.addedCells = false;
-    }
-
     @Override
-    public void drawGUI() {
-        for (CellInfo cellInfo : this.cellInfoList) {
-            this.add(new GokigenNanameCellView(cellInfo,validInputs,userInputHandler));
-        }
-        if (addedCells) {
-            drawClues();
-        }
+    protected CellView createNewCellView(CellInfo cellInfo) {
+        return new GokigenNanameCellView(cellInfo,validInputs,userInputHandler);
     }
 
-    private void drawClues() {
+    private void addClues() {
+        Map<Integer,String> cluesMap;
+    }
 
+    public GokigenNanameGUI(String gameName, int numberOfRows, int numberOfColumns,
+                            List<String> validInputs, List<CellInfo> cellInfoList, UserInputHandler
+            userInputHandler) {
+        super(gameName, numberOfRows,numberOfColumns,validInputs,cellInfoList,userInputHandler);
     }
 }

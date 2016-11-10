@@ -14,7 +14,7 @@ public class KakuroCellView extends CellView{
     public KakuroCellView(CellInfo cell, List<String> validInputs, UserInputHandler userInputHandler) {
         super();
         if (cell.isEditable()) {
-            CellController cellController = new CellController(cell.getId(),validInputs,userInputHandler);
+            CellController cellController = new CellController(cell.getId(),validInputs,userInputHandler,true);
             this.setBackground(Color.WHITE);
             this.addMouseListener(cellController);
         } else {

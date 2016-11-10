@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
 
 public class GokigenNanameTest {
     private static final String GOKIGENNANAMEJSON = "src/main/resources/gokigenNaname.json";
-    private static final String LAESQUINANOESTOCADA = "La esquina no es tocada";
+    private static final String LAESQUINANOESTOCADA = "The corner is not touched ";
     private static final String VALIDMOVEJSON = "src/test/resources/gokigenNanameValidMove.json";
     private static final String INVALIDMOVEJSON = "src/test/resources/gokigenNanameInvalidMove.json";
     private static final String VALIDMOVESWITHLOOPGAMEJSON = "src/test/resources/validMovesWithLoopGameGokigenNaname.json";
@@ -26,6 +26,7 @@ public class GokigenNanameTest {
     @Before
     public void setUp() throws IOException {
         game = new GameJsonSerializer(GOKIGENNANAMEJSON).deserialize();
+        game.setAlphabeticalCell(true);
     }
 
     @Test
@@ -102,6 +103,7 @@ public class GokigenNanameTest {
     @Test
     public void validPlayFromFileCausesValidMove() throws IOException {
         game = new GameJsonSerializer(GOKIGENNANAMEJSON, VALIDMOVEJSON).deserialize();
+        game.setAlphabeticalCell(true);
         game.process();
         for (MoveHistory move : game.getMoveHistory()) {
             assertTrue(move.wasValid());
@@ -121,6 +123,7 @@ public class GokigenNanameTest {
     @Test
     public void playsFileWithValidMovesAndLoopDoesNotCauseGameWon() throws IOException {
         game = new GameJsonSerializer(GOKIGENNANAMEJSON, VALIDMOVESWITHLOOPGAMEJSON).deserialize();
+        game.setAlphabeticalCell(true);
         game.process();
         for (MoveHistory move : game.getMoveHistory()) {
             assertTrue(move.wasValid());
@@ -131,6 +134,7 @@ public class GokigenNanameTest {
     @Test
     public void fileWithAllValidMovesAndNoLoopsCausesGameWon() throws IOException {
         game = new GameJsonSerializer(GOKIGENNANAMEJSON, WINGAMEGOKIGENNANAME).deserialize();
+        game.setAlphabeticalCell(true);
         game.process();
         for (MoveHistory move : game.getMoveHistory()) {
             assertTrue(move.wasValid());
@@ -147,6 +151,17 @@ public class GokigenNanameTest {
         assertNotNull(validInputs);
         assertTrue(validInputs.size() == expectedInputs.size());
         assertTrue(validInputs.equals(expectedInputs));
+    }
+
+    @Test
+    public void undoMoveInWonGameMakesGameNotWon() throws IOException {
+        game = new GameJsonSerializer(GOKIGENNANAMEJSON, WINGAMEGOKIGENNANAME).deserialize();
+        game.setAlphabeticalCell(true);
+        game.process();
+        assertTrue(game.isGameWon());
+        game.undo();
+        assertFalse(game.isGameWon());
+
     }
     
 }

@@ -1,6 +1,5 @@
 package ar.fiuba.tdd.tp1.model;
 
-import ar.fiuba.tdd.tp1.model.interfaces.Board;
 import ar.fiuba.tdd.tp1.model.interfaces.VisitorOfCell;
 
 import java.util.ArrayList;
@@ -80,7 +79,7 @@ public class RuleTotalSumEquals extends Rule implements VisitorOfCell {
             List<Integer> listOfConflictingCellIds = new ArrayList<Integer>(cellIdsList);
             Integer newCellId = move.getcellId();
             listOfConflictingCellIds.remove(newCellId);
-            ViolationOfRule violationOfRule = new ViolationOfRule("La suma no es igual a " + sum + ".", listOfConflictingCellIds);
+            ViolationOfRule violationOfRule = new ViolationOfRule("Sum not equal to  " + sum + ".", listOfConflictingCellIds);
             move.addViolationOfRule(violationOfRule);
             this.valid = false;
         }

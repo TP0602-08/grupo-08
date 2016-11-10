@@ -1,6 +1,5 @@
 package ar.fiuba.tdd.tp1.model;
 
-import ar.fiuba.tdd.tp1.model.interfaces.Board;
 import ar.fiuba.tdd.tp1.model.interfaces.VisitorOfCell;
 
 import java.util.ArrayList;
@@ -67,7 +66,7 @@ public class RuleTotalProductEquals extends Rule implements VisitorOfCell {
         if (this.filledCells == cellIds.size() && accumulator != this.product) {
             List<Integer> conflictingCellIds = new ArrayList<Integer>(cellIds);
             conflictingCellIds.remove(move.getcellId());
-            move.addViolationOfRule(new ViolationOfRule("El producto no es igual a " + product + ".", conflictingCellIds));
+            move.addViolationOfRule(new ViolationOfRule("Product not equal to " + product + ".", conflictingCellIds));
             this.valid = false;
         } else {
             this.valid = true;

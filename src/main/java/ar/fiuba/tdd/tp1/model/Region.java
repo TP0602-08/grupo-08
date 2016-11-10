@@ -1,6 +1,9 @@
 package ar.fiuba.tdd.tp1.model;
 
 import java.util.List;
+//Represents a group of cells in the board which can have any shape.
+//Rules are applies on the corresponding cells by means of a reference to a region.
+//Each regions has an id to identify it. This id is a string.
 
 public class Region {
     private String param;

@@ -4,10 +4,10 @@ package ar.fiuba.tdd.tp1.controller;
 import ar.fiuba.tdd.tp1.model.Game;
 import ar.fiuba.tdd.tp1.serialization.json.GameJsonSerializer;
 import ar.fiuba.tdd.tp1.view.ApplicationView;
-import ar.fiuba.tdd.tp1.view.InvalidGameWindow;
 
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+import javax.swing.*;
 import javax.swing.event.MouseInputAdapter;
 
 import static javax.swing.SwingUtilities.isLeftMouseButton;
@@ -18,6 +18,7 @@ public class ApplicationController extends MouseInputAdapter {
     private static final String kakuroJsonPath = "src/main/resources/kakuro.json";
     private static final String inshinoheshaJsonPath = "src/main/resources/inshinoheya.json";
     private static final String gokigenNanameJsonPath = "src/main/resources/gokigenNaname.json";
+    private static final String norinoriJsonPath = "src/main/resources/norinori.json";
 
     private Game game;
     private GameJsonSerializer gameJsonSerializer;
@@ -36,39 +37,38 @@ public class ApplicationController extends MouseInputAdapter {
         String gameName;
 
         if (isLeftMouseButton(mouseEvent)) {
-            gameName = this.applicationView.getTextField();
-            if (validGameName(gameName.toLowerCase())) {
+            if (mouseEvent.getComponent() instanceof JButton) {
+                JButton gameButton = ((JButton) mouseEvent.getComponent());
+                gameName = gameButton.getText();
+                gameName = gameName.replaceAll("\\s+", "");
+                gameName = gameName.toLowerCase();
                 try {
-                    gameJsonSerializer = getGameJsonSerializer(gameName);
+                    this.gameJsonSerializer = getGameJsonSerializer(gameName);
+                    initGame(gameName, gameJsonSerializer);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                initGame(gameName, gameJsonSerializer);
-            } else {
-                new InvalidGameWindow();
             }
         }
     }
 
-    private boolean validGameName(String gameName) {
-        return gameName.equals("sudoku") || gameName.equals("kakuro")
-                || gameName.equals("inshinoheya") || gameName.equals("gokigennaname");
-    }
-
     private GameJsonSerializer getGameJsonSerializer(String gameName) throws IOException {
-        if (gameName.equalsIgnoreCase("sudoku")) {
-            return new GameJsonSerializer(sudokuJsonPath);
-        } else if (gameName.equalsIgnoreCase("kakuro")) {
-            return new GameJsonSerializer(kakuroJsonPath);
-        } else if (gameName.equalsIgnoreCase("inshinoheya")) {
-            return new GameJsonSerializer(inshinoheshaJsonPath);
-        } else {
-            return new GameJsonSerializer(gokigenNanameJsonPath);
+        switch (gameName) {
+            case "sudoku":
+                return new GameJsonSerializer(sudokuJsonPath);
+            case "kakuro":
+                return new GameJsonSerializer(kakuroJsonPath);
+            case "inshinoheya":
+                return new GameJsonSerializer(inshinoheshaJsonPath);
+            case "gokigennaname":
+                return new GameJsonSerializer(gokigenNanameJsonPath);
+            default:
+                return new GameJsonSerializer(norinoriJsonPath);
         }
     }
 
     private void initGame(String gameName, GameJsonSerializer gameJsonSerializer) {
-        this.applicationView.dispose();
+        this.applicationView.dismissView();
         game = gameJsonSerializer.deserialize();
         GameController gameController = new GameController(gameName,game);
         gameController.run();

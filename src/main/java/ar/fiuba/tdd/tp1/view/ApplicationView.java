@@ -3,16 +3,19 @@ package ar.fiuba.tdd.tp1.view;
 import ar.fiuba.tdd.tp1.controller.ApplicationController;
 
 import java.awt.*;
+import java.util.*;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 
 
 public class ApplicationView extends JFrame {
 
-    private JTextField configFilePathTextField;
-    private JButton createGameButton;
+    private JPanel gamesPanel;
     private JLabel imageLabel;
     private ApplicationController applicationController;
+    private java.util.List<String> supportedGames = Arrays.asList("Sudoku", "Kakuro", "Inshi No Heya", "Gokigen Naname", "Norinori");
+    private static final int GAMESPANELGRIDLAYOUTROWS = 0;
+    private static final int GAMESPANELGRIDLAYOUTCOLUMNS = 3;
 
     public ApplicationView() {
         super("GameEngine - Group8");
@@ -24,13 +27,20 @@ public class ApplicationView extends JFrame {
 
         this.imageLabel = new JLabel(new ImageIcon("src/main/resources/LogoFiuba.jpg"));
         this.add(imageLabel);
+        this.gamesPanel = new JPanel();
+        this.gamesPanel.setLayout(new GridLayout(GAMESPANELGRIDLAYOUTROWS, GAMESPANELGRIDLAYOUTCOLUMNS));
+        TitledBorder titledBorder = new TitledBorder("Select game ");
+        this.gamesPanel.setBorder(titledBorder);
+        this.add(gamesPanel);
+        this.applicationController = null;
+    }
 
-        this.configFilePathTextField = new JTextField(40);
-        TitledBorder titledBorder = new TitledBorder("Write game name ");
-        configFilePathTextField.setBorder(titledBorder);
-        this.add(configFilePathTextField);
-        this.createGameButton = new JButton("create game");
-        this.add(createGameButton);
+    private void fillGamesPanel() {
+        for (String supportedGame : supportedGames) {
+            JButton gameButton = new JButton(supportedGame);
+            gameButton.addMouseListener(this.applicationController);
+            this.gamesPanel.add(gameButton);
+        }
     }
 
     public void setVisible() {
@@ -43,10 +53,7 @@ public class ApplicationView extends JFrame {
 
     public void setController(ApplicationController applicationController) {
         this.applicationController = applicationController;
-        this.createGameButton.addMouseListener(this.applicationController);
-    }
+        fillGamesPanel();
 
-    public String getTextField() {
-        return this.configFilePathTextField.getText();
     }
 }

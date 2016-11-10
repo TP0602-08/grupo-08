@@ -17,7 +17,7 @@ public class InshiNoHeyaCellView extends CellView {
         this.setLayout(new BorderLayout());
         this.setBackground(Color.WHITE);
         this.setMargin(new Insets(0,0,0,0));
-        CellController cellController = new CellController(cell.getId(),validInputs,userInputHandler);
+        CellController cellController = new CellController(cell.getId(),validInputs,userInputHandler,true);
         this.addMouseListener(cellController);
     }
 

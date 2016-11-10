@@ -1,6 +1,5 @@
 package ar.fiuba.tdd.tp1.model;
 
-import ar.fiuba.tdd.tp1.model.interfaces.Board;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -12,7 +11,7 @@ import static org.junit.Assert.*;
  Then we will test other test with free lockers which should return the false value.
 */
 public class EndGameAllCellsFilledTest {
-    private BoardRectangularWithRegions oneBoard;
+    private Board oneBoard;
     private EndGameAllCellsFilled endGameCondition;
     private CellAlphabetical cell1;
     private CellAlphabetical cell2;
@@ -28,7 +27,7 @@ public class EndGameAllCellsFilledTest {
    public void setUp() throws Exception {
         int dimRowS = 3;
         int dimCols = 3;
-        this.oneBoard = new BoardRectangularWithRegions(dimCols,dimRowS);
+        this.oneBoard = new Board(dimCols,dimRowS);
                                    //ID                          //dATA  //NAME //isEDITABLE
         this.oneBoard. setCellById(new Integer(1), new CellAlphabetical("1","1",true));
         this.oneBoard. setCellById(new Integer(2), new CellAlphabetical("2","8",true));

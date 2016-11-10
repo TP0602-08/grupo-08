@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
 
 public class RuleTotalProductEqualsTest {
     private RuleTotalProductEquals oneRule;
-    private BoardRectangularWithRegions oneBoard;
+    private Board oneBoard;
     private int productTotalOfRegion;
     private String regionID;
     private String newRegionId;
@@ -26,7 +26,7 @@ public class RuleTotalProductEqualsTest {
 
     @Before
     public void setUp() throws Exception {
-        this.oneBoard = new BoardRectangularWithRegions(9,9);
+        this.oneBoard = new Board(9,9);
         this.productTotalOfRegion = 10;
         this.regionID = "2";
         this.oneRule = new RuleTotalProductEquals(this.oneBoard,this.regionID,this.productTotalOfRegion );

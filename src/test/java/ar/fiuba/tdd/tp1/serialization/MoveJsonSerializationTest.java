@@ -2,7 +2,7 @@ package ar.fiuba.tdd.tp1;
 
 import com.google.gson.Gson;
 
-import ar.fiuba.tdd.tp1.model.BoardRectangularWithRegions;
+import ar.fiuba.tdd.tp1.model.Board;
 import ar.fiuba.tdd.tp1.model.CellNumerical;
 import ar.fiuba.tdd.tp1.model.Move;
 import ar.fiuba.tdd.tp1.serialization.json.MoveJson;
@@ -40,7 +40,7 @@ public class MoveJsonSerializationTest {
 
     private static String playJson;
     private static String playsJson;
-    private static BoardRectangularWithRegions board;
+    private static Board board;
 
     public static String readFile(String path, Charset encoding) throws IOException {
         byte[] encoded = Files.readAllBytes(Paths.get(path));
@@ -51,7 +51,7 @@ public class MoveJsonSerializationTest {
     public static void setUpBeforeClass() throws IOException {
         playJson = readFile(PLAY, StandardCharsets.UTF_8);
         playsJson = readFile(PLAYS, StandardCharsets.UTF_8);
-        board = Mockito.mock(BoardRectangularWithRegions.class);
+        board = Mockito.mock(Board.class);
         Mockito.when(board.getCellByCoordinates(0,0)).thenReturn(new CellNumerical(0, "0"));
         Mockito.when(board.getCellByCoordinates(0,1)).thenReturn(new CellNumerical(0, "1"));
         Mockito.when(board.getCellByCoordinates(0,2)).thenReturn(new CellNumerical(0, "2"));
