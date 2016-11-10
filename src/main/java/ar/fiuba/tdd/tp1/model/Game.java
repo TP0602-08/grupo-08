@@ -38,8 +38,7 @@ public class Game {
         if (board.getCellFromCellId(move.getcellId()).editable) {
             rulebook.validate(move);
             if (move.isValid()) {
-                board.apply(move);
-                this.appliedMoves.push(createCell(board.getCellFromCellId(move.getcellId()).datumToString(), move.getcellId()));
+                applyMove(move);
             }
         } else {
             List<Integer> listOfConflictingCellIds = new ArrayList<>();
@@ -55,11 +54,15 @@ public class Game {
         for (Move move : moves) {
             rulebook.validate(move);
             if (move.isValid()) {
-                this.appliedMoves.push(createCell(board.getCellFromCellId(move.getcellId()).datumToString(), move.getcellId()));
-                board.apply(move);
+                applyMove(move);
             }
             this.moveHistory.add(new MoveHistory(move, move.isValid()));
         }
+    }
+
+    private void applyMove(Move move) {
+        this.appliedMoves.push(createCell(board.getCellFromCellId(move.getcellId()).datumToString(), move.getcellId()));
+        board.apply(move);
     }
 
     public void undo() {
@@ -70,9 +73,11 @@ public class Game {
         }
     }
 
+
+
     private Cell createCell(String value, int newCellId) {
         if (this.alphabeticalCell) {
-            if (value.equals("0")) {
+            if (value == null || value.equals("0")) {
                 value = null;
             }
             return new CellAlphabetical(value, Integer.toString(newCellId),true);
