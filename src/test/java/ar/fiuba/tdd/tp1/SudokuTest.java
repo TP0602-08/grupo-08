@@ -267,6 +267,11 @@ public class SudokuTest {
 
     }
 
+    @Test
+    public void getCellsInfoReturnsListWithCorrectNumberOfElements() {
+        assertTrue(game.getCellsInfo().size() == (game.getNumberOfColumns() * game.getNumberOfRows()));
+    }
+
     @After
     public void cleanUp() {
         File file = new File(SUDOKUOUTPUTJSON);

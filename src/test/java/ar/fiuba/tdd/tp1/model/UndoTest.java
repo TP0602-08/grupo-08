@@ -11,7 +11,6 @@ import static org.junit.Assert.assertTrue;
 public class UndoTest {
 
     private static final String SUDOKUJSON = "src/main/resources/sudoku.json";
-    private static final String UNDOVALUE = "0";
     private static Game game;
     private static Move move;
     private static Move invalidMove;
@@ -63,4 +62,19 @@ public class UndoTest {
         game.undo();
         assertTrue(game.getMoveHistory().get(1).wasValid());
     }
+
+    @Test
+    public void appliedMovesStoresTheNumberOfCellWhereMoveWillBeApplied() {
+        game.process(move);
+        assertTrue(game.getIdOfLastAppliedMove() == move.getcellId());
+    }
+
+    @Test
+    public void appliedMovesStoresTheValueOfTheOriginalValueOfCellWhereMoveWillBeApplied() {
+        String originalValue = game.getCell(move.getcellId()).datumToString();
+        game.process(move);
+        assertTrue(game.getStringValueOfLastAppliedMove().equals(originalValue));
+    }
+
+
 }
