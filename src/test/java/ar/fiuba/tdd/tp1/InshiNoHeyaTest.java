@@ -18,8 +18,8 @@ import static org.junit.Assert.*;
 
 public class InshiNoHeyaTest {
     private static final String INSHINOHEYAJSON = "src/main/resources/inshinoheya.json";
-    private static final String VALORREPETIDO = "Valor repetido.";
-    private static final String ELPRODUCTONOESIGUAL = "El producto no es igual a ";
+    private static final String VALORREPETIDO = "Repeated Value.";
+    private static final String ELPRODUCTONOESIGUAL = "Product not equal to ";
     private static final String INVALIDMOVEJSON = "src/test/resources/inshiNoHeyaInvalidMove.json";
     private static final String VALIDMOVEJSON = "src/test/resources/inshiNoHeyaValidMove.json";
     private static final String WINGAMEINSHINOHEYAJSON = "src/test/resources/winGameInshiNoHeya.json";

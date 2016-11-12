@@ -18,7 +18,7 @@ import static org.junit.Assert.*;
 
 public class SudokuTest {
     private static final String SUDOKUJSON = "src/main/resources/sudoku.json";
-    private static final String VALORREPETIDO = "Valor repetido.";
+    private static final String VALORREPETIDO = "Repeated Value.";
     private static final String INVALIDPLAYJSON = "src/test/resources/invalidSudokuPlay.json";
     private static final String VALIDPLAYJSON = "src/test/resources/validSudokuPlay.json";
     private static final String SUDOKUOUTPUTJSON = "src/test/resources/sudokuOutput.json";
@@ -265,6 +265,11 @@ public class SudokuTest {
         game.undo();
         assertFalse(game.isGameWon());
 
+    }
+
+    @Test
+    public void getCellsInfoReturnsListWithCorrectNumberOfElements() {
+        assertTrue(game.getCellsInfo().size() == (game.getNumberOfColumns() * game.getNumberOfRows()));
     }
 
     @After

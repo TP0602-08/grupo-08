@@ -66,7 +66,7 @@ public class RuleNoRepeatedValues extends Rule implements VisitorOfCell {
 
     private void finalizeValidate(List<Integer> listOfConflictingCellIds, Move move) {
         if (!listOfConflictingCellIds.isEmpty()) {
-            ViolationOfRule violationOfRule = new ViolationOfRule("Valor repetido.", listOfConflictingCellIds);
+            ViolationOfRule violationOfRule = new ViolationOfRule("Repeated Value.", listOfConflictingCellIds);
             move.addViolationOfRule(violationOfRule);
             this.valid = false;
         } else {
